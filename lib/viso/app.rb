@@ -8,6 +8,9 @@ class Viso
     # Load New Relic RPM in the production and staging environments.
     configure(:production, :staging) { require 'newrelic_rpm' }
 
+    # Serve static assets from /public
+    set :public, 'public'
+
     # Nothing to see here. Redirect to the CloudApp product page. Response is
     # cached for a year.
     get '/' do
