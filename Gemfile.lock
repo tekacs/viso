@@ -1,0 +1,30 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.4)
+    crack (0.1.8)
+    httparty (0.7.4)
+      crack (= 0.1.8)
+    newrelic_rpm (2.14.1)
+    rack (1.2.2)
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    sinatra (1.2.1)
+      rack (~> 1.1)
+      tilt (< 2.0, >= 1.2.2)
+    tilt (1.2.2)
+    vcr (1.8.0)
+    webmock (1.6.2)
+      addressable (>= 2.2.2)
+      crack (>= 0.1.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  httparty
+  newrelic_rpm
+  rack-test
+  sinatra
+  vcr
+  webmock

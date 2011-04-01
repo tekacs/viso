@@ -1,0 +1,30 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://cl.ly:80/hhgttg
+    body: 
+    headers: 
+      accept: 
+      - application/json
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      date: 
+      - Sat, 26 Mar 2011 11:07:26 GMT
+      server: 
+      - Apache/2.2.17 (Unix) mod_ssl/2.2.17 OpenSSL/0.9.8l DAV/2 Phusion_Passenger/3.0.5
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.5
+      cache-control: 
+      - no-cache
+      content-length: 
+      - "1"
+      status: 
+      - "404"
+      content-type: 
+      - text/html; charset=utf-8
+    body: " "
+    http_version: "1.1"
