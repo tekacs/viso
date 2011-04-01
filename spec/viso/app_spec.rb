@@ -58,6 +58,9 @@ describe Viso::App do
 
       heading = %{<h1 class="description left text">chapter1.txt</h1>}
       assert last_response.body.include?(heading), 'heading not found'
+
+      link = %{<a href="http://f.cl.ly/items/0b3u0g1R2F2y1Q3R0j1d/chapter1.txt">Download</a>}
+      assert last_response.body.include?(link), 'link not found'
     end
   end
 
