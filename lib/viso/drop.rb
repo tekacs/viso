@@ -1,27 +1,27 @@
 require 'json'
 require 'httparty'
 require 'net/http'
+require 'ostruct'
 
 class Viso
-  class Drop
-    DOMAIN = ENV.fetch 'CLOUDAPP_DOMAIN', 'cl.ly'
-
-    class NotFound < StandardError; end
+  class Drop < OpenStruct
+    include  HTTParty
+    base_uri ENV.fetch('CLOUDAPP_DOMAIN', 'cl.ly')
 
     def self.find(slug)
-      response slug
-    end
-
-  protected
-
-    def self.response(slug)
-      response = HTTParty.get "http://#{ DOMAIN }/#{ slug }",
-                              :headers => { 'Accept' => 'application/json' }
+      response = get "/#{ slug }",
+                     :headers => { 'Accept' => 'application/json' }
 
       raise NotFound.new unless response.ok?
 
-      response
+      Drop.new response.parsed_response
     end
+
+    def image?
+      item_type == 'image'
+    end
+
+    class NotFound < StandardError; end
 
   end
 end
