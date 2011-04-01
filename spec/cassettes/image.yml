@@ -1,0 +1,101 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://cl.ly:80/hhgttg
+    body: 
+    headers: 
+      accept: 
+      - application/json
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Fri, 25 Mar 2011 19:10:14 GMT
+      server: 
+      - Apache/2.2.17 (Unix) mod_ssl/2.2.17 OpenSSL/0.9.8l DAV/2 Phusion_Passenger/3.0.5
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.5
+      vary: 
+      - Accept
+      x-runtime: 
+      - "37"
+      cache-control: 
+      - public; max-age=900
+      last-modified: 
+      - Fri, 25 Mar 2011 19:04:43 GMT
+      content-length: 
+      - "584"
+      status: 
+      - "200"
+      content-type: 
+      - application/json; charset=utf-8
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/cover.png\",\"href\":\"http://my.cl.ly/items/307\",\"name\":\"cover.png\",\"redirect_url\":null,\"created_at\":\"2011-03-25T19:04:30Z\",\"updated_at\":\"2011-03-25T19:04:43Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":1,\"remote_url\":\"http://f.cl.ly/items/hhgttg/cover.png\",\"icon\":\"http://my.cl.ly/images/new/item-types/image.png\",\"id\":307,\"thumbnail_url\":\"http://cl.ly/thumb/items/hhgttg/small_200x150!.png\",\"item_type\":\"image\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://cl.ly:80/hhgttg/cover.png
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 302
+      message: Found
+    headers: 
+      date: 
+      - Fri, 25 Mar 2011 19:33:32 GMT
+      server: 
+      - Apache/2.2.17 (Unix) mod_ssl/2.2.17 OpenSSL/0.9.8l DAV/2 Phusion_Passenger/3.0.5
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.5
+      x-runtime: 
+      - "143"
+      cache-control: 
+      - no-cache
+      location: 
+      - http://f.cl.ly/items/hhgttg/cover.png
+      content-length: 
+      - "121"
+      status: 
+      - "302"
+      content-type: 
+      - text/html; charset=utf-8
+    body: <html><body>You are being <a href="http://f.cl.ly/items/hhgttg/cover.png">redirected</a>.</body></html>
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://f.cl.ly:80/items/hhgttg/cover.png
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-amz-id-2: 
+      - 90KnJinhEFKn22mpoAsjeGagmXoUUbt8p6Ft5J/pP7HcnwuJrhQGZHdogUXThw0h
+      x-amz-request-id: 
+      - 88B7B2C2519C2AEB
+      date: 
+      - Fri, 25 Mar 2011 19:33:33 GMT
+      last-modified: 
+      - Fri, 25 Mar 2011 19:04:30 GMT
+      etag: 
+      - "\"35800716e266902e4fe68ab558d981fb\""
+      accept-ranges: 
+      - bytes
+      content-type: 
+      - binary/octet-stream
+      content-length: 
+      - "70"
+      server: 
+      - AmazonS3
+    body: !binary |
+      iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNg
+      YGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==
+
+    http_version: "1.1"
