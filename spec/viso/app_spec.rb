@@ -33,14 +33,11 @@ describe Viso::App do
     VCR.use_cassette 'image', :record => :none do
       get '/hhgttg'
 
-      assert last_response.redirect?
+      assert last_response.ok?
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
-      last_response.headers['Location'].
-        must_equal 'http://f.cl.ly/items/hhgttg/cover.png'
 
-      #last_response.headers['Content-Type'].must_equal        'image/png'
-      #last_response.headers['Content-Disposition'].must_equal 'inline'
-      #last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      image_tag = %{<img alt="cover.png" src="http://f.cl.ly/items/hhgttg/cover.png">}
+      assert last_response.body.include?(image_tag), 'Image tag not found'
     end
   end
 

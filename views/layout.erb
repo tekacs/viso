@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="en">
+  <head>
+    <title><%= @drop['name'] %></title>
+
+    <meta charset="utf-8">
+
+    <meta content="CloudApp" name="author">
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    <!--[if !IE 6]><!-->
+    <link href="stylesheets/screen.css" rel="stylesheet">
+    <!--<![endif]-->
+
+    <script src="javascripts/lib/jquery-1.5.2.js"></script>
+    <script src="javascripts/lib/modernizr-1.6.min.js"></script>
+    <script src="javascripts/lib/hotwire.js"></script>
+    <script src="javascripts/app.js"></script>
+
+    <!--[if IE 6]>
+    <link href="//universal-ie6-css.googlecode.com/files/ie6.0.3.css" rel="stylesheet">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="javascripts/lib/selectivizr-1.0.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="image">
+    <%= yield %>
+  </body>
+</html>

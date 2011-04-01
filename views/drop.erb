@@ -1,0 +1,20 @@
+<%#- content_for :body_id, 'image' %>
+
+<section id="navbar">
+  <h1><a href="http://getcloudapp.com">CloudApp</a></h1>
+
+  <section class="tips">
+    <a href="http://my.cl.ly/register">Share. Files. Fast.</a>
+  </section>
+
+  <nav>
+    <ul>
+      <li class="source"><a href="<%= @drop['content_url'] %>">Source</a></li>
+      <%#><li class="share"><a href="#share">Share</a></li><%>
+    </ul>
+  </nav>
+</section>
+
+<section class="content">
+  <img alt="<%= @drop['name'] %>" src="<%= @drop['remote_url'] %>">
+</section>

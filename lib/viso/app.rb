@@ -26,10 +26,10 @@ class Viso
 
     # Display a `Drop` given its slug. View is cahced for 15 minutes.
     get '/:slug' do |slug|
-      drop = Viso::Drop.find slug
+      @drop = Viso::Drop.find slug
 
       cache_control :public, :max_age => 900
-      redirect drop['remote_url']
+      erb :drop
     end
 
   end
