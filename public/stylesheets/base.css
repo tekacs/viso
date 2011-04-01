@@ -38,7 +38,7 @@ body.zoom {
 }
 
 #navbar h1 a:link, #navbar h1 a:visited {
-  background: url("/images/logo.png") no-repeat;
+  background: url("/images/small_logo.png") no-repeat;
   display: block;
   height: 21px;
   text-indent: -99999px;

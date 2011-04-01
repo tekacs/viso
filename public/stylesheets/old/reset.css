@@ -1,0 +1,88 @@
+/*
+
+title:  reset css
+author: maximilian schoening @ bylinebreak.com
+credits: eric meyer, richard clark, alberto calvo
+
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+a, b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+input, textarea, button,
+table, caption, tbody, tfoot, thead, tr, th, td,
+
+/* added html5 elements */
+article, aside, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+/* teach the browser some html5 */
+article, aside, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* remember to define focus styles */
+:focus, :active {
+  outline: 0;
+}
+
+/* remember to highlight inserts */
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* some special love for forms */
+input, select {
+  vertical-align: middle;
+}
+
+select {
+  margin: 0;
+}
+
+/* removes button padding in FF */
+input::-moz-focus-inner { 
+  border: 0;
+  padding: 0;
+}

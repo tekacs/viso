@@ -29,7 +29,7 @@ class Viso
       @drop = Viso::Drop.find slug
 
       cache_control :public, :max_age => 900
-      erb :drop
+      erb @drop.image? ? :image : :file
     end
 
   end
