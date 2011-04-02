@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'json'
 
 # Viso
 # ------
@@ -22,6 +23,14 @@ class Viso
     get '/favicon.ico' do
       cache_control :public, :max_age => 31557600
       redirect 'http://my.cl.ly/favicon.ico'
+    end
+
+    # Forward the JSON response for a `Drop`.
+    get '/:slug', :provides => 'json' do |slug|
+      drop = Viso::Drop.find slug
+
+      content_type :json
+      JSON.generate drop.data
     end
 
     # Display a `Drop` given its slug. View is cahced for 15 minutes.

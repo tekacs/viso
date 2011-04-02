@@ -5,6 +5,7 @@ GEM
     crack (0.1.8)
     httparty (0.7.4)
       crack (= 0.1.8)
+    json (1.4.6)
     newrelic_rpm (2.14.1)
     rack (1.2.2)
     rack-test (0.5.7)
@@ -23,6 +24,7 @@ PLATFORMS
 
 DEPENDENCIES
   httparty
+  json
   newrelic_rpm
   rack-test
   sinatra

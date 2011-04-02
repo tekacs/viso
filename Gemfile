@@ -1,6 +1,7 @@
 source :gemcutter
 
 gem 'httparty'
+gem 'json'
 gem 'sinatra'
 
 gem 'newrelic_rpm'

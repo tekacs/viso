@@ -64,4 +64,16 @@ describe Viso::App do
     end
   end
 
+  it 'forwards json response' do
+    VCR.use_cassette 'text', :record => :none do
+      header 'Accept', 'application/json'
+      get    '/hhgttg'
+
+      last_response.headers['Content-Type'].must_equal 'application/json'
+
+      drop = Viso::Drop.find 'hhgttg'
+      last_response.body.must_equal JSON.generate(drop.data)
+    end
+  end
+
 end
