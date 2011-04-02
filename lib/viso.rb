@@ -4,7 +4,7 @@
 # **Viso** is a simple Sinatra app that displays CloudApp Drops. Images are
 # displayed front and center while a download button is provided for other file
 # types.
-require 'drop'
+require_relative 'drop'
 require 'json'
 require 'sinatra/base'
 
