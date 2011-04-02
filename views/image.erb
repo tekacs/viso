@@ -1,52 +1,72 @@
-<!DOCTYPE html>
-<html class="no-js" dir="ltr" lang="en">
-  <head>
-    <title><%= @drop.name %></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-    <meta charset="utf-8">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title><%= @drop.name %></title>
 
-    <meta content="CloudApp" name="author">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
 
-    <link href="/favicon.ico" rel="shortcut icon">
+  <meta content="CloudApp" name="author" />
 
-    <!--[if !IE 6]><!-->
-    <link href="stylesheets/screen.css" rel="stylesheet">
-    <!--<![endif]-->
+  <link href="/favicon.ico" rel="shortcut icon" />
 
-    <script src="javascripts/lib/jquery-1.5.2.js"></script>
-    <script src="javascripts/lib/modernizr-1.6.min.js"></script>
-    <script src="javascripts/lib/hotwire.js"></script>
-    <script src="javascripts/app.js"></script>
+  <link href="stylesheets/old/slugs.css" rel="stylesheet">
 
-    <!--[if IE 6]>
-    <link href="//universal-ie6-css.googlecode.com/files/ie6.0.3.css" rel="stylesheet">
-    <![endif]-->
+  <!--[if IE]>
+  <link href="stylesheets/old/iefix.css" rel="stylesheet">
+  <![endif]-->
+</head>
 
-    <!--[if lt IE 9]>
-    <script src="javascripts/lib/selectivizr-1.0.min.js"></script>
-    <![endif]-->
-  </head>
+<body id="embedded">
+  <div id="container">
+    <img alt="<%= @drop.name %>" src="<%= @drop.remote_url %>">
+  </div>
 
-  <body id="image">
-    <%#- content_for :body_id, 'image' %>
+  <div class="clearfix" id="toolbar">
+    <div id="logo">
+      <h2><a href="http://www.getcloudapp.com">CloudApp</a></h2>
 
-    <section id="navbar">
-      <h1><a href="http://getcloudapp.com">CloudApp</a></h1>
+      <h3>Share. Files. Fast.</h3>
+    </div>
 
-      <section class="tips">
-        <a href="http://my.cl.ly/register">Share. Files. Fast.</a>
-      </section>
+    <div id="embed">
+      <label for="embed_field">Embed:</label>
 
-      <nav>
-        <ul>
-          <li class="source"><a href="<%= @drop.content_url %>">Source</a></li>
-          <%#><li class="share"><a href="#share">Share</a></li><%>
-        </ul>
-      </nav>
-    </section>
+      <input class="input_text" name="embed" tab="0" type="text" value="<%= @drop.remote_url %>" />
 
-    <section class="content">
-      <img alt="<%= @drop.name %>" src="<%= @drop.remote_url %>">
-    </section>
-  </body>
+      <div id="clipboard">
+        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" height="18" id="clippy" width="14">
+          <param name="allowScriptAccess" value="always" />
+          <param name="bgcolor" value="transparent">
+          <param name="flashvars" value="text=<%= escape_html @drop.content_url %>">
+          <param name="movie" value="flash/clippy.swf"/>
+          <param name="quality" value="high" />
+          <param name="scale" value="noscale" />
+          <param name="wmode" value="transparent">
+
+          <embed src="flash/clippy.swf"
+            allowScriptAccess="always"
+            bgcolor="transparent"
+            flashvars="text=<%= escape_html @drop.content_url %>"
+            height="18"
+            name="clippy"
+            pluginspage="http://www.macromedia.com/go/getflashplayer"
+            quality="high"
+            type="application/x-shockwave-flash"
+            width="14"
+            wmode="transparent"
+          />
+        </object>
+      </div>
+    </div>
+  </div>
+
+  <div class="close">
+    <a href="#close">Close</a>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="javascripts/embedded.js"></script>
+</body>
 </html>
+/html>

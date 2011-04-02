@@ -16,6 +16,9 @@ class Viso < Sinatra::Base
   # Serve static assets from `/public`
   set :public, 'public'
 
+  # Bring in some helper methods from Rack to aid in escaping HTML.
+  helpers { include Rack::Utils }
+
   # The home page. Nothing to see here. Redirect to the CloudApp product page.
   # Response is cached for a year.
   get '/' do

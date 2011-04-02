@@ -35,9 +35,6 @@ describe Viso do
       assert last_response.ok?, 'response not ok'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
 
-      assert last_response.body.include?('<body id="image">'),
-             %{<body id="image"> doesn't exist}
-
       image_tag = %{<img alt="cover.png" src="http://f.cl.ly/items/hhgttg/cover.png">}
       assert last_response.body.include?(image_tag), 'img tag not found'
     end
