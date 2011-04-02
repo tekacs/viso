@@ -1,18 +1,22 @@
+# Viso
+# ------
+#
+# **Viso** is a simple Sinatra app that displays CloudApp Drops. Images are
+# displayed front and center while a download button is provided for other file
+# types.
 require 'json'
 require 'sinatra/base'
 
-# Viso
-# ------
 class Viso < Sinatra::Base
 
   # Load New Relic RPM in the production and staging environments.
   configure(:production, :staging) { require 'newrelic_rpm' }
 
-  # Serve static assets from /public
+  # Serve static assets from `/public`
   set :public, 'public'
 
-  # Nothing to see here. Redirect to the CloudApp product page. Response is
-  # cached for a year.
+  # The home page. Nothing to see here. Redirect to the CloudApp product page.
+  # Response is cached for a year.
   get '/' do
     cache_control :public, :max_age => 31557600
     redirect 'http://getcloudapp.com'
@@ -24,7 +28,8 @@ class Viso < Sinatra::Base
     redirect 'http://my.cl.ly/favicon.ico'
   end
 
-  # Forward the JSON response for a `Drop`. Response is cached for 15 minutes.
+  # JSON request for a **Drop**. Return the same data received from the CloudApp
+  # API. Response is cached for 15 minutes.
   get '/:slug', :provides => 'json' do |slug|
     drop = Drop.find slug
 
@@ -34,7 +39,8 @@ class Viso < Sinatra::Base
     JSON.generate drop.data
   end
 
-  # Display a `Drop` given its slug. Response is cahced for 15 minutes.
+  # All other non-JSON requests for a **Drop**. Render the image view for images
+  # and the download view for everything else.
   get '/:slug' do |slug|
     @drop = Drop.find slug
 
