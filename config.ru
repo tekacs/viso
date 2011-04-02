@@ -2,6 +2,6 @@ require 'rubygems'
 require 'bundler/setup'
 
 require './lib/viso'
-require './lib/viso/app'
+require './lib/drop'
 
-run Viso::App
+run Viso

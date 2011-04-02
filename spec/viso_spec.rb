@@ -3,14 +3,13 @@ require 'rack/test'
 require 'support/vcr'
 
 require 'viso'
-require 'viso/app'
 
-describe Viso::App do
+describe Viso do
 
   include Rack::Test::Methods
 
   def app
-    Viso::App
+    Viso
   end
 
   it 'redirects the home page to the CloudApp product page' do
@@ -72,7 +71,7 @@ describe Viso::App do
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
       last_response.headers['Content-Type'].must_equal  'application/json'
 
-      drop = Viso::Drop.find 'hhgttg'
+      drop = Drop.find 'hhgttg'
       last_response.body.must_equal JSON.generate(drop.data)
     end
   end
