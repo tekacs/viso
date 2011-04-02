@@ -69,7 +69,8 @@ describe Viso::App do
       header 'Accept', 'application/json'
       get    '/hhgttg'
 
-      last_response.headers['Content-Type'].must_equal 'application/json'
+      last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Content-Type'].must_equal  'application/json'
 
       drop = Viso::Drop.find 'hhgttg'
       last_response.body.must_equal JSON.generate(drop.data)

@@ -25,15 +25,17 @@ class Viso
       redirect 'http://my.cl.ly/favicon.ico'
     end
 
-    # Forward the JSON response for a `Drop`.
+    # Forward the JSON response for a `Drop`. Response is cached for 15 minutes.
     get '/:slug', :provides => 'json' do |slug|
       drop = Viso::Drop.find slug
 
-      content_type :json
+      cache_control :public, :max_age => 900
+      content_type  :json
+
       JSON.generate drop.data
     end
 
-    # Display a `Drop` given its slug. View is cahced for 15 minutes.
+    # Display a `Drop` given its slug. Response is cahced for 15 minutes.
     get '/:slug' do |slug|
       @drop = Viso::Drop.find slug
 
