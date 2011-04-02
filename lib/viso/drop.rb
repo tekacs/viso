@@ -21,6 +21,10 @@ class Viso
       item_type == 'image'
     end
 
+    def data
+      marshal_dump
+    end
+
     class NotFound < StandardError; end
 
   end

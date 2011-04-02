@@ -13,6 +13,13 @@ describe Viso::Drop do
     end
   end
 
+  it 'returns a hash of itself' do
+    data = { :name => 'The Guide' }
+    drop = Viso::Drop.new data
+
+    drop.data.must_equal data
+  end
+
   it 'raises a DropNotFound error' do
     VCR.use_cassette 'nonexistent', :record => :none do
       lambda { Viso::Drop.find 'hhgttg' }.must_raise Viso::Drop::NotFound
@@ -20,19 +27,15 @@ describe Viso::Drop do
   end
 
   it 'is an image' do
-    VCR.use_cassette 'image', :record => :none do
-      drop = Viso::Drop.find 'hhgttg'
+    drop = Viso::Drop.new :item_type => 'image'
 
-      assert drop.image?
-    end
+    assert drop.image?
   end
 
   it 'is not an image' do
-    VCR.use_cassette 'text', :record => :none do
-      drop = Viso::Drop.find 'hhgttg'
+    drop = Viso::Drop.new :item_type => 'text'
 
-      refute drop.image?
-    end
+    refute drop.image?
   end
 
 end
