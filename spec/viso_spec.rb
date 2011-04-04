@@ -73,4 +73,13 @@ describe Viso do
     end
   end
 
+  it 'redirects the content URL to the API' do
+    get '/hhgttg/chapter1.txt'
+
+    assert last_response.redirect?
+    last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+    last_response.headers['Location'].
+      must_equal 'http://api.cld.me/hhgttg/chapter1.txt'
+  end
+
 end

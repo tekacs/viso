@@ -52,4 +52,9 @@ class Viso < Sinatra::Base
     erb @drop.image? ? :image : :download
   end
 
+  get '/:slug/:filename' do |slug, filename|
+    cache_control :public, :max_age => 900
+    redirect "#{ Drop.base_uri }#{ request.path }"
+  end
+
 end
