@@ -35,7 +35,7 @@ describe Viso do
       assert last_response.ok?, 'response not ok'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
 
-      image_tag = %{<img alt="cover.png" src="http://f.cl.ly/items/hhgttg/cover.png">}
+      image_tag = %{<img alt="cover.png" src="http://cl.ly/hhgttg/cover.png">}
       assert last_response.body.include?(image_tag), 'img tag not found'
     end
   end
@@ -55,7 +55,7 @@ describe Viso do
       heading = %{<h1 class="description left text">chapter1.txt</h1>}
       assert last_response.body.include?(heading), 'heading not found'
 
-      link = %{<a href="http://f.cl.ly/items/0b3u0g1R2F2y1Q3R0j1d/chapter1.txt">Download</a>}
+      link = %{<a href="http://cl.ly/hhgttg/chapter1.txt">Download</a>}
       assert last_response.body.include?(link), 'link not found'
     end
   end
