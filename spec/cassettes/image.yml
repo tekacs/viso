@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://cl.ly:80/hhgttg
+    uri: http://api.cld.me:80/hhgttg
     body: 
     headers: 
       accept: 
