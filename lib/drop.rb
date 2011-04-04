@@ -5,7 +5,7 @@ require 'ostruct'
 
 class Drop < OpenStruct
   include  HTTParty
-  base_uri ENV.fetch('CLOUDAPP_DOMAIN', 'cl.ly')
+  base_uri ENV.fetch('CLOUDAPP_DOMAIN', 'api.cld.me')
 
   def self.find(slug)
     response = get "/#{ slug }",
