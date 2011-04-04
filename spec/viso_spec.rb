@@ -82,4 +82,12 @@ describe Viso do
       must_equal 'http://api.cld.me/hhgttg/chapter1.txt'
   end
 
+  it 'returns a not found response for nonexistent drops' do
+    VCR.use_cassette 'nonexistent', :record => :none do
+      get '/hhgttg'
+
+      assert last_response.not_found?
+    end
+  end
+
 end

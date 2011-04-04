@@ -35,7 +35,7 @@ class Viso < Sinatra::Base
   # JSON request for a **Drop**. Return the same data received from the CloudApp
   # API. Response is cached for 15 minutes.
   get '/:slug', :provides => 'json' do |slug|
-    drop = Drop.find slug
+    drop = find_drop slug
 
     cache_control :public, :max_age => 900
     content_type  :json
@@ -46,7 +46,7 @@ class Viso < Sinatra::Base
   # All other non-JSON requests for a **Drop**. Render the image view for images
   # and the download view for everything else.
   get '/:slug' do |slug|
-    @drop = Drop.find slug
+    @drop = find_drop slug
 
     cache_control :public, :max_age => 900
     erb @drop.image? ? :image : :download
@@ -55,6 +55,14 @@ class Viso < Sinatra::Base
   get '/:slug/:filename' do |slug, filename|
     cache_control :public, :max_age => 900
     redirect "#{ Drop.base_uri }#{ request.path }"
+  end
+
+protected
+
+  def find_drop(slug)
+    Drop.find slug
+  rescue Drop::NotFound
+    raise Sinatra::NotFound
   end
 
 end
