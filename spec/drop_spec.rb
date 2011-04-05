@@ -25,16 +25,28 @@ describe Drop do
     end
   end
 
+  it 'is not an image' do
+    drop = Drop.new :item_type => 'text'
+
+    refute drop.image?
+  end
+
   it 'is an image' do
     drop = Drop.new :item_type => 'image'
 
     assert drop.image?
   end
 
-  it 'is not an image' do
+  it 'is not a bookmark' do
     drop = Drop.new :item_type => 'text'
 
-    refute drop.image?
+    refute drop.bookmark?
+  end
+
+  it 'is a bookmark' do
+    drop = Drop.new :item_type => 'bookmark'
+
+    assert drop.bookmark?
   end
 
 end

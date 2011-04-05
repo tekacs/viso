@@ -16,6 +16,10 @@ class Drop < OpenStruct
     Drop.new response.parsed_response
   end
 
+  def bookmark?
+    item_type == 'bookmark'
+  end
+
   def image?
     item_type == 'image'
   end
