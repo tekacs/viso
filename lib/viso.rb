@@ -62,7 +62,7 @@ protected
   def find_drop(slug)
     Drop.find slug
   rescue Drop::NotFound
-    raise Sinatra::NotFound
+    not_found
   end
 
 end
