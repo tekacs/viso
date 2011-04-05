@@ -19,6 +19,8 @@ class Viso < Sinatra::Base
   # Bring in some helper methods from Rack to aid in escaping HTML.
   helpers { include Rack::Utils }
 
+  before { headers['Vary'] = 'Accept' }
+
   # The home page. Nothing to see here. Redirect to the CloudApp product page.
   # Response is cached for one year.
   get '/' do

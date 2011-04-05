@@ -17,6 +17,7 @@ describe Viso do
 
     assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=31557600'
+    last_response.headers['Vary'].must_equal          'Accept'
     last_response.headers['Location'].must_equal 'http://getcloudapp.com'
   end
 
@@ -25,6 +26,7 @@ describe Viso do
 
     assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=31557600'
+    last_response.headers['Vary'].must_equal          'Accept'
     last_response.headers['Location'].must_equal 'http://my.cl.ly/favicon.ico'
   end
 
@@ -34,6 +36,7 @@ describe Viso do
 
       assert last_response.ok?, 'response not ok'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
 
       image_tag = %{<img alt="cover.png" src="http://cl.ly/hhgttg/cover.png">}
       assert last_response.body.include?(image_tag), 'img tag not found'
@@ -46,6 +49,7 @@ describe Viso do
 
       assert last_response.ok?, 'response not ok'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
 
       assert last_response.body.include?('<body id="download">'),
              %{<body id="download"> doesn't exist}
@@ -66,6 +70,7 @@ describe Viso do
       get    '/hhgttg'
 
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
       last_response.headers['Content-Type'].must_equal  'application/json'
 
       drop = Drop.find 'hhgttg'
@@ -78,6 +83,7 @@ describe Viso do
 
     assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+    last_response.headers['Vary'].must_equal          'Accept'
     last_response.headers['Location'].
       must_equal 'http://api.cld.me/hhgttg/chapter1.txt'
   end
@@ -96,6 +102,7 @@ describe Viso do
 
       assert last_response.redirect?, 'response not a redirect'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
       last_response.headers['Location'].must_equal 'http://api.cld.me/hhgttg'
     end
   end
@@ -106,6 +113,7 @@ describe Viso do
 
       assert last_response.redirect?, 'response not a redirect'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
       last_response.headers['Location'].
         must_equal 'http://api.cld.me/hhgttg/content'
     end
