@@ -15,7 +15,7 @@ describe Viso do
   it 'redirects the home page to the CloudApp product page' do
     get '/'
 
-    assert last_response.redirect?
+    assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=31557600'
     last_response.headers['Location'].must_equal 'http://getcloudapp.com'
   end
@@ -23,7 +23,7 @@ describe Viso do
   it 'redirects the favicon to the CloudApp favicon' do
     get '/favicon.ico'
 
-    assert last_response.redirect?
+    assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=31557600'
     last_response.headers['Location'].must_equal 'http://my.cl.ly/favicon.ico'
   end
@@ -76,7 +76,7 @@ describe Viso do
   it 'redirects the content URL to the API' do
     get '/hhgttg/chapter1.txt'
 
-    assert last_response.redirect?
+    assert last_response.redirect?, 'response not a redirect'
     last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
     last_response.headers['Location'].
       must_equal 'http://api.cld.me/hhgttg/chapter1.txt'
@@ -86,7 +86,28 @@ describe Viso do
     VCR.use_cassette 'nonexistent', :record => :none do
       get '/hhgttg'
 
-      assert last_response.not_found?
+      assert last_response.not_found?, 'response was found'
+    end
+  end
+
+  it 'redirects a bookmark to the API' do
+    VCR.use_cassette 'bookmark', :record => :none do
+      get '/hhgttg'
+
+      assert last_response.redirect?, 'response not a redirect'
+      last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Location'].must_equal 'http://api.cld.me/hhgttg'
+    end
+  end
+
+  it "redirects a bookmark's content URL to the API" do
+    VCR.use_cassette 'bookmark', :record => :none do
+      get '/hhgttg/content'
+
+      assert last_response.redirect?, 'response not a redirect'
+      last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Location'].
+        must_equal 'http://api.cld.me/hhgttg/content'
     end
   end
 

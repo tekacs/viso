@@ -47,14 +47,18 @@ class Viso < Sinatra::Base
   # and the download view for everything else.
   get '/:slug' do |slug|
     @drop = find_drop slug
-
     cache_control :public, :max_age => 900
-    erb @drop.image? ? :image : :download
+
+    if @drop.bookmark?
+      redirect_to_api
+    else
+      erb @drop.image? ? :image : :download
+    end
   end
 
   get '/:slug/:filename' do |slug, filename|
     cache_control :public, :max_age => 900
-    redirect "#{ Drop.base_uri }#{ request.path }"
+    redirect_to_api
   end
 
 protected
@@ -63,6 +67,10 @@ protected
     Drop.find slug
   rescue Drop::NotFound
     not_found
+  end
+
+  def redirect_to_api
+    redirect "#{ Drop.base_uri }#{ request.path }"
   end
 
 end
