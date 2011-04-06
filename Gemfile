@@ -2,9 +2,10 @@ source :gemcutter
 
 gem 'httparty'
 gem 'json'
+gem 'newrelic_rpm'
 gem 'sinatra'
 
-gem 'newrelic_rpm'
+gem 'shotgun', :group => :development
 
 group :test do
   gem 'rack-test'
