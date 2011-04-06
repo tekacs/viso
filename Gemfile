@@ -1,5 +1,6 @@
 source :gemcutter
 
+gem 'hoptoad_notifier'
 gem 'httparty'
 gem 'json'
 gem 'newrelic_rpm'

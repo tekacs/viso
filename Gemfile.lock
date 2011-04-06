@@ -1,8 +1,13 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.0.6)
     addressable (2.2.4)
+    builder (3.0.0)
     crack (0.1.8)
+    hoptoad_notifier (2.4.9)
+      activesupport
+      builder
     httparty (0.7.4)
       crack (= 0.1.8)
     json (1.4.6)
@@ -25,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  hoptoad_notifier
   httparty
   json
   newrelic_rpm

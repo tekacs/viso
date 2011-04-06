@@ -10,8 +10,22 @@ require 'sinatra/base'
 
 class Viso < Sinatra::Base
 
-  # Load New Relic RPM in the production and staging environments.
-  configure(:production, :staging) { require 'newrelic_rpm' }
+  # Load New Relic RPM and Hoptoad in the production and staging environments.
+  configure(:production, :staging) do
+    require 'newrelic_rpm'
+
+    # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` to
+    # use Hoptoad to catalog your exceptions.
+    if ENV['HOPTOAD_API_KEY']
+      require 'hoptoad_notifier'
+      HoptoadNotifier.configure do |config|
+        config.api_key = ENV['HOPTOAD_API_KEY']
+      end
+
+      use HoptoadNotifier::Rack
+      enable :raise_errors
+    end
+  end
 
   # Serve static assets from `/public`
   set :public, 'public'
