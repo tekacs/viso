@@ -191,6 +191,7 @@ body {
 
 #embedded #toolbar #embed {
   float: left;
+  width: 300px;
 }
 
 #embedded #toolbar #embed label {
