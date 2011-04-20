@@ -61,12 +61,6 @@ class Viso < Sinatra::Base
 
     respond_to do |format|
 
-      # Handle a JSON request for a **Drop**. Return the same data received from
-      # the CloudApp API.
-      format.json do
-        JSON.generate @drop.data
-      end
-
       # Redirect to the bookmark's link, render the image view for an image, or
       # render the generic download view for everything else.
       format.html do
@@ -75,6 +69,12 @@ class Viso < Sinatra::Base
         else
           erb @drop.image? ? :image : :download
         end
+      end
+
+      # Handle a JSON request for a **Drop**. Return the same data received from
+      # the CloudApp API.
+      format.json do
+        JSON.generate @drop.data
       end
     end
   end

@@ -128,4 +128,13 @@ describe Viso do
     end
   end
 
+  it 'serves html by default' do
+    VCR.use_cassette 'text', :record => :none do
+      header 'Accept', '*/*'
+      get    '/hhgttg'
+
+      last_response.headers['Content-Type'].must_equal 'text/html;charset=utf-8'
+    end
+  end
+
 end
