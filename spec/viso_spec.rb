@@ -119,4 +119,13 @@ describe Viso do
     end
   end
 
+  it 'respects accept header priority' do
+    VCR.use_cassette 'text', :record => :none do
+      header 'Accept', 'text/html,application/json'
+      get    '/hhgttg'
+
+      last_response.headers['Content-Type'].must_equal 'text/html;charset=utf-8'
+    end
+  end
+
 end

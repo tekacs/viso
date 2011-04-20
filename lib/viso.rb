@@ -7,8 +7,12 @@
 require_relative 'drop'
 require 'json'
 require 'sinatra/base'
+require 'sinatra/respond_with'
 
 class Viso < Sinatra::Base
+
+  # Make use of `respond_to` to handle content negotiation.
+  register Sinatra::RespondWith
 
   # Load New Relic RPM and Hoptoad in the production and staging environments.
   configure(:production, :staging) do
@@ -33,6 +37,7 @@ class Viso < Sinatra::Base
   # Bring in some helper methods from Rack to aid in escaping HTML.
   helpers { include Rack::Utils }
 
+  # Cached responses are only valid for a specific accept header.
   before { headers['Vary'] = 'Accept' }
 
   # The home page. Nothing to see here. Redirect to the CloudApp product page.
@@ -48,28 +53,29 @@ class Viso < Sinatra::Base
     redirect 'http://my.cl.ly/favicon.ico'
   end
 
-  # Handle a JSON request for a **Drop**. Return the same data received from the
-  # CloudApp API. Response is cached for 15 minutes.
-  get '/:slug', :provides => 'json' do |slug|
-    drop = find_drop slug
-
-    cache_control :public, :max_age => 900
-    content_type  :json
-
-    JSON.generate drop.data
-  end
-
-  # The main responder for a **Drop**. Redirect to the bookmark's link, render
-  # the image view for an image, or render the generic download view for
-  # everything else. Response is cached for 15 minutes.
+  # The main responder for a **Drop**. Responds to both JSON and HTML and
+  # response is cached for 15 minutes.
   get '/:slug' do |slug|
     @drop = find_drop slug
     cache_control :public, :max_age => 900
 
-    if @drop.bookmark?
-      redirect_to_api
-    else
-      erb @drop.image? ? :image : :download
+    respond_to do |format|
+
+      # Handle a JSON request for a **Drop**. Return the same data received from
+      # the CloudApp API.
+      format.json do
+        JSON.generate @drop.data
+      end
+
+      # Redirect to the bookmark's link, render the image view for an image, or
+      # render the generic download view for everything else.
+      format.html do
+        if @drop.bookmark?
+          redirect_to_api
+        else
+          erb @drop.image? ? :image : :download
+        end
+      end
     end
   end
 
