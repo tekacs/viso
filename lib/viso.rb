@@ -87,6 +87,12 @@ class Viso < Sinatra::Base
     redirect_to_api
   end
 
+  # Don't need to return anything special for a 404.
+  not_found do
+    not_found '<h1>Not Found</h1>'
+  end
+
+
 protected
 
   # Find and return a **Drop** with the given `slug`. Handle `Drop::NotFound`

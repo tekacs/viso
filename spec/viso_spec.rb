@@ -93,6 +93,7 @@ describe Viso do
       get '/hhgttg'
 
       assert last_response.not_found?, 'response was found'
+      last_response.body.must_equal    '<h1>Not Found</h1>'
     end
   end
 
