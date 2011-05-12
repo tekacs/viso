@@ -74,3 +74,8 @@ a pull request.
 
 [twitter]: http://twitter.com/getcloudapp
 [issue]:   https://github.com/cloudapp/viso/issues
+
+
+## License
+
+Viso is released under the MIT license.
