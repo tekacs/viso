@@ -26,6 +26,239 @@ body {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+  /* section: headers
+  ---------------------------------------------- */
+  #content h1 {
+    color: #333;
+    font-size: 1.6em;
+    font-weight: normal;
+    margin: 0 0 .75em 0;
+  }
+
+  #content h2 {
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: .75em 0;
+    padding: 0 0 .25em 0;
+  }
+
+  #content h3 {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: .75em 0;
+  }
+  /* ------------------------------------------- */
+
+  /* section: links
+  ---------------------------------------------- */
+  #content a:link, #content a:visited {
+    border-bottom: 1px dotted #1c4fad;
+    color: #1c4fad;
+  }
+  /* ------------------------------------------- */
+
+  /* section: paragraphs
+  ---------------------------------------------- */
+  #content p {
+    line-height: 2em;
+    margin: 0 0 1.8em 0;
+  }
+
+  #content p:last-child {
+    margin: 0;
+  }
+
+  #content p sup {
+    font-size: .8em;
+    vertical-align: super;
+  }
+
+  #content p sup a:link, #content p sup a:visited {
+    border: 0;
+  }
+  /* ------------------------------------------- */
+
+  /* section: lists
+  ---------------------------------------------- */
+  #content ul, #content ol {
+    margin: 0 0 1.8em 0;
+    padding: 0 0 0 3em;
+  }
+
+  #content ul:last-child, #content ol:last-child {
+    margin: 0;
+  }
+
+  #content ul li, #content ol li {
+    line-height: 1.4em;
+    margin: 0 0 .8em 0;
+  }
+
+  #content ul li:last-child, #content ol li:last-child {
+    margin: 0;
+  }
+
+    /* section: index
+    ---------------------------------------------- */
+    #content ul.index {
+      list-style: none;
+      padding: 0 0 0 1.25em;
+    }
+
+    #content ul.index li {
+      background: url("../../images/wikistyle/index_li_bullet.png") left center no-repeat;
+      padding: 0 0 0 2em;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      #content ul.index li {
+        background-image: url("../../images/wikistyle/index_li_bullet_2x.png");
+        background-size: 15px;
+      }
+    }
+
+    #content ul.index li a:link, #content ul.index li a:visited {
+      font-weight: bold;
+    }
+    /* ------------------------------------------- */
+  /* ------------------------------------------- */
+
+  /* section: definition lists
+  ---------------------------------------------- */
+  #content dl {
+    margin: 0 0 1.8em 0;
+  }
+
+  #content dl:last-child {
+    margin: 0;
+  }
+
+  #content dl dt {
+    font-weight: bold;
+    margin: 0 0 .8em 0;
+  }
+
+  #content dl dd {
+    font-style: italic;
+  }
+
+    /* section: keys
+    ---------------------------------------------- */
+    #content dl.keys dt {
+      background: #e5e5e5;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      color: #7e7e7e;
+      display: inline;
+      font-weight: normal;
+      padding: .5% 1.5%;
+      margin: 0 .5em 0 0;
+    }
+
+    #content dl.keys dd {
+      display: inline;
+    }
+    /* ------------------------------------------- */
+  /* ------------------------------------------- */
+
+  /* section: code
+  ---------------------------------------------- */
+  #content code {
+    background: #f0f6fc;
+    border: 1px solid #d2dce6;
+    color: #444;
+    font-family: Monaco, monospace;
+    font-size: .9em;
+    padding: .1em .3em;
+  }
+
+  #content pre {
+    background: #f0f6fc;
+    border: 1px solid #d2dce6;
+    margin: 0 0 1.8em 0;
+    overflow-y: auto;
+    padding: 1em;
+  }
+
+  #content pre:last-child {
+    margin: 0;
+  }
+
+  #content pre code {
+    background: transparent;
+    border: 0;
+    display: block;
+    line-height: 1.8em;
+    padding: 0;
+  }
+
+    /* section: shell
+    ---------------------------------------------- */
+    #content pre.shell {
+      background: #e5e5e5;
+      border: 1px solid #ccc;
+    }
+    /* ------------------------------------------- */
+  /* ------------------------------------------- */
+
+  /* section: quotes
+  ---------------------------------------------- */
+  #content blockquote {
+    border-left: 3px solid #e5e5e5;
+    margin: 0 0 1.8em;
+    padding: 0 0 0 1.8em;
+  }
+
+  #content blockquote:last-child {
+    margin: 0;
+  }
+
+  #content blockquote p {
+    color: #666;
+    font-family: "Helvetica Neue";
+    font-size: .9em;
+  }
+  /* ------------------------------------------- */
+
+  /* section: footnotes
+  ---------------------------------------------- */
+  #content .footnotes {
+    color: #999;
+    font-size: .8em;
+    margin: 5.4em 0 0 0;
+  }
+
+  #content .footnotes hr {
+    background: #e5e5e5;
+    border: 0;
+    height: 1px;
+    margin: 0 0 1.8em 0;
+  }
+
+  #content .footnotes ol {
+    margin: 0;
+    padding: 0 0 0 2em;
+  }
+
+  #content .footnotes ol li {
+    margin: 0;
+  }
+
+  #content .footnotes ol li p {
+    display: inline;
+    margin: 0;
+  }
+
+  #content .footnotes ol li a:link, #content .footnotes ol li a:visited {
+    border: 0;
+    display: inline;
+  }
+  /* ------------------------------------------- */
 /* ------------------------------------------- */
 
 /* =footer
