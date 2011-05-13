@@ -5,7 +5,7 @@ require 'drop'
 describe Drop do
 
   it 'finds a drop' do
-    VCR.use_cassette 'image', :record => :none do
+    VCR.use_cassette 'image' do
       drop = Drop.find 'hhgttg'
 
       assert drop.is_a?(Drop)
@@ -20,7 +20,7 @@ describe Drop do
   end
 
   it 'raises a DropNotFound error' do
-    VCR.use_cassette 'nonexistent', :record => :none do
+    VCR.use_cassette 'nonexistent' do
       lambda { Drop.find 'hhgttg' }.must_raise Drop::NotFound
     end
   end

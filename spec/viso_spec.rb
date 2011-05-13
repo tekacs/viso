@@ -31,7 +31,7 @@ describe Viso do
   end
 
   it 'displays an image drop' do
-    VCR.use_cassette 'image', :record => :none do
+    VCR.use_cassette 'image' do
       get '/hhgttg'
 
       assert last_response.ok?, 'response not ok'
@@ -44,7 +44,7 @@ describe Viso do
   end
 
   it 'shows a download button for a text file' do
-    VCR.use_cassette 'text', :record => :none do
+    VCR.use_cassette 'text' do
       get '/hhgttg'
 
       assert last_response.ok?, 'response not ok'
@@ -65,7 +65,7 @@ describe Viso do
   end
 
   it 'forwards json response' do
-    VCR.use_cassette 'text', :record => :none do
+    VCR.use_cassette 'text' do
       header 'Accept', 'application/json'
       get    '/hhgttg'
 
@@ -89,7 +89,7 @@ describe Viso do
   end
 
   it 'returns a not found response for nonexistent drops' do
-    VCR.use_cassette 'nonexistent', :record => :none do
+    VCR.use_cassette 'nonexistent' do
       get '/hhgttg'
 
       assert last_response.not_found?, 'response was found'
@@ -98,7 +98,7 @@ describe Viso do
   end
 
   it 'redirects a bookmark to the API' do
-    VCR.use_cassette 'bookmark', :record => :none do
+    VCR.use_cassette 'bookmark' do
       get '/hhgttg'
 
       assert last_response.redirect?, 'response not a redirect'
@@ -109,7 +109,7 @@ describe Viso do
   end
 
   it "redirects a bookmark's content URL to the API" do
-    VCR.use_cassette 'bookmark', :record => :none do
+    VCR.use_cassette 'bookmark' do
       get '/hhgttg/content'
 
       assert last_response.redirect?, 'response not a redirect'
@@ -121,7 +121,7 @@ describe Viso do
   end
 
   it 'respects accept header priority' do
-    VCR.use_cassette 'text', :record => :none do
+    VCR.use_cassette 'text' do
       header 'Accept', 'text/html,application/json'
       get    '/hhgttg'
 
@@ -130,7 +130,7 @@ describe Viso do
   end
 
   it 'serves html by default' do
-    VCR.use_cassette 'text', :record => :none do
+    VCR.use_cassette 'text' do
       header 'Accept', '*/*'
       get    '/hhgttg'
 
