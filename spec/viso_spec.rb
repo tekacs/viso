@@ -34,8 +34,8 @@ describe Viso do
     end
   end
 
-  it 'shows a download button for a text file' do
-    VCR.use_cassette 'text' do
+  it 'shows a download button for an unknown file' do
+    VCR.use_cassette 'unknown' do
       get '/hhgttg'
 
       assert last_response.ok?, 'response not ok'
@@ -47,10 +47,13 @@ describe Viso do
 
       refute last_response.body.include?("<img"), 'img tag found'
 
-      heading = %{<h1 class="description left text">chapter1.txt</h1>}
+      title = %{<title>Chapter 1</title>}
+      assert last_response.body.include?(title), 'title not found'
+
+      heading = %{<h1 class="description left unknown">Chapter 1</h1>}
       assert last_response.body.include?(heading), 'heading not found'
 
-      link = %{<a href="http://cl.ly/hhgttg/chapter1.txt">Download</a>}
+      link = %{<a href="http://cl.ly/hhgttg/Chapter_1.blah">Download</a>}
       assert last_response.body.include?(link), 'link not found'
     end
   end

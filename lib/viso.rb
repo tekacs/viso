@@ -61,7 +61,7 @@ class Viso < Sinatra::Base
         if @drop.bookmark?
           redirect_to_api
         else
-          erb @drop.image? ? :image : :other
+          erb drop_template
         end
       end
 
@@ -100,6 +100,16 @@ protected
   # Redirect the current request to the same path on the API domain.
   def redirect_to_api
     redirect "#{ Drop.base_uri }#{ request.path }"
+  end
+
+  def drop_template
+    if @drop.image?
+      :image
+    elsif @drop.text?
+      :text
+    else
+      :other
+    end
   end
 
 end
