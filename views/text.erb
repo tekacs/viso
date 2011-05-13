@@ -8,11 +8,22 @@
     <meta content="CloudApp" name="author" />
 
     <link href='/favicon.ico' rel='shortcut icon' />
+
+    <link href='/text/stylesheets/base.css' rel='stylesheet' type='text/css' />
   </head>
 
   <body>
-    <pre>
-      <code><%= @drop.content %></code>
-    </pre>
+    <section id="content">
+<pre>
+<code><%= @drop.content %></code>
+</pre>
+    </section>
+
+    <footer id="footer">
+      <p>
+        <a href="#">Simple file sharing</a>
+      </p>
+    </footer>
   </body>
 </html>
+
