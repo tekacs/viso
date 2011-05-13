@@ -3,6 +3,7 @@ require 'httparty'
 require 'net/http'
 require 'open-uri'
 require 'ostruct'
+require 'redcarpet'
 
 class Drop < OpenStruct
   include  HTTParty
@@ -26,13 +27,24 @@ class Drop < OpenStruct
   end
 
   def text?
-    item_type == 'text'
+    item_type == 'text' || markdown?
+  end
+
+  def markdown?
+    extensions = %w( .md .mdown .markdown )
+
+    item_type == 'unknown' && extensions.include?(File.extname(remote_url))
   end
 
   def content
-    return unless text?
+    return unless text? || markdown?
 
-    Kernel::open(remote_url).read
+    raw = Kernel::open(remote_url).read
+    if markdown?
+      Redcarpet.new(raw).to_html
+    else
+      raw
+    end
   end
 
   def data
