@@ -49,4 +49,25 @@ describe Drop do
     assert drop.bookmark?
   end
 
+  it 'is not text' do
+    drop = Drop.new :item_type  => 'image',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+
+    refute drop.text?
+  end
+
+  it 'is text' do
+    drop = Drop.new :item_type  => 'text',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
+
+    assert drop.text?
+  end
+
+  #it 'a code file is text' do
+    #drop = Drop.new :item_type  => 'ruby',
+                    #:remote_url => 'http://f.cl.ly/items/hhgttg/code.rb'
+
+    #assert drop.text?
+  #end
+
 end

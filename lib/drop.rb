@@ -24,6 +24,10 @@ class Drop < OpenStruct
     item_type == 'image'
   end
 
+  def text?
+    item_type == 'text'
+  end
+
   def data
     marshal_dump
   end
