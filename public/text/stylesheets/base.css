@@ -174,3 +174,16 @@ body {
   text-shadow: 0 1px 1px #fff;
 }
 /* ------------------------------------------- */
+
+/* =media queries
+---------------------------------------------- */
+@media only screen and (max-device-width: 480px) {
+  #content {
+    padding: 18px;
+  }
+
+  #footer {
+    position: static;
+  }
+}
+/* ------------------------------------------- */
