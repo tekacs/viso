@@ -105,7 +105,7 @@ protected
   def drop_template
     if @drop.image?
       :image
-    elsif @drop.text?
+    elsif @drop.markdown?
       :text
     else
       :other

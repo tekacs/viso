@@ -2,6 +2,45 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
+    uri: http://api.cld.me:80/hhgttg
+    body: 
+    headers: 
+      accept: 
+      - application/json
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - nginx/0.7.67
+      date: 
+      - Fri, 13 May 2011 17:30:41 GMT
+      content-type: 
+      - application/json; charset=utf-8
+      vary: 
+      - Accept
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      last-modified: 
+      - Fri, 13 May 2011 15:31:02 GMT
+      x-runtime: 
+      - "0.007772"
+      cache-control: 
+      - public; max-age=900
+      content-length: 
+      - "475"
+      x-varnish: 
+      - "474810948"
+      age: 
+      - "0"
+      via: 
+      - 1.1 varnish
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.md\",\"href\":\"http://my.cl.ly/items/5135344\",\"name\":\"chapter1.md\",\"redirect_url\":null,\"created_at\":\"2011-05-13T15:30:24Z\",\"updated_at\":\"2011-05-13T15:31:02Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":2,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.md\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":5135344,\"item_type\":\"unknown\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
     uri: http://f.cl.ly:80/items/hhgttg/chapter1.md
     body: 
     headers: 
@@ -11,11 +50,11 @@
       message: OK
     headers: 
       x-amz-id-2: 
-      - JJAWyqohS3Yxb8vHRaJKWww55idhBvDmLUrZEaSP+P5tV7jX5DK1lND7yGHb3TLs
+      - tblzUnqPvJN80/Nvl9PmTh2hpVumWS0GZUa3T6cNnsCLTkiCgsEp2heRU0ehQDgs
       x-amz-request-id: 
-      - B601CEB38EB3E836
+      - F8D04E65886FC593
       date: 
-      - Fri, 13 May 2011 15:31:14 GMT
+      - Fri, 13 May 2011 17:30:43 GMT
       last-modified: 
       - Fri, 13 May 2011 15:30:25 GMT
       etag: 

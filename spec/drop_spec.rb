@@ -94,13 +94,6 @@ describe Drop do
     assert drop.text?
   end
 
-  #it 'a code file is text' do
-    #drop = Drop.new :item_type  => 'ruby',
-                    #:remote_url => 'http://f.cl.ly/items/hhgttg/code.rb'
-
-    #assert drop.text?
-  #end
-
   it 'has content' do
     VCR.use_cassette 'text' do
       drop = Drop.new :item_type  => 'text',
@@ -122,7 +115,8 @@ describe Drop do
       drop = Drop.new :item_type  => 'unknown',
                       :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
-      p drop.content
+
+      assert drop.content.start_with?('<h1>Chapter 1</h1>')
     end
   end
 

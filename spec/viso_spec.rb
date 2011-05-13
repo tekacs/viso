@@ -43,7 +43,7 @@ describe Viso do
       last_response.headers['Vary'].must_equal          'Accept'
 
       assert last_response.body.include?('<body id="other">'),
-             %{<body id="download"> doesn't exist}
+             %{<body id="other"> doesn't exist}
 
       refute last_response.body.include?("<img"), 'img tag found'
 
@@ -58,16 +58,43 @@ describe Viso do
     end
   end
 
-  it 'dumps the context of a text drop' do
-    VCR.use_cassette 'text', :record => :new_episodes do
+  it 'shows a download button for a text file' do
+    VCR.use_cassette 'text' do
       get '/hhgttg'
 
       assert last_response.ok?, 'response not ok'
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
       last_response.headers['Vary'].must_equal          'Accept'
 
-      code_tag = %{<code>Chapter 1}
-      assert last_response.body.include?(code_tag), 'code tag not found'
+      assert last_response.body.include?('<body id="other">'),
+             %{<body id="other"> doesn't exist}
+
+      refute last_response.body.include?("<img"), 'img tag found'
+
+      title = %{<title>chapter1.txt</title>}
+      assert last_response.body.include?(title), 'title not found'
+
+      heading = %{<h1 class="description left text">chapter1.txt</h1>}
+      assert last_response.body.include?(heading), 'heading not found'
+
+      link = %{<a href="http://cl.ly/hhgttg/chapter1.txt">Download</a>}
+      assert last_response.body.include?(link), 'link not found'
+    end
+  end
+
+  it 'dumps the content of a markdown drop' do
+    VCR.use_cassette 'markdown' do
+      get '/hhgttg'
+
+      assert last_response.ok?, 'response not ok'
+      last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
+
+      section_tag = '<section id="content">'
+      assert last_response.body.include?(section_tag), 'section tag not found'
+
+      content = 'The house stood on a slight rise just on the edge of the village.'
+      assert last_response.body.include?(content), 'content not found'
     end
   end
 
