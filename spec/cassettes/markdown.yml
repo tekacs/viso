@@ -15,7 +15,7 @@
       server: 
       - nginx/0.7.67
       date: 
-      - Fri, 13 May 2011 17:30:41 GMT
+      - Fri, 13 May 2011 18:53:46 GMT
       content-type: 
       - application/json; charset=utf-8
       vary: 
@@ -23,20 +23,92 @@
       x-ua-compatible: 
       - IE=Edge,chrome=1
       last-modified: 
-      - Fri, 13 May 2011 15:31:02 GMT
+      - Fri, 13 May 2011 18:30:48 GMT
       x-runtime: 
-      - "0.007772"
+      - "0.009034"
       cache-control: 
       - public; max-age=900
       content-length: 
-      - "475"
+      - "542"
       x-varnish: 
-      - "474810948"
+      - "105836681"
       age: 
       - "0"
       via: 
       - 1.1 varnish
-    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.md\",\"href\":\"http://my.cl.ly/items/5135344\",\"name\":\"chapter1.md\",\"redirect_url\":null,\"created_at\":\"2011-05-13T15:30:24Z\",\"updated_at\":\"2011-05-13T15:31:02Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":2,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.md\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":5135344,\"item_type\":\"unknown\"}"
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.md\",\"href\":\"http://my.cl.ly/items/5141204\",\"name\":\"chapter1.md\",\"redirect_url\":null,\"created_at\":\"2011-05-13T18:30:48Z\",\"updated_at\":\"2011-05-13T18:30:48Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":0,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.md\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":5141204,\"item_type\":\"unknown\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://cl.ly:80/hhgttg/chapter1.md
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 302
+      message: Moved Temporarily
+    headers: 
+      server: 
+      - nginx/0.7.67
+      date: 
+      - Fri, 13 May 2011 18:53:46 GMT
+      content-type: 
+      - text/html;charset=utf-8
+      connection: 
+      - keep-alive
+      vary: 
+      - Accept
+      cache-control: 
+      - public, max-age=900
+      location: 
+      - http://api.cld.me/hhgttg/chapter1.md
+      content-length: 
+      - "0"
+      x-varnish: 
+      - "477221585"
+      age: 
+      - "0"
+      via: 
+      - 1.1 varnish
+    body: 
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://api.cld.me:80/hhgttg/chapter1.md
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 302
+      message: Moved Temporarily
+    headers: 
+      server: 
+      - nginx/0.7.67
+      date: 
+      - Fri, 13 May 2011 18:53:46 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      connection: 
+      - keep-alive
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://f.cl.ly/items/hhgttg/chapter1.md
+      x-runtime: 
+      - "0.029091"
+      cache-control: 
+      - no-cache
+      content-length: 
+      - "143"
+      x-varnish: 
+      - "105836809"
+      age: 
+      - "0"
+      via: 
+      - 1.1 varnish
+    body: <html><body>You are being <a href="http://f.cl.ly/items/hhgttg/chapter1.md">redirected</a>.</body></html>
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
@@ -50,21 +122,21 @@
       message: OK
     headers: 
       x-amz-id-2: 
-      - tblzUnqPvJN80/Nvl9PmTh2hpVumWS0GZUa3T6cNnsCLTkiCgsEp2heRU0ehQDgs
+      - ya8KVaOwlq+MhvgkSKrOSVQKDnlE4yeGPXsS+LMH/xW8cCHWJiV1l52kxhsZJ14+
       x-amz-request-id: 
-      - F8D04E65886FC593
+      - 618C8DFB43CFA3D2
       date: 
-      - Fri, 13 May 2011 17:30:43 GMT
+      - Fri, 13 May 2011 18:53:47 GMT
       last-modified: 
-      - Fri, 13 May 2011 15:30:25 GMT
+      - Fri, 13 May 2011 18:30:49 GMT
       etag: 
-      - "\"2972ccaa6459b1b2156192b732cc4fcf\""
+      - "\"f27d77c1b4c18353300c14461e7648b3\""
       accept-ranges: 
       - bytes
       content-type: 
       - binary/octet-stream
       content-length: 
-      - "385"
+      - "2735"
       server: 
       - AmazonS3
     body: "# Chapter 1\n\n\

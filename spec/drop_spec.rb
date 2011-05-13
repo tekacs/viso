@@ -51,28 +51,28 @@ describe Drop do
 
   it 'is not text' do
     drop = Drop.new :item_type  => 'image',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     refute drop.text?
   end
 
   it 'is text' do
     drop = Drop.new :item_type  => 'text',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
 
     assert drop.text?
   end
 
   it 'is not markdown' do
     drop = Drop.new :item_type  => 'image',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     refute drop.markdown?
   end
 
   it 'is markdown with the extension md' do
     drop = Drop.new :item_type  => 'unknown',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
     assert drop.markdown?
     assert drop.text?
@@ -80,7 +80,7 @@ describe Drop do
 
   it 'is markdown with the extension mdown' do
     drop = Drop.new :item_type  => 'unknown',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
 
     assert drop.markdown?
     assert drop.text?
@@ -88,7 +88,7 @@ describe Drop do
 
   it 'is markdown with the extension markdown' do
     drop = Drop.new :item_type  => 'unknown',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
 
     assert drop.markdown?
     assert drop.text?
@@ -97,7 +97,7 @@ describe Drop do
   it 'has content' do
     VCR.use_cassette 'text' do
       drop = Drop.new :item_type  => 'text',
-                      :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
+                      :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
 
       assert drop.content.start_with?('Chapter 1')
     end
@@ -105,7 +105,7 @@ describe Drop do
 
   it "doesn't have content" do
     drop = Drop.new :item_type  => 'image',
-                    :remote_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+                    :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     assert drop.content.nil?
   end
@@ -113,7 +113,7 @@ describe Drop do
   it 'parses markdown content' do
     VCR.use_cassette 'markdown' do
       drop = Drop.new :item_type  => 'unknown',
-                      :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+                      :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
 
       assert drop.content.start_with?('<h1>Chapter 1</h1>')

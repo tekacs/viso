@@ -33,13 +33,13 @@ class Drop < OpenStruct
   def markdown?
     extensions = %w( .md .mdown .markdown )
 
-    item_type == 'unknown' && extensions.include?(File.extname(remote_url))
+    item_type == 'unknown' && extensions.include?(File.extname(content_url))
   end
 
   def content
     return unless text? || markdown?
 
-    raw = Kernel::open(remote_url).read
+    raw = Kernel::open(content_url).read
     if markdown?
       Redcarpet.new(raw).to_html
     else
