@@ -10,10 +10,10 @@
 
   <link href="/favicon.ico" rel="shortcut icon" />
 
-  <link href="/stylesheets/image/slugs.css" rel="stylesheet">
+  <link href="/image/stylesheets/slugs.css" rel="stylesheet">
 
   <!--[if IE]>
-  <link href="/stylesheets/image/iefix.css" rel="stylesheet">
+  <link href="/image/stylesheets/iefix.css" rel="stylesheet">
   <![endif]-->
 </head>
 
@@ -39,12 +39,12 @@
           <param name="allowScriptAccess" value="always" />
           <param name="bgcolor" value="transparent">
           <param name="flashvars" value="text=<%= escape_html @drop.content_url %>">
-          <param name="movie" value="clippy.swf"/>
+          <param name="movie" value="/image/clippy.swf"/>
           <param name="quality" value="high" />
           <param name="scale" value="noscale" />
           <param name="wmode" value="transparent">
 
-          <embed src="clippy.swf"
+          <embed src="/image/clippy.swf"
             allowScriptAccess="always"
             bgcolor="transparent"
             flashvars="text=<%= escape_html @drop.content_url %>"
@@ -66,6 +66,6 @@
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script src="javascripts/embedded.js"></script>
+  <script src="/image/javascripts/embedded.js"></script>
 </body>
 </html>

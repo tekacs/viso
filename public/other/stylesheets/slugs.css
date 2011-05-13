@@ -56,7 +56,7 @@ body {
 }
 
 #other #header h2 a {
-  background: url("/images/logo.png") no-repeat;
+  background: url("/other/images/logo.png") no-repeat;
   display: block;
   height: 25px;
   text-indent: -99999em;
@@ -94,7 +94,7 @@ body {
 }
 
 #other #container .item .description {
-  background-image: url("/images/item_types/unknown.png");
+  background-image: url("/other/images/item_types/unknown.png");
   background-position: left center;
   background-repeat: no-repeat;
   font-weight: normal;
@@ -103,35 +103,35 @@ body {
 }
 
 #other #container .item .image {
-  background-image: url("/images/item_types/image.png");
+  background-image: url("/other/images/item_types/image.png");
 }
 
 #other #container .item .bookmark {
-  background-image: url("/images/item_types/bookmark.png");  
+  background-image: url("/other/images/item_types/bookmark.png");  
 }
 
 #other #container .item .text {
-  background-image: url("/images/item_types/text.png");
+  background-image: url("/other/images/item_types/text.png");
 }
 
 #other #container .item .archive {
-  background-image: url("/images/item_types/archive.png");
+  background-image: url("/other/images/item_types/archive.png");
 }
 
 #other #container .item .audio {
-  background-image: url("/images/item_types/audio.png");
+  background-image: url("/other/images/item_types/audio.png");
 }
 
 #other #container .item .video {
-  background-image: url("/images/item_types/video.png");
+  background-image: url("/other/images/item_types/video.png");
 }
 
 #other #container .item .unknown {
-  background-image: url("/images/item_types/unknown.png");
+  background-image: url("/other/images/item_types/unknown.png");
 }
 
 #other #container .item .download a {
-  background: url("/images/download_button.png") no-repeat;
+  background: url("/other/images/download_button.png") no-repeat;
   display: block;
   height: 24px;
   text-indent: -99999em;

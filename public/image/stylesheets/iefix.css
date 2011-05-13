@@ -13,13 +13,13 @@ author: maximilian schoening @ bylinebreak.com
 }
 /* ------------------------------------------- */
 
-/* section: embedded
+/* section: image
 ---------------------------------------------- */
-#embedded #toolbar #embed label {
+#image #toolbar #embed label {
   margin: 6px 5px 0 0;
 }
 
-#embedded #toolbar #embed .input_text {
+#image #toolbar #embed .input_text {
   height: auto;
   padding: 3px 3px;
 }
