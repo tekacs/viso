@@ -67,7 +67,7 @@ class Viso < Sinatra::Base
         if @drop.bookmark?
           redirect_to_api
         else
-          erb @drop.image? ? :image : :download
+          erb @drop.image? ? :image : :other
         end
       end
 
