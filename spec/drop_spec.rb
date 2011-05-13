@@ -63,6 +63,44 @@ describe Drop do
     assert drop.text?
   end
 
+  it 'is not markdown' do
+    drop = Drop.new :item_type  => 'image',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+
+    refute drop.markdown?
+  end
+
+  it 'is markdown with the extension md' do
+    drop = Drop.new :item_type  => 'unknown',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+
+    assert drop.markdown?
+    assert drop.text?
+  end
+
+  it 'is markdown with the extension mdown' do
+    drop = Drop.new :item_type  => 'unknown',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
+
+    assert drop.markdown?
+    assert drop.text?
+  end
+
+  it 'is markdown with the extension markdown' do
+    drop = Drop.new :item_type  => 'unknown',
+                    :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
+
+    assert drop.markdown?
+    assert drop.text?
+  end
+
+  #it 'a code file is text' do
+    #drop = Drop.new :item_type  => 'ruby',
+                    #:remote_url => 'http://f.cl.ly/items/hhgttg/code.rb'
+
+    #assert drop.text?
+  #end
+
   it 'has content' do
     VCR.use_cassette 'text' do
       drop = Drop.new :item_type  => 'text',
@@ -79,11 +117,13 @@ describe Drop do
     assert drop.content.nil?
   end
 
-  #it 'a code file is text' do
-    #drop = Drop.new :item_type  => 'ruby',
-                    #:remote_url => 'http://f.cl.ly/items/hhgttg/code.rb'
+  it 'parses markdown content' do
+    VCR.use_cassette 'markdown' do
+      drop = Drop.new :item_type  => 'unknown',
+                      :remote_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
-    #assert drop.text?
-  #end
+      p drop.content
+    end
+  end
 
 end
