@@ -19,6 +19,14 @@ body {
   padding: 48px;
   width: 720px;
 }
+
+#content pre {
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
 /* ------------------------------------------- */
 
 /* =footer
@@ -32,18 +40,18 @@ body {
   z-index: 99999;
 }
 
-#footer p {
-  text-align: center;
-}
-
 #footer p a {
   background: url("/text/images/logo.png") 0 2px no-repeat;
   color: #b9b9b9;
-  display: inline-block;
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin: 22px auto;
   padding: 0 0 0 18px;
   text-decoration: none;
   text-shadow: 0 1px 1px #fff;
   -webkit-transition: linear .2s color;
+  width: 160px;
 }
 
 #footer p a:hover {
