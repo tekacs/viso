@@ -51,7 +51,7 @@ describe Viso do
       last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
       last_response.headers['Vary'].must_equal          'Accept'
 
-      assert last_response.body.include?('<body id="download">'),
+      assert last_response.body.include?('<body id="other">'),
              %{<body id="download"> doesn't exist}
 
       refute last_response.body.include?("<img"), 'img tag found'
