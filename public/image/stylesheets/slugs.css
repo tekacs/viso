@@ -42,7 +42,7 @@ body {
 /* section: embedded
 ---------------------------------------------- */
 #image {
-  background: url("/images/embedded_bg.png") repeat #27282c;
+  background: url("/image/images/embedded_bg.png") repeat #27282c;
 }
 
 #image #container {
@@ -50,7 +50,7 @@ body {
 }
 
 #image #toolbar {
-  background: url("/images/embedded_toolbar_bg.png") repeat-x;
+  background: url("/image/images/embedded_toolbar_bg.png") repeat-x;
   bottom: -33px;
   color: #4b4c4f;
   font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
@@ -70,7 +70,7 @@ body {
 }
 
 #image #toolbar #logo h2 a {
-  background: url("/images/embedded_logo_bg.png") no-repeat;
+  background: url("/image/images/embedded_logo_bg.png") no-repeat;
   display: block;
   height: 16px;
   text-indent: -99999px;
@@ -128,7 +128,7 @@ body {
 }
 
 #image .close a {
-  background: url("/images/embedded_close_sprite.png") no-repeat 0 -57px;
+  background: url("/image/images/embedded_close_sprite.png") no-repeat 0 -57px;
   display: block;
   height: 19px;
   text-indent: -99999px;
