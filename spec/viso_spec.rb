@@ -21,15 +21,6 @@ describe Viso do
     last_response.headers['Location'].must_equal 'http://getcloudapp.com'
   end
 
-  it 'redirects the favicon to the CloudApp favicon' do
-    get '/favicon.ico'
-
-    assert last_response.redirect?, 'response not a redirect'
-    last_response.headers['Cache-Control'].must_equal 'public, max-age=31557600'
-    last_response.headers['Vary'].must_equal          'Accept'
-    last_response.headers['Location'].must_equal 'http://my.cl.ly/favicon.ico'
-  end
-
   it 'displays an image drop' do
     VCR.use_cassette 'image' do
       get '/hhgttg'
