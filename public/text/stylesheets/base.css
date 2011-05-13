@@ -12,6 +12,38 @@ body {
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  background: #fff;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #eee;
+  -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: #ccc;
+  -webkit-border-radius: 3px;
+  height: 50px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #ccc;
+  -webkit-border-radius: 3px;
+  width: 50px;
+}
+
 /* =content
 ---------------------------------------------- */
 #content {
