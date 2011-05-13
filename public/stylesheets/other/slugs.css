@@ -41,21 +41,21 @@ body {
 
 /* section: download
 ---------------------------------------------- */
-#download {
+#other {
   background: #e6eaef;
 }
 
-#download #wrapper {
+#other #wrapper {
   margin: 150px auto;
   width: 450px;
 }
 
-#download #header {
+#other #header {
   margin: 0 0 14px 0; /* 15px - 1px white drop-shadow */
   padding: 0 15px;
 }
 
-#download #header h2 a {
+#other #header h2 a {
   background: url("/images/logo.png") no-repeat;
   display: block;
   height: 25px;
@@ -65,7 +65,7 @@ body {
 
 /* todo: define a:hover for logo */
 
-#download #header p {
+#other #header p {
   color: #a3a7ae;
   font-size: 14px;
   font-weight: bold;
@@ -73,7 +73,7 @@ body {
   text-shadow: 0 1px 1px #fff;
 }
 
-#download #container {
+#other #container {
   background: #fff;
   border: 1px solid #ced2d8;
   -moz-border-radius: 5px;
@@ -84,7 +84,7 @@ body {
   padding: 14px; /* 15px - 1px border */
 }
 
-#download #container .item {
+#other #container .item {
   background: #f4f5f6;
   border: 1px solid #cdcdcd;
   -moz-border-radius: 3px;
@@ -93,7 +93,7 @@ body {
   padding: 20px 20px 18px 20px;
 }
 
-#download #container .item .description {
+#other #container .item .description {
   background-image: url("/images/item_types/unknown.png");
   background-position: left center;
   background-repeat: no-repeat;
@@ -102,35 +102,35 @@ body {
   padding: 0 0 0 24px;
 }
 
-#download #container .item .image {
+#other #container .item .image {
   background-image: url("/images/item_types/image.png");
 }
 
-#download #container .item .bookmark {
+#other #container .item .bookmark {
   background-image: url("/images/item_types/bookmark.png");  
 }
 
-#download #container .item .text {
+#other #container .item .text {
   background-image: url("/images/item_types/text.png");
 }
 
-#download #container .item .archive {
+#other #container .item .archive {
   background-image: url("/images/item_types/archive.png");
 }
 
-#download #container .item .audio {
+#other #container .item .audio {
   background-image: url("/images/item_types/audio.png");
 }
 
-#download #container .item .video {
+#other #container .item .video {
   background-image: url("/images/item_types/video.png");
 }
 
-#download #container .item .unknown {
+#other #container .item .unknown {
   background-image: url("/images/item_types/unknown.png");
 }
 
-#download #container .item .download a {
+#other #container .item .download a {
   background: url("/images/download_button.png") no-repeat;
   display: block;
   height: 24px;
@@ -138,108 +138,11 @@ body {
   width: 75px;
 }
 
-#download #container .item .download a:hover {
+#other #container .item .download a:hover {
   background-position: 0 -24px;
 }
 
-#download #container .item .download a:active {
+#other #container .item .download a:active {
   background-position: 0 -48px;
-}
-/* ------------------------------------------- */
-
-/* section: embedded
----------------------------------------------- */
-#embedded {
-  background: url("/images/embedded_bg.png") repeat #27282c;
-}
-
-#embedded #container {
-  margin: 10px;
-}
-
-#embedded #toolbar {
-  background: url("/images/embedded_toolbar_bg.png") repeat-x;
-  bottom: -33px;
-  color: #4b4c4f;
-  font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-  font-size: 11px;
-  height: 27px;
-  left: 0;
-  padding: 6px 0 0 0;
-  position: fixed;
-  text-shadow: 0 1px 0 #e5e5e5;
-  width: 100%;
-  z-index: 9999;
-}
-
-#embedded #toolbar #logo {
-  float: left;
-  margin: 3px 10px 0 10px;
-}
-
-#embedded #toolbar #logo h2 a {
-  background: url("/images/embedded_logo_bg.png") no-repeat;
-  display: block;
-  height: 16px;
-  text-indent: -99999px;
-  width: 23px;
-}
-
-#embedded #toolbar #logo h3 {
-  display: none;
-}
-
-#embedded #toolbar #embed {
-  float: left;
-  width: 300px;
-}
-
-#embedded #toolbar #embed label {
-  float: left;
-  display: block;
-  margin: 5px 5px 0 0;
-}
-
-#embedded #toolbar #embed .input_text {
-  background: #fff;
-  border: 1px solid #9f9f9f;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  color: #575757;
-  display: block;
-  float: left;
-  font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-  font-size: 11px;
-  height: 20px;
-  padding: 0 3px;
-  vertical-align: baseline;
-  width: 200px;
-}
-
-#embedded #toolbar #embed #clipboard {
-  float: left;
-  margin: 2px 0 0 5px;
-}
-
-#embedded #toolbar #embed #clipboard object {
-  display: block;
-  height: 18px;
-  width: 14px;
-}
-
-#embedded .close {
-  bottom: 7px;
-  position: fixed;
-  right: 10px;
-  z-index: 99999;
-}
-
-#embedded .close a {
-  background: url("/images/embedded_close_sprite.png") no-repeat 0 -57px;
-  display: block;
-  height: 19px;
-  text-indent: -99999px;
-  width: 19px;
 }
 /* ------------------------------------------- */
