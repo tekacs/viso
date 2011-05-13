@@ -58,6 +58,19 @@ describe Viso do
     end
   end
 
+  it 'dumps the context of a text drop' do
+    VCR.use_cassette 'text', :record => :new_episodes do
+      get '/hhgttg'
+
+      assert last_response.ok?, 'response not ok'
+      last_response.headers['Cache-Control'].must_equal 'public, max-age=900'
+      last_response.headers['Vary'].must_equal          'Accept'
+
+      code_tag = %{<code>Chapter 1}
+      assert last_response.body.include?(code_tag), 'code tag not found'
+    end
+  end
+
   it 'forwards json response' do
     VCR.use_cassette 'text' do
       header 'Accept', 'application/json'

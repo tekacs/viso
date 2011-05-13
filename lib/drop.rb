@@ -1,6 +1,7 @@
 require 'json'
 require 'httparty'
 require 'net/http'
+require 'open-uri'
 require 'ostruct'
 
 class Drop < OpenStruct
@@ -26,6 +27,12 @@ class Drop < OpenStruct
 
   def text?
     item_type == 'text'
+  end
+
+  def content
+    return unless text?
+
+    Kernel::open(remote_url).read
   end
 
   def data

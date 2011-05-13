@@ -32,5 +32,64 @@
       - "200"
       content-type: 
       - application/json; charset=utf-8
-    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.txt\",\"href\":\"http://my.cl.ly/items/313\",\"name\":\"chapter1.txt\",\"redirect_url\":null,\"created_at\":\"2011-03-26T15:10:02Z\",\"updated_at\":\"2011-03-26T15:10:02Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":0,\"remote_url\":\"http://f.cl.ly/items/0b3u0g1R2F2y1Q3R0j1d/chapter1.txt\",\"icon\":\"http://my.cl.ly/images/new/item-types/text.png\",\"id\":313,\"item_type\":\"text\"}"
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.txt\",\"href\":\"http://my.cl.ly/items/313\",\"name\":\"chapter1.txt\",\"redirect_url\":null,\"created_at\":\"2011-03-26T15:10:02Z\",\"updated_at\":\"2011-03-26T15:10:02Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":0,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.txt\",\"icon\":\"http://my.cl.ly/images/new/item-types/text.png\",\"id\":313,\"item_type\":\"text\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://f.cl.ly:80/items/hhgttg/chapter1.txt
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-amz-id-2: 
+      - hdHp4ZPh/VXmwKHT3i3GV4lsPVgd1fh5k4flBK8R2RNZuObdHz6T+f97uoyE9ypf
+      x-amz-request-id: 
+      - 234F3B96F8216C0D
+      date: 
+      - Fri, 13 May 2011 14:37:16 GMT
+      last-modified: 
+      - Fri, 13 May 2011 13:00:29 GMT
+      etag: 
+      - "\"a9b19e65663ce2dae81701ba4812aced\""
+      accept-ranges: 
+      - bytes
+      content-type: 
+      - binary/octet-stream
+      content-length: 
+      - "378"
+      server: 
+      - AmazonS3
+    body: "Chapter 1\n\n\
+      The house stood on a slight rise just on the edge of the village. It stood on its own and looked out over a broad spread of West Country farmland. Not a remarkable house by any means\xE2\x80\x94it was about thirty years old, squattish, squarish, made of brick, and had four windows set in the front of a size and proportion which more or less exactly failed to please the eye."
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://f.cl.ly:80/items/0b3u0g1R2F2y1Q3R0j1d/chapter1.txt
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 403
+      message: Forbidden
+    headers: 
+      x-amz-request-id: 
+      - 845807E0FEFF6B9F
+      x-amz-id-2: 
+      - jskA9Heeo93Yjf7DSRn9pujbRgrceZWKmdR1c82P1eUsrzbGrLLhhsDAq2VIuRny
+      content-type: 
+      - application/xml
+      transfer-encoding: 
+      - chunked
+      date: 
+      - Fri, 13 May 2011 14:43:39 GMT
+      server: 
+      - AmazonS3
+    body: |-
+      <?xml version="1.0" encoding="UTF-8"?>
+      <Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>845807E0FEFF6B9F</RequestId><HostId>jskA9Heeo93Yjf7DSRn9pujbRgrceZWKmdR1c82P1eUsrzbGrLLhhsDAq2VIuRny</HostId></Error>
     http_version: "1.1"
