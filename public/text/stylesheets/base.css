@@ -8,47 +8,57 @@
 
 body {
   background: #fff;
-  color: #3c3c3c;
+  color: #222;
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
 /* =content
 ---------------------------------------------- */
 #content {
-  font: 1.25em Georgia, "Times New Roman", serif;
+  font: 16px Georgia, Baskerville, "Liberation Sans", serif;
+  line-height: 28px;
   margin: 0 auto;
   max-width: 624px;
-  padding: 48px 48px 60px 48px;
+  padding: 48px;
 }
 
   /* section: headers
   ---------------------------------------------- */
   #content h1 {
-    color: #333;
-    font-size: 1.75em;
     font-weight: normal;
-    margin: 0 0 1.25em 0;
+    font-size: 32px;
+    margin: 0 0 32px 0;
   }
 
   #content h2 {
-    color: #333;
-    font-size: 1.5em;
+    font-size: 24px;
     font-weight: normal;
-    margin: 0 0 1.25em 0;
+    margin: 0 0 24px 0;
   }
 
   #content h3 {
-    color: #333;
-    font-size: 1.25em;
+    font-size: 18px;
     font-weight: normal;
-    margin: 0 0 1em 0;
+    margin: 0 0 18px 0;
+  }
+
+  #content h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+  }
+
+  #content h4 {
+    font-size: 14px;
+    margin: 0 0 14px 0;
+    text-transform: uppercase;
   }
   /* ------------------------------------------- */
 
   /* section: links
   ---------------------------------------------- */
   #content a {
-    color: #3c3c3c;
+    color: #36c;
     text-decoration: underline;
   }
   /* ------------------------------------------- */
@@ -56,41 +66,45 @@ body {
   /* section: paragraphs
   ---------------------------------------------- */
   #content p {
-    line-height: 1.75;
-    margin: 0 0 1.8em 0;
+    margin: 0 0 28px 0;
   }
 
   #content p:last-child {
     margin: 0;
   }
+  /* ------------------------------------------- */
 
-  #content p sup {
-    font-size: .8em;
-    vertical-align: super;
+  /* section: emphsasis 
+  ---------------------------------------------- */
+  #content em {
+    font-style: italic;
   }
 
-  #content p sup a:link, #content p sup a:visited {
-    border: 0;
+  #content strong {
+    font-weight: bold;
+  }
+
+  #content mark {
+    background: #ffff99;
+    padding: 1px 4px;
+  }
+
+  #content abbr {
+    color: #7f7f7f;
+    font-family: "Lucida Grande";
+    font-size: 14px;
+    text-transform: uppercase;
   }
   /* ------------------------------------------- */
 
   /* section: lists
   ---------------------------------------------- */
   #content ul, #content ol {
-    margin: 0 0 1.8em 0;
-    padding: 0 0 0 3em;
+    margin: 0 0 28px 0;
+    padding: 0 0 0 32px;
   }
 
   #content ul:last-child, #content ol:last-child {
-    margin: 0;
-  }
-
-  #content ul li, #content ol li {
-    line-height: 1.4em;
-    margin: 0 0 .8em 0;
-  }
-
-  #content ul li:last-child, #content ol li:last-child {
     margin: 0;
   }
   /* ------------------------------------------- */
@@ -101,89 +115,48 @@ body {
     background: #f0f6fc;
     border: 1px solid #d2dce6;
     color: #444;
-    font-family: Monaco, monospace;
-    font-size: .9em;
-    padding: .1em .3em;
+    font: 13px Menlo, Monaco, monospace;
+    padding: 2px 6px;
   }
 
   #content pre {
     background: #f0f6fc;
     border: 1px solid #d2dce6;
-    margin: 0 0 1.8em 0;
-    overflow-y: auto;
-    padding: 1em;
-    white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
+    line-height: 24px;
+    margin: 0 0 28px 0;
+    padding: 12px;
 
-  #content pre:last-child {
-    margin: 0;
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
   }
 
   #content pre code {
     background: transparent;
-    border: 0;
-    display: block;
-    line-height: 1.8em;
+    border: none;
     padding: 0;
+  }
+
+  #content pre:last-child {
+    margin: 0;
   }
   /* ------------------------------------------- */
 
   /* section: quotes
   ---------------------------------------------- */
   #content blockquote {
-    border-left: 3px solid #e5e5e5;
-    margin: 0 0 1.8em;
-    padding: 0 0 0 1.8em;
+    border-left: 2px solid #e5e5e5;
+    color: #7f7f7f;
+    font-size: 14px;
+    font-style: italic;
+    margin: 0 0 28px 0;
+    padding: 0 0 0 28px;
   }
 
   #content blockquote:last-child {
     margin: 0;
   }
-
-  #content blockquote p {
-    color: #666;
-    font-family: "Helvetica Neue";
-    font-size: .9em;
-  }
   /* ------------------------------------------- */
-/* ------------------------------------------- */
-
-/* =footer
----------------------------------------------- */
-#footer {
-  background: #f2f2f2;
-  background: url("/text/images/footer-bg.png") repeat-x;
-  bottom: 0;
-  padding: 30px 0 12px 0;
-  position: fixed;
-  width: 100%;
-  z-index: 99999;
-}
-
-#footer p {
-  line-height: 24px;
-  text-align: center;
-}
-
-#footer p a {
-  color: #b9b9b9;
-  text-decoration: none;
-  text-shadow: 0 1px 1px #fff;
-}
-/* ------------------------------------------- */
-
-/* =media queries
----------------------------------------------- */
-@media only screen and (max-device-width: 480px) {
-  #content {
-    padding: 18px;
-  }
-
-  #footer {
-    position: static;
-  }
-}
 /* ------------------------------------------- */
