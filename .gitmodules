@@ -1,3 +1,0 @@
-[submodule "public/lib/monsoon"]
-	path = public/lib/monsoon
-	url = git@github.com:cloudapp/monsoon.git
