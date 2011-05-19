@@ -3,9 +3,9 @@
   author: maximilian schoening (@mschoening)
 */
 
-@import url("/lib/monsoon/stylesheets/reset.css");
-@import url("/lib/monsoon/stylesheets/library.css");
-@import url("/lib/monsoon/stylesheets/typography.css");
+@import url("http://monsoon-season.heroku.com/monsoon/stylesheets/reset.css");
+@import url("http://monsoon-season.heroku.com/monsoon/stylesheets/library.css");
+@import url("http://monsoon-season.heroku.com/monsoon/stylesheets/typography.css");
 
 body {
   background: #fff;
