@@ -40,10 +40,9 @@ body {
   text-align: center;
 }
 
-#footer p a {
+#footer p a:link, #footer p a:visited {
   color: #999;
   text-decoration: none;
-  -webkit-transition: color .2s linear;
 }
 
 #footer p a:hover, #footer p a:active {
