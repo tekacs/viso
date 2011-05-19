@@ -3,8 +3,8 @@
   author: maximilian schoening (@mschoening)
 */
 
-@import url("reset.css");
-@import url("library.css");
+@import url("/lib/monsoon/stylesheets/reset.css");
+@import url("/lib/monsoon/stylesheets/library.css");
 
 body {
   background: #fff;
@@ -15,148 +15,8 @@ body {
 /* =content
 ---------------------------------------------- */
 #content {
-  font: 16px Georgia, Baskerville, "Liberation Sans", serif;
-  line-height: 28px;
   margin: 0 auto;
   max-width: 624px;
   padding: 48px;
 }
-
-  /* section: headers
-  ---------------------------------------------- */
-  #content h1 {
-    font-weight: normal;
-    font-size: 32px;
-    margin: 0 0 32px 0;
-  }
-
-  #content h2 {
-    font-size: 24px;
-    font-weight: normal;
-    margin: 0 0 24px 0;
-  }
-
-  #content h3 {
-    font-size: 18px;
-    font-weight: normal;
-    margin: 0 0 18px 0;
-  }
-
-  #content h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 16px 0;
-  }
-
-  #content h4 {
-    font-size: 14px;
-    margin: 0 0 14px 0;
-    text-transform: uppercase;
-  }
-  /* ------------------------------------------- */
-
-  /* section: links
-  ---------------------------------------------- */
-  #content a {
-    color: #36c;
-    text-decoration: underline;
-  }
-  /* ------------------------------------------- */
-
-  /* section: paragraphs
-  ---------------------------------------------- */
-  #content p {
-    margin: 0 0 28px 0;
-  }
-
-  #content p:last-child {
-    margin: 0;
-  }
-  /* ------------------------------------------- */
-
-  /* section: emphsasis 
-  ---------------------------------------------- */
-  #content em {
-    font-style: italic;
-  }
-
-  #content strong {
-    font-weight: bold;
-  }
-
-  #content mark {
-    background: #ffff99;
-    padding: 1px 4px;
-  }
-
-  #content abbr {
-    color: #7f7f7f;
-    font-family: "Lucida Grande";
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  /* ------------------------------------------- */
-
-  /* section: lists
-  ---------------------------------------------- */
-  #content ul, #content ol {
-    margin: 0 0 28px 0;
-    padding: 0 0 0 32px;
-  }
-
-  #content ul:last-child, #content ol:last-child {
-    margin: 0;
-  }
-  /* ------------------------------------------- */
-
-  /* section: code
-  ---------------------------------------------- */
-  #content code {
-    background: #f0f6fc;
-    border: 1px solid #d2dce6;
-    color: #444;
-    font: 13px Menlo, Monaco, monospace;
-    padding: 2px 6px;
-  }
-
-  #content pre {
-    background: #f0f6fc;
-    border: 1px solid #d2dce6;
-    line-height: 24px;
-    margin: 0 0 28px 0;
-    padding: 12px;
-
-    white-space: pre-wrap; /* css-3 */
-    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    word-wrap: break-word; /* Internet Explorer 5.5+ */
-  }
-
-  #content pre code {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-
-  #content pre:last-child {
-    margin: 0;
-  }
-  /* ------------------------------------------- */
-
-  /* section: quotes
-  ---------------------------------------------- */
-  #content blockquote {
-    border-left: 2px solid #e5e5e5;
-    color: #7f7f7f;
-    font-size: 14px;
-    font-style: italic;
-    margin: 0 0 28px 0;
-    padding: 0 0 0 28px;
-  }
-
-  #content blockquote:last-child {
-    margin: 0;
-  }
-  /* ------------------------------------------- */
 /* ------------------------------------------- */
