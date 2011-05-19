@@ -27,6 +27,11 @@ body {
 #footer {
   background: #fff;
   background: rgba(255, 255, 255, .9);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
+  background: -webkit-linear-gradient(top, from(rgba(255, 255, 255, 0)), rgba(2555, 2555, 255, .95) 25%, #fff);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(25%, rgba(2555, 2555, 255, .95)), to(#fff));
+  background: linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
   bottom: 0;
   left: 0;
   position: fixed;
@@ -34,13 +39,10 @@ body {
   z-index: 99999;
 }
 
-.cssgradients #footer {
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
-  background: -webkit-linear-gradient(top, from(rgba(255, 255, 255, 0)), rgba(2555, 2555, 255, .95) 25%, #fff);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(25%, rgba(2555, 2555, 255, .95)), to(#fff));
-  background: linear-gradient(top, rgba(255, 255, 255, 0), rgba(2555, 2555, 255, .95) 25%, #fff);
-  padding: 12px 0 0 0;
+.no-cssgradients #footer {
+  border-top: 2px solid #e5e5e5;
+  border-top: 2px solid rgba(0, 0, 0, .1);
+  padding: 0;
 }
 
 #footer p {
