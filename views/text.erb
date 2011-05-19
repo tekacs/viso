@@ -10,14 +10,14 @@
 
     <meta content="CloudApp" name="author" />
 
-    <link href='/favicon.ico' rel='shortcut icon' />
+    <link href="/favicon.ico" rel="shortcut icon" />
 
-    <link href='/text/stylesheets/base.css' rel='stylesheet' type='text/css' />
+    <link href="/lib/monsoon/stylesheets/screen.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    <section id="content">
-      <%# This might not be the best solution. We'll keep our eyes open for encoding issues. %>
+    <section class="monsoon" id="content">
+      <%# This might not be the best solution. We"ll keep our eyes open for encoding issues. %>
       <%= @drop.content.force_encoding('UTF-8') %>
     </section>
   </body>
