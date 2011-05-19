@@ -5,6 +5,7 @@
 
 @import url("/lib/monsoon/stylesheets/reset.css");
 @import url("/lib/monsoon/stylesheets/library.css");
+@import url("/lib/monsoon/stylesheets/typography.css");
 
 body {
   background: #fff;
