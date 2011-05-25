@@ -7,9 +7,11 @@
 require_relative 'drop'
 require 'json'
 require 'sinatra/base'
+require 'sinatra/synchrony'
 require 'sinatra/respond_with'
 
 class Viso < Sinatra::Base
+  register Sinatra::Synchrony
 
   # Make use of `respond_to` to handle content negotiation.
   register Sinatra::RespondWith
@@ -99,7 +101,7 @@ protected
 
   # Redirect the current request to the same path on the API domain.
   def redirect_to_api
-    redirect "#{ Drop.base_uri }#{ request.path }"
+    redirect "http://#{ Drop.base_uri }#{ request.path }"
   end
 
   def drop_template
