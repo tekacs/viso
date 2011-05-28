@@ -41,14 +41,14 @@ class Drop < OpenStruct
   end
 
   def content
-    #return unless text? || markdown?
+    return unless text? || markdown?
 
-    #raw = Kernel::open(content_url).read
-    #if markdown?
-      #Redcarpet.new(raw).to_html
-    #else
-      #raw
-    #end
+    raw = EM::HttpRequest.new(content_url).get.response
+    if markdown?
+      Redcarpet.new(raw).to_html
+    else
+      raw
+    end
   end
 
   def data

@@ -125,52 +125,31 @@ describe Drop do
     assert { drop.content.nil? }
   end
 
+  it 'fetches the content of a text file' do
+    EM.synchrony do
+      VCR.use_cassette 'text' do
+        drop = Drop.new :item_type   => 'text',
+                        :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
 
-  #it 'fetches the content of a text file' do
-    #VCR.use_cassette 'text' do
-      #EM.run do
-        #drop = Drop.find('hhgttg')
+        assert { drop.content.start_with? 'Chapter 1' }
 
-        #drop.errback { failed drop }
-        #drop.callback do
-          #EM.stop
+        EM.stop
+      end
+    end
+  end
 
-          #assert drop.content.start_with?('Chapter 1')
-        #end
-      #end
-    #end
-  #end
-  #it 'has content' do
-    #VCR.use_cassette 'text' do
-      #drop = Drop.new :item_type  => 'text',
-                      #:content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
-
-      #assert drop.content.start_with?('Chapter 1')
-    #end
-  #end
-
-  #it 'fetches and parses the content of a markdown file' do
-    #VCR.use_cassette 'markdown' do
-      #EM.run do
-        #drop = Drop.find('hhgttg')
-
-        #drop.errback { failed drop }
-        #drop.callback do
-          #EM.stop
-
-          #assert drop.content.start_with?('<h1>Chapter 1</h1>')
-        #end
-      #end
-    #end
-  #end
-  #it 'parses markdown content' do
-    #VCR.use_cassette 'markdown' do
-      #drop = Drop.new :item_type  => 'unknown',
-                      #:content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+  it 'fetches and parses the content of a markdown file' do
+    EM.synchrony do
+      VCR.use_cassette 'markdown' do
+        drop = Drop.new :item_type   => 'unknown',
+                        :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
 
-      #assert drop.content.start_with?('<h1>Chapter 1</h1>')
-    #end
-  #end
+        assert { drop.content.start_with? '<h1>Chapter 1</h1>' }
+
+        EM.stop
+      end
+    end
+  end
 
 end
