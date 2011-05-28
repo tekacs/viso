@@ -125,10 +125,12 @@ describe Drop do
     assert { drop.content.nil? }
   end
 
+  # TODO: Fix this test after webmock supports the latest em-http-request.
   it 'fetches the content of a text file' do
     EM.synchrony do
       VCR.use_cassette 'text' do
         drop = Drop.new :item_type   => 'text',
+                        #:content_url => 'http://cl.ly/hhgttg/chapter1.txt'
                         :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
 
         assert { drop.content.start_with? 'Chapter 1' }
@@ -138,10 +140,12 @@ describe Drop do
     end
   end
 
+  # TODO: Fix this test after webmock supports the latest em-http-request.
   it 'fetches and parses the content of a markdown file' do
     EM.synchrony do
       VCR.use_cassette 'markdown' do
         drop = Drop.new :item_type   => 'unknown',
+                        #:content_url => 'http://cl.ly/hhgttg/chapter1.md'
                         :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
 
