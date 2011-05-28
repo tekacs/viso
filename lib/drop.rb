@@ -43,7 +43,7 @@ class Drop < OpenStruct
   def content
     return unless text? || markdown?
 
-    raw = EM::HttpRequest.new(content_url).get.response
+    raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
       Redcarpet.new(raw).to_html
     else
