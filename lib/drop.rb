@@ -1,21 +1,25 @@
-require 'json'
-require 'httparty'
-require 'net/http'
-require 'open-uri'
+require 'em-synchrony'
+require 'em-synchrony/em-http'
 require 'ostruct'
 require 'redcarpet'
+require 'yajl'
 
 class Drop < OpenStruct
-  include  HTTParty
-  base_uri ENV.fetch('CLOUDAPP_DOMAIN', 'api.cld.me')
+
+  class NotFound < StandardError; end
+
+  def self.base_uri
+    @@base_uri
+  end
+  @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(slug)
-    response = get "/#{ slug }",
-                   :headers => { 'Accept' => 'application/json' }
+    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
+                              get(:head => { 'Accept'=> 'application/json' })
 
-    raise NotFound.new unless response.ok?
+    raise NotFound unless request.response_header.status == 200
 
-    Drop.new response.parsed_response
+    Drop.new Yajl::Parser.parse(request.response)
   end
 
   def bookmark?
@@ -39,7 +43,7 @@ class Drop < OpenStruct
   def content
     return unless text? || markdown?
 
-    raw = Kernel::open(content_url).read
+    raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
       Redcarpet.new(raw).to_html
     else
@@ -50,7 +54,5 @@ class Drop < OpenStruct
   def data
     marshal_dump
   end
-
-  class NotFound < StandardError; end
 
 end

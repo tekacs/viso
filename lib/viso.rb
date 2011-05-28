@@ -4,10 +4,12 @@
 # **Viso** is a simple Sinatra app that displays CloudApp Drops. Images are
 # displayed front and center, bookmarks are redirected to their destination, and
 # a download button is provided for all other file types.
-require_relative 'drop'
-require 'json'
+require 'eventmachine'
 require 'sinatra/base'
 require 'sinatra/respond_with'
+require 'yajl'
+
+require_relative 'drop'
 
 class Viso < Sinatra::Base
 
@@ -21,13 +23,24 @@ class Viso < Sinatra::Base
     # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` to
     # use Hoptoad to catalog your exceptions.
     if ENV['HOPTOAD_API_KEY']
+      require 'active_support'
+      require 'active_support/core_ext/object/blank'
       require 'hoptoad_notifier'
+
       HoptoadNotifier.configure do |config|
         config.api_key = ENV['HOPTOAD_API_KEY']
       end
 
       use HoptoadNotifier::Rack
       enable :raise_errors
+    end
+  end
+
+  # Use a fiber pool to serve **Viso** outside of the test environment.
+  configure do
+    unless test?
+      require 'rack/fiber_pool'
+      use Rack::FiberPool
     end
   end
 
@@ -50,26 +63,31 @@ class Viso < Sinatra::Base
   # The main responder for a **Drop**. Responds to both JSON and HTML and
   # response is cached for 15 minutes.
   get '/:slug' do |slug|
-    @drop = find_drop slug
-    cache_control :public, :max_age => 900
+    begin
+      @drop = find_drop slug
+      cache_control :public, :max_age => 900
 
-    respond_to do |format|
+      respond_to do |format|
 
-      # Redirect to the bookmark's link, render the image view for an image, or
-      # render the generic download view for everything else.
-      format.html do
-        if @drop.bookmark?
-          redirect_to_api
-        else
-          erb drop_template
+        # Redirect to the bookmark's link, render the image view for an image, or
+        # render the generic download view for everything else.
+        format.html do
+          if @drop.bookmark?
+            redirect_to_api
+          else
+            erb drop_template
+          end
+        end
+
+        # Handle a JSON request for a **Drop**. Return the same data received from
+        # the CloudApp API.
+        format.json do
+          Yajl::Encoder.encode @drop.data
         end
       end
-
-      # Handle a JSON request for a **Drop**. Return the same data received from
-      # the CloudApp API.
-      format.json do
-        JSON.generate @drop.data
-      end
+    rescue => e
+      env['async.callback'].call [ 500, {}, 'Internal Server Error' ]
+      HoptoadNotifier.notify_or_ignore e if defined? HoptoadNotifier
     end
   end
 
@@ -99,7 +117,7 @@ protected
 
   # Redirect the current request to the same path on the API domain.
   def redirect_to_api
-    redirect "#{ Drop.base_uri }#{ request.path }"
+    redirect "http://#{ Drop.base_uri }#{ request.path }"
   end
 
   def drop_template
