@@ -89,6 +89,13 @@ describe Drop do
     deny { drop.code? }
   end
 
+  it 'is not code when text' do
+    drop = Drop.new :item_type   => 'text',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
+
+    deny { drop.code? }
+  end
+
   it 'is code with the extension rb' do
     drop = Drop.new :item_type   => 'unknown',
                     :content_url => 'http://f.cl.ly/items/hhgttg/code.rb'

@@ -44,6 +44,8 @@ class Drop < OpenStruct
   end
 
   def code?
+    return if text?
+
     lexer_name_for :filename => content_url
   rescue RubyPython::PythonError
     false
