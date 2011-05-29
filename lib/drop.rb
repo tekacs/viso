@@ -1,21 +1,28 @@
-require 'json'
-require 'httparty'
-require 'net/http'
-require 'open-uri'
+require 'em-synchrony'
+require 'em-synchrony/em-http'
 require 'ostruct'
+require 'pygments'
 require 'redcarpet'
+require 'yajl'
 
 class Drop < OpenStruct
-  include  HTTParty
-  base_uri ENV.fetch('CLOUDAPP_DOMAIN', 'api.cld.me')
+
+  include Pygments
+
+  class NotFound < StandardError; end
+
+  def self.base_uri
+    @@base_uri
+  end
+  @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(slug)
-    response = get "/#{ slug }",
-                   :headers => { 'Accept' => 'application/json' }
+    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
+                              get(:head => { 'Accept'=> 'application/json' })
 
-    raise NotFound.new unless response.ok?
+    raise NotFound unless request.response_header.status == 200
 
-    Drop.new response.parsed_response
+    Drop.new Yajl::Parser.parse(request.response)
   end
 
   def bookmark?
@@ -36,12 +43,22 @@ class Drop < OpenStruct
     item_type == 'unknown' && extensions.include?(File.extname(content_url))
   end
 
-  def content
-    return unless text? || markdown?
+  def code?
+    return if text?
 
-    raw = Kernel::open(content_url).read
+    lexer_name_for :filename => content_url
+  rescue RubyPython::PythonError
+    false
+  end
+
+  def content
+    return unless text? || markdown? || code?
+
+    raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
       Redcarpet.new(raw).to_html
+    elsif code?
+      highlight raw, :lexer => lexer_name_for(content_url)
     else
       raw
     end
@@ -50,7 +67,5 @@ class Drop < OpenStruct
   def data
     marshal_dump
   end
-
-  class NotFound < StandardError; end
 
 end
