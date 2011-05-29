@@ -80,6 +80,20 @@ describe Drop do
     assert { drop.text? }
   end
 
+  it 'is not code' do
+    drop = Drop.new :item_type   => 'unknown',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
+
+    deny { drop.code? }
+  end
+
+  it 'is code with the extension rb' do
+    drop = Drop.new :item_type   => 'unknown',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/code.rb'
+
+    assert { drop.code? }
+  end
+
   it 'finds a drop' do
     EM.synchrony do
       VCR.use_cassette 'bookmark' do

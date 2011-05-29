@@ -3,6 +3,7 @@ source :gemcutter
 gem 'backports'
 gem 'em-http-request', :git => 'https://github.com/igrigorik/em-http-request.git'
 gem 'em-synchrony',    :git => 'https://github.com/igrigorik/em-synchrony.git'
+gem 'pygments.rb'
 gem 'redcarpet'
 gem 'rack-fiber_pool'
 gem 'sinatra'

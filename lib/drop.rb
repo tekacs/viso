@@ -1,10 +1,13 @@
 require 'em-synchrony'
 require 'em-synchrony/em-http'
 require 'ostruct'
+require 'pygments'
 require 'redcarpet'
 require 'yajl'
 
 class Drop < OpenStruct
+
+  include Pygments
 
   class NotFound < StandardError; end
 
@@ -38,6 +41,12 @@ class Drop < OpenStruct
     extensions = %w( .md .mdown .markdown )
 
     item_type == 'unknown' && extensions.include?(File.extname(content_url))
+  end
+
+  def code?
+    lexer_name_for :filename => content_url
+  rescue RubyPython::PythonError
+    false
   end
 
   def content
