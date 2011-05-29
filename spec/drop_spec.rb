@@ -4,6 +4,8 @@ require 'drop'
 
 describe Drop do
 
+  # Drop types
+
   it 'returns a hash of itself' do
     data = { :name => 'The Guide' }
     drop = Drop.new data
@@ -36,28 +38,28 @@ describe Drop do
   end
 
   it 'is not text' do
-    drop = Drop.new :item_type  => 'image',
+    drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     deny { drop.text? }
   end
 
   it 'is text' do
-    drop = Drop.new :item_type  => 'text',
+    drop = Drop.new :item_type   => 'text',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
 
     assert { drop.text? }
   end
 
   it 'is not markdown' do
-    drop = Drop.new :item_type  => 'image',
+    drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     deny { drop.markdown? }
   end
 
   it 'is markdown with the extension md' do
-    drop = Drop.new :item_type  => 'unknown',
+    drop = Drop.new :item_type   => 'unknown',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
     assert { drop.markdown? }
@@ -65,7 +67,7 @@ describe Drop do
   end
 
   it 'is markdown with the extension mdown' do
-    drop = Drop.new :item_type  => 'unknown',
+    drop = Drop.new :item_type   => 'unknown',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
 
     assert { drop.markdown? }
@@ -73,7 +75,7 @@ describe Drop do
   end
 
   it 'is markdown with the extension markdown' do
-    drop = Drop.new :item_type  => 'unknown',
+    drop = Drop.new :item_type   => 'unknown',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
 
     assert { drop.markdown? }
@@ -93,6 +95,9 @@ describe Drop do
 
     assert { drop.code? }
   end
+
+
+  # Find a drop
 
   it 'finds a drop' do
     EM.synchrony do
@@ -132,8 +137,11 @@ describe Drop do
     end
   end
 
+
+  # Fetch drop content
+
   it "doesn't have content" do
-    drop = Drop.new :item_type  => 'image',
+    drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     assert { drop.content.nil? }
