@@ -125,6 +125,8 @@ protected
       :image
     elsif @drop.markdown?
       :text
+    elsif @drop.code?
+      :code
     else
       :other
     end

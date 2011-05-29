@@ -185,4 +185,21 @@ describe Drop do
     end
   end
 
+  # TODO: Fix this test after webmock supports the latest em-http-request.
+  it 'fetches and parses the content of a markdown file' do
+    EM.synchrony do
+      VCR.use_cassette 'ruby' do
+        drop = Drop.new :item_type   => 'unknown',
+                        #:content_url => 'http://cl.ly/hhgttg/code.rb'
+                        :content_url => 'http://f.cl.ly/items/hhgttg/code.rb'
+
+
+        highlighted = '<div class="highlight"><pre><span class="n">puts</span>'
+        assert { drop.content.start_with? highlighted }
+
+        EM.stop
+      end
+    end
+  end
+
 end
