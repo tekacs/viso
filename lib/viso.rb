@@ -123,7 +123,7 @@ protected
   def drop_template
     if @drop.image?
       :image
-    elsif @drop.markdown?
+    elsif @drop.text?
       :text
     elsif @drop.code?
       :code
