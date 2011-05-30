@@ -58,10 +58,7 @@ class Drop < OpenStruct
     if markdown?
       Redcarpet.new(raw).to_html
     elsif code?
-      highlight raw, :lexer   => lexer_name_for(content_url),
-                     :options => { :linenos       => 'table',
-                                   :lineanchors   => 'line',
-                                   :anchorlinenos => true }
+      highlight raw, :lexer => lexer_name_for(content_url)
     else
       raw
     end
