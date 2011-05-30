@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="en">
+  <head>
+    <title><%= @drop.name %></title>
+
+    <meta charset="utf-8">
+
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0, user-scalable = no" name="viewport">
+
+    <meta content="CloudApp" name="author">
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
+
+    <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="http://use.typekit.com/obk5uec.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+
+  <body id="<%= @body_id %>">
+    <%= yield %>
+  </body>
+</html>

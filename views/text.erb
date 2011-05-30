@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html class="no-js" dir="ltr" lang="en">
-  <head>
-    <title><%= @drop.name %></title>
+<% @body_id = 'text' %>
 
-    <meta charset="utf-8">
+<header id="header">
+  <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
 
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0, user-scalable = no" name="viewport">
+  <h2><%= @drop.name %></h2>
 
-    <meta content="CloudApp" name="author">
+  <a class="embed" href="<%= @drop.content_url %>#">Direct link</a>
+</header>
 
-    <link href="/favicon.ico" rel="shortcut icon">
-
-    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
-
-    <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript" src="http://use.typekit.com/obk5uec.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-  </head>
-
-  <body id="text">
-    <header id="header">
-      <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
-
-      <h2><%= @drop.name %></h2>
-
-      <a class="embed" href="<%= @drop.content_url %>#">Direct link</a>
-    </header>
-    
-    <section class="monsoon" id="content">
-      <%# This might not be the best solution. We"ll keep our eyes open for encoding issues. %>
-      <%= @drop.content.force_encoding('UTF-8') %>
-    </section>
-  </body>
-</html>
+<section class="monsoon" id="content">
+  <%# This might not be the best solution. We"ll keep our eyes open for encoding issues. %>
+  <%= @drop.content.force_encoding('UTF-8') %>
+</section>
