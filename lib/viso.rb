@@ -123,10 +123,8 @@ protected
   def drop_template
     if @drop.image?
       :image
-    elsif @drop.text?
+    elsif @drop.text? || @drop.code?
       :text
-    elsif @drop.code?
-      :code
     else
       :other
     end
