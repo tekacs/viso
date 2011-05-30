@@ -323,7 +323,7 @@
   font: 12px Monaco, monospace;
   overflow-x: scroll;
   padding: 12px;
-  white-space: normal;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
