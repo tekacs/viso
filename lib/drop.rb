@@ -59,7 +59,9 @@ class Drop < OpenStruct
       Redcarpet.new(raw).to_html
     elsif code?
       highlight raw, :lexer   => lexer_name_for(content_url),
-                     :options => { :linenos => 'table' }
+                     :options => { :linenos       => 'table',
+                                   :lineanchors   => 'line',
+                                   :anchorlinenos => true }
     else
       raw
     end
