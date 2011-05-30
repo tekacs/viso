@@ -119,10 +119,6 @@
   text-align: center;
 }
 
-.wf-active #image #content {
-  padding: 32px 18px 48px 18px;
-}
-
 #image #content img {
   max-height: 100%;
   max-width: 100%;
