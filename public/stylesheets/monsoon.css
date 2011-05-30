@@ -321,7 +321,7 @@
   box-shadow: 0 1px 0 #fff, 0 1px 3px rgba(0, 0, 0, .1) inset;
   color: #000;
   font: 12px Monaco, monospace;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 12px;
   white-space: pre;
   word-wrap: normal;
