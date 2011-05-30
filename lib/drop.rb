@@ -43,6 +43,10 @@ class Drop < OpenStruct
     item_type == 'unknown' && extensions.include?(File.extname(content_url))
   end
 
+  def code?
+    !!lexer_name
+  end
+
   def content
     return unless text? || markdown? || code?
 
@@ -69,6 +73,5 @@ private
   rescue RubyPython::PythonError
     false
   end
-  alias_method :code?, :lexer_name
 
 end
