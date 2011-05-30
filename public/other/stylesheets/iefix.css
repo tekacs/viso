@@ -1,0 +1,26 @@
+/*
+
+title: iefix css
+author: maximilian schoening @ bylinebreak.com
+
+*/
+
+/* section: clearfix
+---------------------------------------------- */
+.clearfix {
+  zoom: 1;
+  display: block;
+}
+/* ------------------------------------------- */
+
+/* section: embedded
+---------------------------------------------- */
+#embedded #toolbar #embed label {
+  margin: 6px 5px 0 0;
+}
+
+#embedded #toolbar #embed .input_text {
+  height: auto;
+  padding: 3px 3px;
+}
+/* ------------------------------------------- */
