@@ -47,6 +47,20 @@ describe Drop do
     deny { drop.text? }
   end
 
+  it 'is not text when rtf' do
+    drop = Drop.new :item_type   => 'text',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.rtf'
+
+    deny { drop.text? }
+  end
+
+  it 'is not text when markdown' do
+    drop = Drop.new :item_type   => 'unknown',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+
+    deny { drop.text? }
+  end
+
   it 'is text' do
     drop = Drop.new :item_type   => 'text',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
@@ -62,12 +76,18 @@ describe Drop do
     deny { drop.markdown? }
   end
 
+  it 'is not markdown when text' do
+    drop = Drop.new :item_type   => 'text',
+                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.txt'
+
+    deny { drop.markdown? }
+  end
+
   it 'is markdown with the extension md' do
     drop = Drop.new :item_type   => 'unknown',
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
     assert { drop.markdown? }
-    assert { drop.text? }
   end
 
   it 'is markdown with the extension mdown' do
@@ -75,7 +95,6 @@ describe Drop do
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
 
     assert { drop.markdown? }
-    assert { drop.text? }
   end
 
   it 'is markdown with the extension markdown' do
@@ -83,7 +102,6 @@ describe Drop do
                     :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
 
     assert { drop.markdown? }
-    assert { drop.text? }
   end
 
 

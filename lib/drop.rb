@@ -34,7 +34,7 @@ class Drop < OpenStruct
   end
 
   def text?
-    item_type == 'text' || markdown?
+    File.extname(content_url) == '.txt'
   end
 
   def markdown?
