@@ -4,8 +4,6 @@ require 'drop'
 
 describe Drop do
 
-  # Drop types
-
   it 'returns a hash of itself' do
     data = { :name => 'The Guide' }
     drop = Drop.new data
@@ -13,7 +11,10 @@ describe Drop do
     assert { drop.data == data }
   end
 
-  it 'is not an image' do
+
+  # Drop types
+
+  it 'is not an image when text' do
     drop = Drop.new :item_type => 'text'
 
     deny { drop.image? }
@@ -25,7 +26,8 @@ describe Drop do
     assert { drop.image? }
   end
 
-  it 'is not a bookmark' do
+
+  it 'is not a bookmark when text' do
     drop = Drop.new :item_type => 'text'
 
     deny { drop.bookmark? }
@@ -37,7 +39,8 @@ describe Drop do
     assert { drop.bookmark? }
   end
 
-  it 'is not text' do
+
+  it 'is not text when an image' do
     drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
@@ -51,7 +54,8 @@ describe Drop do
     assert { drop.text? }
   end
 
-  it 'is not markdown' do
+
+  it 'is not markdown when an image' do
     drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
@@ -82,8 +86,9 @@ describe Drop do
     assert { drop.text? }
   end
 
-  it 'is not code' do
-    drop = Drop.new :item_type   => 'unknown',
+
+  it 'is not code when an image' do
+    drop = Drop.new :item_type   => 'image',
                     :content_url => 'http://f.cl.ly/items/hhgttg/cover.png'
 
     deny { drop.code? }
