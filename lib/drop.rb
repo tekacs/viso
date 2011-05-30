@@ -43,13 +43,14 @@ class Drop < OpenStruct
     item_type == 'unknown' && extensions.include?(File.extname(content_url))
   end
 
-  def code?
+  def lexer_name
     return if text?
 
     lexer_name_for :filename => content_url
   rescue RubyPython::PythonError
     false
   end
+  alias_method :code?, :lexer_name
 
   def content
     return unless text? || markdown? || code?
@@ -58,7 +59,7 @@ class Drop < OpenStruct
     if markdown?
       Redcarpet.new(raw).to_html
     elsif code?
-      highlight raw, :lexer => lexer_name_for(content_url)
+      highlight raw, :lexer => lexer_name
     else
       raw
     end
