@@ -41,7 +41,17 @@
 
       // Handle clicks on the image and toggle the class "zoom" on **body**.
       .click(function() {
-        $("body").toggleClass("zoom");
+        if (body.is(".zoom")) {
+          body
+            .removeClass("zoom")
+            .removeClass("zoom-out")
+            .addClass("zoom-in");
+        } else {
+          body
+            .addClass("zoom")
+            .addClass("zoom-out")
+            .removeClass("zoom-in");
+        }
       });
 
     // Make sure the load event fires even if the image is cached.
