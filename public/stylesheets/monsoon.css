@@ -310,7 +310,7 @@
   margin: 0;
 }
 
-.monsoon pre.highlight {
+.monsoon .highlight pre {
   background: #fff;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
