@@ -75,7 +75,7 @@ class Viso < Sinatra::Base
           if @drop.bookmark?
             redirect_to_api
           else
-            erb drop_template
+            erb drop_template, :layout => use_layout?
           end
         end
 
@@ -128,6 +128,10 @@ protected
     else
       :other
     end
+  end
+
+  def use_layout?
+    drop_template != :other
   end
 
 end
