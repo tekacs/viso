@@ -34,13 +34,13 @@ class Drop < OpenStruct
   end
 
   def text?
-    File.extname(content_url) == '.txt'
+    extension == '.txt'
   end
 
   def markdown?
     extensions = %w( .md .mdown .markdown )
 
-    item_type == 'unknown' && extensions.include?(File.extname(content_url))
+    item_type == 'unknown' && extensions.include?(extension)
   end
 
   def code?
@@ -65,6 +65,10 @@ class Drop < OpenStruct
   end
 
 private
+
+  def extension
+    File.extname content_url
+  end
 
   def lexer_name
     return if text?
