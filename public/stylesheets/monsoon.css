@@ -312,9 +312,6 @@
 
 .monsoon .highlight pre {
   background: #fff;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding;
-  background-clip: padding-box;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
