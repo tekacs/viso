@@ -11,17 +11,6 @@
   font: normal 14px "ff-meta-web-pro-1", "ff-meta-web-pro-2";
 }
 
-.monsoon a:link,
-.monsoon a:visited {
-  color: #33a4f4 !important;
-  text-decoration: none;
-}
-
-.monsoon a:hover,
-.monsoon a:active {
-  color: #114591 !important;
-}
-
 /* =headings
 ---------------------------------------------- */
 .monsoon h1 {
@@ -51,13 +40,15 @@
 
 /* =links
 ---------------------------------------------- */
-.monsooon a:link, .monsoon a:visited {
-  color: #36c;
-  text-decoration: underline;
+.monsoon a:link,
+.monsoon a:visited {
+  color: #33a4f4;
+  text-decoration: none;
 }
 
-.monsoon a:hover, .monsoon a:active {
-  color: #039;
+.monsoon a:hover,
+.monsoon a:active {
+  color: #114591;
 }
 /* ------------------------------------------- */
 

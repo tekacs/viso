@@ -3,8 +3,8 @@
 */
 
 #image {
-  background: url("../images/text/body-bg.png") repeat;
-  color: #494949;
+  background: url("/images/image/body-bg.png") repeat;
+  color: #fff;
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
   min-width: 320px;
 }
@@ -12,8 +12,8 @@
 /* =header
 ---------------------------------------------- */
 #image #header {
-  background: url("../images/text/header-bg.png") repeat-x;
-  height: 42px;
+  background: url("/images/image/header-bg.png") repeat-x;
+  height: 43px;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -40,7 +40,7 @@
 }
 
 #image #header h1 a {
-  background: url("../images/text/badge.png") no-repeat;
+  background: url("/images/image/badge.png") no-repeat;
   display: block;
   height: 24px;
   text-indent: -99999px;
@@ -60,12 +60,12 @@
   -webkit-animation-duration: .5s;
   -webkit-animation-name: titleFadeIn;
   -webkit-animation-timing-function: linear;
-  color: #787878;
+  color: #fff;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   line-height: 42px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .75);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .75);
 }
 
 @-webkit-keyframes embedSlideIn {
@@ -83,7 +83,7 @@
   -webkit-animation-duration: .2s;
   -webkit-animation-name: embedSlideIn;
   -webkit-animation-timing-function: easeIn;
-  background: url("../images/text/embed.png") no-repeat;
+  background: url("/images/image/embed.png") no-repeat;
   display: block;
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
@@ -94,19 +94,19 @@
   position: absolute;
   top: 9px;
   right: 10px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .75);
 }
 
 #image #header a:link.embed,
 #image #header a:visited.embed {
-  color: #787878;
+  color: #fff;
   text-decoration: none;
 }
 
 #image #header a:hover.embed,
 #image #header a:active.embed {
   background-position: 0 -24px;
-  color: #484848;
+  color: #33a4f4;
 }
 /* ------------------------------------------- */
 
@@ -137,12 +137,12 @@
 
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
   #image #header h1 a {
-    background-image: url("../images/text/badge-2x.png");
+    background-image: url("/images/image/badge-2x.png");
     background-size: 119px 24px;
   }
 
   #image #header .embed {
-    background-image: url("../images/text/embed-2x.png");
+    background-image: url("/images/image/embed-2x.png");
     background-size: 16px 48px;
   }
 }
