@@ -15,6 +15,10 @@
     <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
 
     <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
+    <% if @drop.image? %>
+      <script src="/javascripts/vendor/jquery-1.6.1.min.js"></script>
+      <script src="/javascripts/image.js"></script>
+    <% end %>
 
     <!--[if lt IE 9]>
     <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
