@@ -108,6 +108,10 @@
   background-position: 0 -24px;
   color: #33a4f4;
 }
+
+#image.zoom #header {
+  display: none;
+}
 /* ------------------------------------------- */
 
 /* =content
@@ -115,13 +119,36 @@
 #image #content {
   margin: 0 auto;
   max-width: 90%;
-  padding: 48px 18px;
+  padding: 48px 0;
   text-align: center;
 }
 
 #image #content img {
+  display: block;
+  margin: 0 auto;
   max-height: 100%;
   max-width: 100%;
+}
+
+#image.zoom #content {
+  max-width: none;
+  padding: 0;
+}
+
+#image.zoom #content img {
+  border: 18px solid transparent;
+  max-height: none !important;
+  max-width: none !important;
+}
+
+#image.zoom-in #content img {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+}
+
+#image.zoom-out #content img {
+  cursor: -moz-zoom-out;
+  cursor: -webkit-zoom-out;
 }
 /* ------------------------------------------- */
 
