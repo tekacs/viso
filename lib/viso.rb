@@ -134,7 +134,7 @@ protected
   def body_id
     if @drop.image?
       'image'
-    elsif @drop.text?
+    elsif @drop.text? || @drop.code?
       'text'
     end
   end
