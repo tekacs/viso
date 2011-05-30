@@ -310,7 +310,7 @@
   margin: 0;
 }
 
-.monsoon .highlight {
+.monsoon .highlight pre {
   background: #fff;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -321,10 +321,13 @@
   box-shadow: 0 1px 0 #fff, 0 1px 3px rgba(0, 0, 0, .1) inset;
   color: #000;
   font: 12px Monaco, monospace;
+  overflow-x: scroll;
   padding: 12px;
+  white-space: normal;
+  word-wrap: normal;
 }
 
-.wf-active .monsoon .highlight {
+.wf-active .monsoon .highlight pre {
   font: 15px "inconsolata-1", "inconsolata-2";
 }
 /* ------------------------------------------- */
