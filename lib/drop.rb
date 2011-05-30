@@ -43,15 +43,6 @@ class Drop < OpenStruct
     item_type == 'unknown' && extensions.include?(File.extname(content_url))
   end
 
-  def lexer_name
-    return if text?
-
-    lexer_name_for :filename => content_url
-  rescue RubyPython::PythonError
-    false
-  end
-  alias_method :code?, :lexer_name
-
   def content
     return unless text? || markdown? || code?
 
@@ -68,5 +59,16 @@ class Drop < OpenStruct
   def data
     marshal_dump
   end
+
+private
+
+  def lexer_name
+    return if text?
+
+    lexer_name_for :filename => content_url
+  rescue RubyPython::PythonError
+    false
+  end
+  alias_method :code?, :lexer_name
 
 end
