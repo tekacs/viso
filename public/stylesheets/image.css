@@ -114,7 +114,7 @@
 ---------------------------------------------- */
 #image #content {
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 90%;
   padding: 48px 18px;
   text-align: center;
 }
@@ -136,6 +136,11 @@
 }
 
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
+  #image {
+    background-image: url("/images/image/body-bg-2x.png");
+    background-size: 145px 145px;
+  }
+
   #image #header h1 a {
     background-image: url("/images/image/badge-2x.png");
     background-size: 119px 24px;
