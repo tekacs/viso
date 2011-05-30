@@ -9,6 +9,11 @@
 </header>
 
 <section class="monsoon" id="content">
-  <%# This might not be the best solution. We"ll keep our eyes open for encoding issues. %>
-  <%= @drop.content.force_encoding('UTF-8') %>
+  <%# It might not be the best solution to force UTF-8 encoding. We"ll keep our
+      eyes open for encoding issues. %>
+  <% if @drop.text? %>
+    <pre><code><%= @drop.content.force_encoding('UTF-8') %></code></pre>
+  <% else %>
+    <%= @drop.content.force_encoding('UTF-8') %>
+  <% end %>
 </section>
