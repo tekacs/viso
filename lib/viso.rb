@@ -124,7 +124,7 @@ protected
   def drop_template
     if @drop.image?
       :image
-    elsif @drop.text? || @drop.code?
+    elsif @drop.text? || @drop.markdown? || @drop.code?
       :text
     else
       :other
@@ -134,7 +134,7 @@ protected
   def body_id
     if @drop.image?
       'image'
-    elsif @drop.text? || @drop.code?
+    elsif @drop.text? || @drop.markdown? || @drop.code?
       'text'
     end
   end
