@@ -45,6 +45,10 @@ class Drop < OpenStruct
     !!lexer_name
   end
 
+  def subscribed?
+    subscribed
+  end
+
   def content
     return unless text? || markdown? || code?
 

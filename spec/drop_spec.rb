@@ -123,6 +123,19 @@ describe Drop do
   end
 
 
+  it 'is not subscribed when not subscribed' do
+    drop = Drop.new :subscribed => false
+
+    deny { drop.subscribed? }
+  end
+
+  it 'is subscribed when subscribed' do
+    drop = Drop.new :subscribed => true
+
+    assert { drop.subscribed? }
+  end
+
+
   # Find a drop
 
   it 'finds a drop' do
