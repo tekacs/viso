@@ -55,8 +55,7 @@ describe Drop do
   end
 
   it 'is not text when markdown' do
-    drop = Drop.new :item_type   => 'unknown',
-                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+    drop = Drop.new :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
     deny { drop.text? }
   end
@@ -84,22 +83,19 @@ describe Drop do
   end
 
   it 'is markdown with the extension md' do
-    drop = Drop.new :item_type   => 'unknown',
-                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
+    drop = Drop.new :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.md'
 
     assert { drop.markdown? }
   end
 
   it 'is markdown with the extension mdown' do
-    drop = Drop.new :item_type   => 'unknown',
-                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
+    drop = Drop.new :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.mdown'
 
     assert { drop.markdown? }
   end
 
   it 'is markdown with the extension markdown' do
-    drop = Drop.new :item_type   => 'unknown',
-                    :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
+    drop = Drop.new :content_url => 'http://f.cl.ly/items/hhgttg/chapter1.markdown'
 
     assert { drop.markdown? }
   end

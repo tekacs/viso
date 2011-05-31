@@ -38,9 +38,7 @@ class Drop < OpenStruct
   end
 
   def markdown?
-    extensions = %w( .md .mdown .markdown )
-
-    item_type == 'unknown' && extensions.include?(extension)
+    %w( .md .mdown .markdown ).include? extension
   end
 
   def code?
