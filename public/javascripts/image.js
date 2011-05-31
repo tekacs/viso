@@ -2,6 +2,7 @@
   $(function() {
     var viewport     = $(window),
         body         = $("body"),
+        content      = $("#content"),
         image        = $("img"),
         headerHeight = $("h2").height(),
         imagePadding = (image.position().top - headerHeight) * 2 + headerHeight,
@@ -11,7 +12,7 @@
     // Calculate the maximum width and height of the viewport when it is
     // resized. Add `max-height` to the image so it fits comfortably within the
     // viewable area and trigger `"zoom"` on the image.
-    viewport.resize(function(e) {
+    viewport.resize(function() {
       max.width  = Math.floor(viewport.width()  * 0.9)
       max.height = viewport.height() - imagePadding;
 
@@ -31,7 +32,7 @@
       // Check the current maximum image dimensions and add the class
       // `"zoomed-out"` if the image is too large to fit otherwise remove it.
       // Trigger `"center"` to center the image vertically.
-      .bind("zoom", function(e) {
+      .bind("zoom", function() {
         // Ignore image resizing when the image is zoomed in.
         if (body.is(".zoomed-in")) { return; }
 
@@ -49,10 +50,15 @@
 
       // Center the image vertically in the viewport leaving room for the
       // header.
-      .bind("center", function(e) {
+      .bind("center", function() {
         var top = Math.floor((viewport.height() - headerHeight - image.height()) / 2);
 
-        $("#content").css({ paddingTop: top });
+        content.css({ paddingTop: top });
+      })
+
+      // Remove the top padding on `content` added when centering the image.
+      .bind("uncenter", function() {
+        content.css({ paddingTop: '' });
       })
 
       // Handle clicks on the image to toggle its zoom. Ignore clicks unless the
@@ -66,7 +72,9 @@
         } else {
           body
             .addClass("zoomed-in")
-            .removeClass("zoomed-out");
+            .removeClass("zoomed-out")
+
+          image.trigger("uncenter");
         }
       });
 
