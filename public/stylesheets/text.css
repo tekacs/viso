@@ -3,7 +3,7 @@
 */
 
 #text {
-  background: url("/images/text/body-bg.png") repeat;
+  background: url("/images/text/body-bg.png") repeat #f8f8f8;
   color: #494949;
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
   min-width: 320px;
