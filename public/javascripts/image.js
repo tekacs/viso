@@ -4,58 +4,42 @@
         body         = $("body"),
         image        = $("img"),
         headerHeight = $("h2").height(),
-        imagePadding = 0,
-        fullWidth    = 0,
-        fullHeight   = 0;
+        imagePadding = (image.position().top - headerHeight) * 2 + headerHeight,
+        full         = { height: 0, width: 0 },
+        max          = { height: 0, width: 0 };
 
-    // Create a temporary image to determine the full width and height of the
-    // main image.
-    var tmpImage = $("<img/>")
-                     .attr("src", image.attr("src"))
-                     .load(function() {
-                       fullWidth  = this.width;
-                       fullHeight = this.height;
+    // Calculate the maximum width and height of the viewport when it is
+    // resized. Add `max-height` to the image so it fits comfortably within the
+    // viewable area and trigger `"zoom"` on the image.
+    viewport.resize(function(e) {
+      max.width  = Math.floor(viewport.width()  * 0.9)
+      max.height = viewport.height() - imagePadding;
 
-                       tmpImage.data("initialized", true);
-                       image.trigger("resize");
-                     });
-
-    // Make sure the load event fires even if the image is cached.
-    if (tmpImage[0].complete) {
-      tmpImage.trigger("load");
-    }
-
+      if (!body.is(".zoomed-in")) {
+        image
+          .css({ maxHeight: max.height })
+          .trigger("zoom");
+      }
+    });
 
     image
-
-      // Calculate and save the padding above the image to use when determining
-      // if the image should be scaled down to fit within the window.
-      .load(function() {
-        imagePadding = (image.position().top - headerHeight) * 2 + headerHeight;
-
-        image
-          .data("initialized", true)
-          .trigger("resize");
-      })
 
       // Check the current viewport height and resize the image to fit
       // comfortably. Add the class "zoom-in" on **body** if the image has been
       // zoomed in or remove it if the image fits within the viewport.
-      .bind("resize", function(e) {
-        // Stop this event from bubbling up to `window`.
-        e.stopPropagation();
 
+      // Check the current maximum image dimensions and add the class
+      // `"zoomed-out"` if the image is too large to fit otherwise remove it.
+      // Trigger `"center"` to center the image vertically.
+      .bind("zoom", function(e) {
+        // Ignore image resizing when the image is zoomed in.
         if (body.is(".zoomed-in")) { return; }
 
-        // Only attempt to resize if the image has been initialized.
-        if (!image.data("initialized") || !tmpImage.data("initialized")) { return; }
+        // Only attempt to zoom if the image has been initialized.
+        if (!image.data("initialized")) { return; }
 
-        var maxWidth  = Math.floor(viewport.width()  * 0.9),
-            maxHeight = viewport.height() - imagePadding;
-
-        if (fullWidth > maxWidth || fullHeight > maxHeight) {
+        if (full.width > max.width || full.height > max.height) {
           body.addClass("zoomed-out");
-          image.css({ maxHeight: maxHeight });
         } else {
           body.removeClass("zoomed-out");
         }
@@ -78,7 +62,7 @@
 
         if (body.is(".zoomed-in")) {
           body.removeClass("zoomed-in");
-          image.trigger("resize");
+          viewport.trigger("resize");
         } else {
           body
             .addClass("zoomed-in")
@@ -86,14 +70,26 @@
         }
       });
 
-    // Resize the image when the window is resized.
-    viewport.resize(function() {
-      image.trigger("resize");
-    });
+
+    // Create a temporary image to determine the full size of the main image and
+    // trigger `"resize"` on the image.
+    var tmpImage = $("<img/>")
+                     .attr("src", image.attr("src"))
+                     .load(function() {
+                       full.width   = this.width;
+                       full.height  = this.height;
+
+                       image
+                         .data("initialized", true)
+                         .trigger("zoom");
+                     });
 
     // Make sure the load event fires even if the image is cached.
-    if (image[0].complete) {
-      image.trigger("load");
+    if (tmpImage[0].complete) {
+      tmpImage.trigger("load");
     }
+
+    // Trigger `"resize"` to kick start image zooming.
+    viewport.trigger("resize");
   });
 }(jQuery));
