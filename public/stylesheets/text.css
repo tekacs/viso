@@ -125,11 +125,17 @@
 
 @media screen and (max-width: 479px) {
   #text header h2 {
-    display: none;
+    display: none !important;
   }
 }
 
-@media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
+@media screen and (max-device-width: 480px) { 
+  #text #content {
+    padding: 18px !important;
+  }
+}
+
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
   #text #header h1 a {
     background-image: url("/images/text/badge-2x.png");
     background-size: 119px 24px;
