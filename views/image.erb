@@ -1,5 +1,7 @@
 <header id="header">
-  <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
+  <% unless @drop.subscribed? %>
+    <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
+  <% end %>
 
   <h2><%= @drop.name %></h2>
 
