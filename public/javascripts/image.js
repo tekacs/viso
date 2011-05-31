@@ -31,7 +31,7 @@
       // Calculate and save the padding above the image to use when determining
       // if the image should be scaled down to fit within the window.
       .load(function() {
-        imagePadding = (image.position().top - headerHeight) * 2;
+        imagePadding = (image.position().top - headerHeight) * 2 + headerHeight;
 
         image
           .data("initialized", true)
