@@ -59,6 +59,16 @@
         } else {
           body.removeClass("zoomed-out");
         }
+
+        image.trigger("center");
+      })
+
+      // Center the image vertically in the viewport leaving room for the
+      // header.
+      .bind("center", function(e) {
+        var top = Math.floor((viewport.height() - headerHeight - image.height()) / 2);
+
+        $("#content").css({ paddingTop: top });
       })
 
       // Handle clicks on the image to toggle its zoom. Ignore clicks unless the
