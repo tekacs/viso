@@ -13,14 +13,36 @@ describe Viso do
   end
 
   it 'redirects the home page to the CloudApp product page' do
-    get '/'
+    EM.synchrony do
+      VCR.use_cassette 'default_domain_details',
+                       :erb => { :domain => 'cl.ly' } do
+        get '/'
+        EM.stop
 
-    assert { last_response.redirect? }
+        assert { last_response.redirect? }
 
-    headers = last_response.headers
-    assert { headers['Cache-Control'] == 'public, max-age=31557600' }
-    assert { headers['Vary']          == 'Accept' }
-    assert { headers['Location']      == 'http://getcloudapp.com' }
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=3600' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Location']      == 'http://getcloudapp.com' }
+      end
+    end
+  end
+
+  it "redirects the home page of a custom domain to it's home page" do
+    EM.synchrony do
+      VCR.use_cassette 'domain_details', :erb => { :domain => 'example.org' } do
+        get '/'
+        EM.stop
+
+        assert { last_response.redirect? }
+
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=3600' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Location']      == 'http://hhgproject.org' }
+      end
+    end
   end
 
   it 'returns a not found response for nonexistent drops' do

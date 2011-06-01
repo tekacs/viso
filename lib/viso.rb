@@ -10,6 +10,7 @@ require 'sinatra/respond_with'
 require 'yajl'
 
 require_relative 'drop'
+require_relative 'domain'
 
 class Viso < Sinatra::Base
 
@@ -53,11 +54,12 @@ class Viso < Sinatra::Base
   # Cached responses are only valid for a specific accept header.
   before { headers['Vary'] = 'Accept' }
 
-  # The home page. Nothing to see here. Redirect to the CloudApp product page.
-  # Response is cached for one year.
+  # The home page. Custom domain users have the option to set a home page so
+  # ping the API to get the home page for the current domain. Response is cached
+  # for one hour.
   get '/' do
-    cache_control :public, :max_age => 31557600
-    redirect 'http://getcloudapp.com'
+    cache_control :public, :max_age => 3600
+    redirect Domain.find(env['HTTP_HOST']).home_page
   end
 
   # The main responder for a **Drop**. Responds to both JSON and HTML and
