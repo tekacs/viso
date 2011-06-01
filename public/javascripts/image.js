@@ -22,10 +22,12 @@
           image
             .css({ maxHeight: max.height })
             .trigger("zoom");
+        } else {
+          image.trigger("center");
         }
       })
 
-      // Handle the hashchange event to toggle the image's zoom level.
+      // Handle the `"hashchange"` event to toggle the image's zoom level.
       .hashchange(function() {
         if (window.location.hash.match(/\w+/) == 'z') {
           image.trigger("zoom-in");
@@ -55,32 +57,37 @@
         image.trigger("center");
       })
 
-      // Center the image vertically in the viewport leaving room for the
-      // header.
-      .bind("center", function() {
-        var top = Math.floor((viewport.height() - headerHeight - image.height()) / 2);
-
-        content.css({ paddingTop: top });
-      })
-
-      // Remove the top padding on `content` added when centering the image.
-      .bind("uncenter", function() {
-        content.css({ paddingTop: '' });
-      })
-
-      // Zoom the image in.
+      // Zoom the image in and center it.
       .bind("zoom-in", function() {
         body
           .addClass("zoomed-in")
           .removeClass("zoomed-out")
 
-        image.trigger("uncenter");
+        image.trigger("center");
       })
 
       // Zoom the image out.
       .bind("zoom-out", function() {
         body.removeClass("zoomed-in");
         viewport.trigger("resize");
+      })
+
+      // Center the image vertically in the viewport leaving room for the
+      // header. Ignore attempts to center the image if it has yet to be
+      // initialized.
+      .bind("center", function() {
+        if (!image.data("initialized")) { return; }
+
+        var viewportSize = viewport.height() - image.height();
+        if (body.is(".zoomed-out")) {
+          viewportSize -= headerHeight;
+        } else {
+          // Account for padding around the image when zoomed in.
+          viewportSize -= 36;
+        }
+
+        var top = Math.floor(viewportSize / 2);
+        content.css({ paddingTop: top });
       })
 
       // Handle lcicks on the image to toggle its zoom by toggling the hash
@@ -104,7 +111,8 @@
 
                        image
                          .data("initialized", true)
-                         .trigger("zoom");
+                         .trigger("zoom")
+                         .trigger("center");
                      });
 
     // Make sure the load event fires even if the image is cached.
