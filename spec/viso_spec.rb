@@ -99,6 +99,24 @@ describe Viso do
     end
   end
 
+  it 'displays an original image drop' do
+    EM.synchrony do
+      VCR.use_cassette 'image' do
+        get '/hhgttg/o'
+        EM.stop
+
+        assert { last_response.ok? }
+
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=900' }
+        assert { headers['Vary']          == 'Accept' }
+
+        image_tag = %{<img alt="cover.png" src="http://cl.ly/hhgttg/cover.png">}
+        assert { last_response.body.include?(image_tag) }
+      end
+    end
+  end
+
   it 'shows a download button for an unknown file' do
     EM.synchrony do
       VCR.use_cassette 'unknown' do

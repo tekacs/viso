@@ -62,7 +62,7 @@ class Viso < Sinatra::Base
 
   # The main responder for a **Drop**. Responds to both JSON and HTML and
   # response is cached for 15 minutes.
-  get '/:slug' do |slug|
+  get %r{^/([^/?#]+)(?:/o)?$} do |slug|
     begin
       @drop = find_drop slug
       cache_control :public, :max_age => 900
