@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://api.cld.local:80/domains/<%= domain %>
+    uri: http://api.cld.me:80/domains/<%= domain %>
     body: 
     headers: 
       accept: 

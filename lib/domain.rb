@@ -10,7 +10,7 @@ class Domain < OpenStruct
   def self.base_uri
     @@base_uri
   end
-  @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.local' #'api.cld.me'
+  @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(domain)
     request = EM::HttpRequest.new("http://#{ base_uri }/domains/#{ domain }").
