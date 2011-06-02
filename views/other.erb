@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-  <title><%= @drop.name %></title>
+  <title><%= escape_html @drop.name %></title>
 
   <meta content="text/html; charset=utf-8" http-equiv="content-type" />
 
@@ -29,7 +29,7 @@
 
     <div id="container">
       <div class="clearfix item">
-        <h1 class="description left <%= @drop.item_type %>"><%= @drop.name %></h1>
+        <h1 class="description left <%= @drop.item_type %>"><%= escape_html @drop.name %></h1>
 
         <p class="download right">
           <a href="<%= @drop.content_url %>">Download</a>
