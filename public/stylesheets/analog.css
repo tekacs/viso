@@ -1,0 +1,30 @@
+/*
+  title: analog css
+*/
+
+/* =header
+---------------------------------------------- */
+#image #header {
+  position: static;
+}
+
+#image #header h1 {
+  margin: 7px auto 0 auto;
+  position: static;
+  width: 75px;
+}
+
+#image #header h1 a {
+  background: url("/images/image/analog/badge.png") no-repeat;
+  height: 30px;
+  width: 75px;
+}
+ 
+#image #header h2 {
+  display: none;
+}
+
+#image #header .embed {
+  display: none;
+}
+/* ------------------------------------------- */
