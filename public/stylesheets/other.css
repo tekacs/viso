@@ -10,19 +10,7 @@
   padding: 18px;
 }
 
-@-webkit-keyframes popIn {
-  0% {
-    -webkit-transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(1);
-  }
-}
-
 #other .wrapper {
-  -webkit-animation-duration: .2s;
-  -webkit-animation-name: popIn;
-  -webkit-animation-timing-function: easeIn;
   background: #fff;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
