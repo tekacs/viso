@@ -81,6 +81,10 @@
   width: 96px;
 }
 
+#other #content p a.download {
+  background-position: 0 -27px;
+}
+
 #other #content p small {
   color: #9fa8ad;
   font-size: 11px;
