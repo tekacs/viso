@@ -1,53 +1,19 @@
-<!DOCTYPE html>
-<html class="no-js" dir="ltr" lang="en">
-  <head>
-    <title><%= @drop.name %></title>
+<div class="wrapper">
+  <section id="content">
+    <figure class="<%= @drop.item_type %>"></figure>
 
-    <meta charset="utf-8">
+    <h2><%= @drop.name %></h2>
 
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0, user-scalable = no" name="viewport">
+    <p>
+      <a href="<%= @drop.content_url %>">View</a>
 
-    <meta content="CloudApp" name="author">
+      <small>or <strong>opt</strong>/<strong>alt click</strong> to download</small>
+    </p>
+  </section>
 
-    <link href="/favicon.ico" rel="shortcut icon">
-
-    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
-
-    <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
-
-    <% if @drop.image? %>
-      <script src="/javascripts/vendor/jquery-1.6.1.min.js"></script>
-      <script src="/javascripts/image.js?1306933135"></script>
-    <% end %>
-
-    <!--[if lt IE 9]>
-    <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript" src="http://use.typekit.com/obk5uec.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-  </head>
-
-  <body id="other">
-    <div class="wrapper">
-      <section id="content">
-        <figure class="<%= @drop.item_type %>"></figure>
-
-        <h2><%= @drop.name %></h2>
-
-        <p>
-          <a href="<%= @drop.content_url %>">View</a>
-
-          <small>or <strong>opt</strong>/<strong>alt click</strong> to download</small>
-        </p>
-      </section>
-
-      <% unless @drop.subscribed? %>
-        <footer id="footer">
-          <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
-        </footer>
-      <% end %>
-    </div>
-  </body>
-</html>
+  <% unless @drop.subscribed? %>
+    <footer id="footer">
+      <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
+    </footer>
+  <% end %>
+</div>

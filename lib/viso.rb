@@ -77,8 +77,7 @@ class Viso < Sinatra::Base
           if @drop.bookmark?
             redirect_to_api
           else
-            erb drop_template, :layout => use_layout?,
-                               :locals => { :body_id => body_id }
+            erb drop_template, :locals => { :body_id => body_id }
           end
         end
 
@@ -138,11 +137,9 @@ protected
       'image'
     elsif @drop.text? || @drop.markdown? || @drop.code?
       'text'
+    else
+      'other'
     end
-  end
-
-  def use_layout?
-    drop_template != :other
   end
 
 end
