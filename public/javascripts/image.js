@@ -1,29 +1,20 @@
 (function($) {
   $(function() {
-    var viewport     = $(window),
+    var hasPushState = (typeof history.pushState !== 'undefined'),
+        viewport     = $(window),
         body         = $("body"),
         content      = $("#content"),
         image        = $("img"),
-
         headerHeight = $("h2").height(),
         full         = { height: 0, width: 0 },
-        max          = { height: 0, width: 0 },
-
-        hasPushState = (typeof history.pushState !== 'undefined'),
-        isImageDrop  = image.length;
+        max          = { height: 0, width: 0 };
 
 
     // Calculate the maximum width and height available to the content based on
     // the viewport size and header height leaving a 10% padding around the
-    // content. For image drops, add `max-height` to the image so it fits
-    // comfortably within the viewable area and trigger `"zoom"`. Download drops
-    // have a static size so simply trigger `"center"` to keep it centered.
+    // content. Add `max-height` to the image so it fits comfortably within the
+    // viewable area and trigger `"zoom"`.
     viewport.resize(function() {
-      if (!isImageDrop) {
-        content.trigger("center");
-        return;
-      }
-
       max.width  = Math.floor(viewport.width()  * 0.9);
       max.height = Math.floor(viewport.height() * 0.9) - headerHeight;
 
@@ -93,15 +84,13 @@
         }
       });
 
-    // Center the drop content vertically in the viewport by modifying the
-    // content element's top padding. Must account for the header height if its
-    // visible or padding around the content if it's zoomed in or a download
-    // view.
+    // Center the content vertically in the viewport by modifying the content
+    // element's top padding. Must account for the header height if its visible
+    // or padding around the image if it's zoomed.
     content.bind("center", function() {
-      if (isImageDrop && !image.data("initialized")) { return; }
+      if (!image.data("initialized")) { return; }
 
-      var viewportSize = viewport.height() -
-                           content[isImageDrop ? 'height' : 'outerHeight']();
+      var viewportSize = viewport.height() - content.height();
 
       if (body.is(".zoomed-out")) {
         viewportSize -= headerHeight;
@@ -110,50 +99,41 @@
       }
 
       var top = Math.floor(viewportSize / 2);
-      if (isImageDrop) {
-        content.css({ paddingTop: top });
-      } else {
-        content.parent().css({ marginTop: top });
-      }
+      content.css({ paddingTop: top });
     });
 
 
-    if (!isImageDrop) {
-      // Nothing to do when displaying the download drop view except center it.
-      content.trigger("center");
-    } else {
-      // Create a temporary image to determine the full size of the main image.
-      // Mark the image as initialized and trigger its `"zoom"` event.
-      var tmpImage = $("<img/>")
-                       .attr("src", image.attr("src"))
-                       .load(function() {
-                         full.width   = this.width;
-                         full.height  = this.height;
+    // Create a temporary image to determine the full size of the main image.
+    // Mark the image as initialized and trigger its `"zoom"` event.
+    var tmpImage = $("<img/>")
+                     .attr("src", image.attr("src"))
+                     .load(function() {
+                       full.width   = this.width;
+                       full.height  = this.height;
 
-                         image
-                           .data("initialized", true)
-                           .trigger("zoom");
-                       });
+                       image
+                         .data("initialized", true)
+                         .trigger("zoom");
+                     });
 
-      // Manually trigger the `"load"` event on the temp image if its cached.
-      if (tmpImage[0].complete) {
-        tmpImage.trigger("load");
-      }
-
-      viewport
-
-        // Listen for `"popstate"` on image drops. Trigger `"zoom-in"` on the
-        // image if the current path is `/o` or `"zoom-out"` otherwise.
-        .bind("popstate", function() {
-          if (location.pathname.match(/.+\/o$/)) {
-            image.trigger("zoom-in");
-          } else {
-            image.trigger("zoom-out");
-          }
-        })
-
-        // Trigger `"popstate"` to kick start image zooming.
-        .trigger("popstate");
+    // Manually trigger the `"load"` event on the temp image if its cached.
+    if (tmpImage[0].complete) {
+      tmpImage.trigger("load");
     }
+
+    viewport
+
+      // Listen for `"popstate"` on image drops. Trigger `"zoom-in"` on the
+      // image if the current path is `/o` or `"zoom-out"` otherwise.
+      .bind("popstate", function() {
+        if (location.pathname.match(/.+\/o$/)) {
+          image.trigger("zoom-in");
+        } else {
+          image.trigger("zoom-out");
+        }
+      })
+
+      // Trigger `"popstate"` to kick start image zooming.
+      .trigger("popstate");
   });
 }(jQuery));
