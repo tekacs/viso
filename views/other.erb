@@ -2,7 +2,7 @@
   <section id="content">
     <figure class="<%= @drop.item_type %>"></figure>
 
-    <h2><%= @drop.name %></h2>
+    <h2><%= escape_html @drop.name %></h2>
 
     <p>
       <a href="<%= @drop.content_url %>">View</a>
