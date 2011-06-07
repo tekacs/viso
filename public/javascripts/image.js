@@ -85,8 +85,7 @@
       });
 
     // Center the content vertically in the viewport by modifying the content
-    // element's top padding. Must account for the header height if its visible
-    // or padding around the image if it's zoomed.
+    // element's top padding. Must account for the header height if its visible.
     content.bind("center", function() {
       var viewportSize = viewport.height();
 
@@ -102,12 +101,10 @@
 
         if (body.is(".zoomed-out")) {
           viewportSize -= headerHeight;
-        } else {
-          viewportSize -= 36;
         }
       }
 
-      var top = Math.floor(viewportSize / 2);
+      var top = Math.max(0, Math.floor(viewportSize / 2));
       content.css({ paddingTop: top });
     });
 
