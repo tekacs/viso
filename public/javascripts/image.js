@@ -22,9 +22,9 @@
         image
           .css({ maxHeight: max.height })
           .trigger("zoom");
-      } else {
-        content.trigger("center");
       }
+
+      content.trigger("center");
     });
 
     image
@@ -88,14 +88,23 @@
     // element's top padding. Must account for the header height if its visible
     // or padding around the image if it's zoomed.
     content.bind("center", function() {
-      if (!image.data("initialized")) { return; }
+      var viewportSize = viewport.height();
 
-      var viewportSize = viewport.height() - content.height();
+      if (!image.data("initialized")) {
 
-      if (body.is(".zoomed-out")) {
-        viewportSize -= headerHeight;
+        // Let CSS handle the initialize image position when the default is to
+        // display the original image size.
+        if (body.is(".zoomed-in")) { return; }
+
+        viewportSize = viewportSize - max.height - headerHeight;
       } else {
-        viewportSize -= 36;
+        viewportSize -= content.height();
+
+        if (body.is(".zoomed-out")) {
+          viewportSize -= headerHeight;
+        } else {
+          viewportSize -= 36;
+        }
       }
 
       var top = Math.floor(viewportSize / 2);
