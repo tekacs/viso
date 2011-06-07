@@ -9,7 +9,7 @@
       // Center the download box vertically within the viewport accounting for
       // the padding around the body.
       .bind("center", function() {
-        var viewportSize = viewport.height() - content.outerHeight() - 36;
+        var viewportSize = viewport.height() - wrapper.height() - 36;
 
         var top = Math.floor(viewportSize / 2);
         wrapper.css({ marginTop: top });
