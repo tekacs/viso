@@ -15,7 +15,7 @@
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  margin: 48px auto;
+  margin: 48px auto 0;
   text-align: center;
   width: 284px;
 }
