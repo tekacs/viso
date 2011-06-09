@@ -2,7 +2,8 @@
   $(function() {
     var viewport = $(window),
         content  = $("#content"),
-        wrapper  = content.closest(".wrapper");
+        wrapper  = content.closest(".wrapper"),
+        link     = content.find("a");
 
     content
 
@@ -22,6 +23,17 @@
     viewport.resize(function() {
       content.trigger("center");
     });
+
+    // Show the download button when holding the option key.
+    $("body")
+      .keydown(function(e) {
+        if (e.altKey) {
+          link.addClass("download");
+        }
+      })
+      .keyup(function(e) {
+        link.removeClass("download");
+      });
 
   });
 }(jQuery));
