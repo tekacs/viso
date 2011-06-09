@@ -9,7 +9,7 @@ of drop.
 
 The power of Viso lies in its ability to be fully personalized. Don't like the
 default CloudApp image viewer? Tired of waiting for an HTML5 video player? No
-more! Fork the project, hack away, and deploy. That's all there is do it.
+more! Fork the project, hack away, and deploy. That's all there is to it.
 
 
 [image]:        http://cl.ly/2wr4
