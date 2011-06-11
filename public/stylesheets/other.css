@@ -115,6 +115,11 @@
     background-size: 145px 145px;
   }
 
+  #other #content figure {
+    background-image: url("/images/other/thumbs-2x.png");
+    background-size: 72px 288px;
+  }
+
   #other #content p a {
     background-image: url("/images/other/view-button-2x.png");
     background-size: 96px 54px;
