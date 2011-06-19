@@ -27,10 +27,6 @@
 
     <script type="text/javascript" src="http://use.typekit.com/obk5uec.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-  </head>
-
-  <body id="<%= body_id %>">
-    <%= yield %>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -45,5 +41,9 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+  </head>
+
+  <body id="<%= body_id %>">
+    <%= yield %>
   </body>
 </html>
