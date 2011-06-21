@@ -79,7 +79,7 @@
   margin: 0;
 }
 
-.monsoon ol > ol {
+.monsoon ol li ol {
   padding: 0 0 0 24px;
 }
 
@@ -96,7 +96,7 @@
   margin: 0;
 }
 
-.monsoon ul > ul {
+.monsoon ul li ul {
   padding: 0 0 0 24px;
 }
 
