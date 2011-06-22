@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/stylesheets/mediaelementplayer.css" />
+<script src="/javascripts/vendor/mediaelement-and-player.js"></script>
+<script>
+  $(function() {
+    $('video').mediaelementplayer();
+  });
+</script>
+
+
+<header id="header">
+  <% unless @drop.subscribed? %>
+    <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
+  <% end %>
+
+  <h2><%= escape_html @drop.name %></h2>
+
+  <a class="embed" href="<%= @drop.content_url %>">Direct link</a>
+</header>
+
+<section id="content">
+  <video src="<%= @drop.content_url %>" width="500" height="500"></video>
+</section>

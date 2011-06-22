@@ -125,6 +125,8 @@ protected
   def drop_template
     if @drop.image?
       :image
+    elsif @drop.video?
+      :video
     elsif @drop.text? || @drop.markdown? || @drop.code?
       :text
     else
@@ -135,6 +137,8 @@ protected
   def body_id
     if @drop.image?
       'image'
+    elsif @drop.video?
+      'video'
     elsif @drop.text? || @drop.markdown? || @drop.code?
       'text'
     else
