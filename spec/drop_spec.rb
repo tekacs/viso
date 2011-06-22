@@ -27,6 +27,32 @@ describe Drop do
   end
 
 
+  it 'is not an audio when text' do
+    drop = Drop.new :item_type => 'text'
+
+    deny { drop.audio? }
+  end
+
+  it 'is an audio' do
+    drop = Drop.new :item_type => 'audio'
+
+    assert { drop.audio? }
+  end
+
+
+  it 'is not an video when text' do
+    drop = Drop.new :item_type => 'text'
+
+    deny { drop.video? }
+  end
+
+  it 'is an video' do
+    drop = Drop.new :item_type => 'video'
+
+    assert { drop.video? }
+  end
+
+
   it 'is not a bookmark when text' do
     drop = Drop.new :item_type => 'text'
 

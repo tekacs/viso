@@ -33,6 +33,14 @@ class Drop < OpenStruct
     item_type == 'image'
   end
 
+  def audio?
+    item_type == 'audio'
+  end
+
+  def video?
+    item_type == 'video'
+  end
+
   def text?
     extension == '.txt'
   end
