@@ -72,7 +72,7 @@ show it off! Did you find something broken? [Open an issue][issue] or send over
 a pull request.
 
 
-[twitter]: http://twitter.com/getcloudapp
+[twitter]: http://twitter.com/cloudapp
 [issue]:   https://github.com/cloudapp/viso/issues
 
 
