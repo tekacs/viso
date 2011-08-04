@@ -189,55 +189,56 @@ describe Viso do
 
         link = %{<a class="embed" href="http://cl.ly/hhgttg/chapter1.txt">Direct link</a>}
         assert { last_response.body.include?(link) }
+
+        content = 'The house stood on a slight rise just on the edge of the village.'
+        assert { last_response.body.include? content }
       end
     end
   end
 
-  ## This test will fail until webmock can support the latest em-http-request
-  #it 'dumps the content of a markdown drop' do
-    #EM.synchrony do
-      #VCR.use_cassette 'markdown' do
-        #get '/hhgttg'
-        #EM.stop
+  it 'dumps the content of a markdown drop' do
+    EM.synchrony do
+      VCR.use_cassette 'markdown' do
+        get '/hhgttg'
+        EM.stop
 
-        #assert { last_response.ok? }
+        assert { last_response.ok? }
 
-        #headers = last_response.headers
-        #assert { headers['Cache-Control'] == 'public, max-age=900' }
-        #assert { headers['Vary']          == 'Accept' }
-        #assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=900' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
 
-        #section_tag = '<section class="monsoon" id="content">'
-        #assert { last_response.body.include? section_tag }
+        section_tag = '<section class="monsoon" id="content">'
+        assert { last_response.body.include? section_tag }
 
-        #content = 'The house stood on a slight rise just on the edge of the village.'
-        #assert { last_response.body.include? content }
-      #end
-    #end
-  #end
+        content = 'The house stood on a slight rise just on the edge of the village.'
+        assert { last_response.body.include? content }
+      end
+    end
+  end
 
-  ## This test will fail until webmock can support the latest em-http-request
-  #it 'dumps the content of a code drop' do
-    #EM.synchrony do
-      #VCR.use_cassette 'ruby-test', :record => :new_episodes do
-        #get '/1k0f342Q1R373x2h3q2I'
-        #EM.stop
+  it 'dumps the content of a code drop' do
+    EM.synchrony do
+      VCR.use_cassette 'ruby' do
+        get '/hhgttg'
+        EM.stop
 
-        #assert { last_response.ok? }
+        assert { last_response.ok? }
 
-        #headers = last_response.headers
-        #assert { headers['Cache-Control'] == 'public, max-age=900' }
-        #assert { headers['Vary']          == 'Accept' }
-        #assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=900' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
 
-        #section_tag = '<section class="monsoon" id="content">'
-        #assert { last_response.body.include? section_tag }
+        section_tag = '<section class="monsoon" id="content">'
+        assert { last_response.body.include? section_tag }
 
-        #content = 'The house stood on a slight rise just on the edge of the village.'
-        #assert { last_response.body.include? content }
-      #end
-    #end
-  #end
+        content = 'Hello, world!'
+        assert { last_response.body.include? content }
+      end
+    end
+  end
 
   it 'forwards json response' do
     EM.synchrony do

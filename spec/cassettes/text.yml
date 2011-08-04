@@ -36,7 +36,7 @@
       - "0"
       via: 
       - 1.1 varnish
-    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.txt\",\"href\":\"http://my.cl.ly/items/5593316\",\"name\":\"chapter1.txt\",\"redirect_url\":null,\"created_at\":\"2011-05-31T11:56:30Z\",\"updated_at\":\"2011-08-04T19:25:15Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":4,\"remote_url\":\"http://f.cl.ly/items/3L062r1O3J1y2y3D3g0E/chapter1.txt\",\"icon\":\"http://my.cl.ly/images/new/item-types/text.png\",\"id\":5593316,\"subscribed\":true,\"source\":null,\"item_type\":\"text\"}"
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.txt\",\"href\":\"http://my.cl.ly/items/5593316\",\"name\":\"chapter1.txt\",\"redirect_url\":null,\"created_at\":\"2011-05-31T11:56:30Z\",\"updated_at\":\"2011-08-04T19:25:15Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":4,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.txt\",\"icon\":\"http://my.cl.ly/images/new/item-types/text.png\",\"id\":5593316,\"subscribed\":true,\"source\":null,\"item_type\":\"text\"}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
@@ -64,69 +64,7 @@
       content-type: 
       - text/plain
       content-length: 
-      - "5"
-      server: 
-      - AmazonS3
-    body: "\xE2\x98\x95\n\n"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://cl.ly:80/hhgttg/chapter1.txt
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
-    headers: 
-      x-amz-id-2: 
-      - gQw2YI8nmhxqel0bBYFvag7/HYRSg7ES0v5X8lp0DM//xUjaE5y2u+5a/otii6Ta
-      x-amz-request-id: 
-      - 1875C14A2FA6BE34
-      date: 
-      - Thu, 04 Aug 2011 19:25:33 GMT
-      last-modified: 
-      - Tue, 31 May 2011 11:56:31 GMT
-      etag: 
-      - "\"f06b0807a86180a5cf1ad68ae83f68a3\""
-      accept-ranges: 
-      - bytes
-      content-type: 
-      - text/plain
-      content-length: 
-      - "5"
-      server: 
-      - AmazonS3
-    body: "\xE2\x98\x95\n\n"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://cl.ly:80/hhgttg/chapter1.txt
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
-    headers: 
-      x-amz-id-2: 
-      - gQw2YI8nmhxqel0bBYFvag7/HYRSg7ES0v5X8lp0DM//xUjaE5y2u+5a/otii6Ta
-      x-amz-request-id: 
-      - 1875C14A2FA6BE34
-      date: 
-      - Thu, 04 Aug 2011 19:25:33 GMT
-      last-modified: 
-      - Tue, 31 May 2011 11:56:31 GMT
-      etag: 
-      - "\"f06b0807a86180a5cf1ad68ae83f68a3\""
-      accept-ranges: 
-      - bytes
-      content-type: 
-      - text/plain
-      content-length: 
-      - "5"
+      - "382"
       server: 
       - AmazonS3
     body: "Chapter 1\n\n\
