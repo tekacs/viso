@@ -139,7 +139,7 @@ describe Viso do
     end
   end
 
-  it 'shows a download button for an unknown file' do
+  it 'shows a view button for an unknown file' do
     EM.synchrony do
       VCR.use_cassette 'unknown' do
         get '/hhgttg'
@@ -157,10 +157,10 @@ describe Viso do
         title = %{<title>Chapter 1</title>}
         assert { last_response.body.include?(title) }
 
-        heading = %{<h1 class="description left unknown">Chapter 1</h1>}
+        heading = %{<h2>Chapter 1</h2>}
         assert { last_response.body.include?(heading) }
 
-        link = %{<a href="http://cl.ly/hhgttg/Chapter_1.blah">Download</a>}
+        link = %{<a href="http://cl.ly/hhgttg/Chapter_1.blah">View</a>}
         assert { last_response.body.include?(link) }
       end
     end
@@ -178,16 +178,16 @@ describe Viso do
         assert { headers['Cache-Control'] == 'public, max-age=900' }
         assert { headers['Vary']          == 'Accept' }
 
-        assert { last_response.body.include?('<body id="other">') }
+        assert { last_response.body.include?('<body id="text">') }
         deny   { last_response.body.include?("<img") }
 
         title = %{<title>chapter1.txt</title>}
         assert { last_response.body.include?(title) }
 
-        heading = %{<h1 class="description left text">chapter1.txt</h1>}
+        heading = %{<h2>chapter1.txt</h2>}
         assert { last_response.body.include?(heading) }
 
-        link = %{<a href="http://cl.ly/hhgttg/chapter1.txt">Download</a>}
+        link = %{<a class="embed" href="http://cl.ly/hhgttg/chapter1.txt">Direct link</a>}
         assert { last_response.body.include?(link) }
       end
     end
