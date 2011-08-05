@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'helper'
 require 'support/vcr'
 require 'drop'
 
