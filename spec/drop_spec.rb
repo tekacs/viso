@@ -35,8 +35,7 @@ describe Drop do
 
   describe 'an image' do
     subject do
-      Drop.new :item_type   => 'image',
-               :content_url => 'http://cl.ly/hhgttg/cover.png'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/cover.png'
     end
 
     it 'is an image' do
@@ -56,8 +55,7 @@ describe Drop do
 
   describe 'a text file' do
     subject do
-      Drop.new :item_type   => 'text',
-               :content_url => 'http://cl.ly/hhgttg/chapter1.txt'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/chapter1.txt'
     end
 
     it 'is plain text' do
@@ -89,8 +87,7 @@ describe Drop do
 
     describe "a markdown file with the extension #{ markdown_extension }" do
       subject do
-        Drop.new :item_type   => 'unknown',
-                 :content_url => "http://cl.ly/hhgttg/chapter1.#{ markdown_extension }"
+        Drop.new :content_url => "http://cl.ly/hhgttg/chapter1.#{ markdown_extension }"
       end
 
       it 'is markdown' do
@@ -112,8 +109,7 @@ describe Drop do
 
   describe 'a markdown file' do
     subject do
-      Drop.new :item_type   => 'unknown',
-               :content_url => 'http://cl.ly/hhgttg/chapter1.md'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/chapter1.md'
     end
 
     it 'fetches and parses the content' do
@@ -129,8 +125,7 @@ describe Drop do
 
   describe 'a code file' do
     subject do
-      Drop.new :item_type   => 'unknown',
-               :content_url => 'http://cl.ly/hhgttg/hello.rb'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/hello.rb'
     end
 
     it 'is code' do
@@ -162,8 +157,7 @@ describe Drop do
 
   describe 'an rtf file' do
     subject do
-      Drop.new :item_type   => 'text',
-               :content_url => 'http://cl.ly/hhgttg/chapter1.rtf'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/chapter1.rtf'
     end
 
     %w( bookmark code image markdown plain_text text ).each do |type|
@@ -175,8 +169,7 @@ describe Drop do
 
   describe 'a postscript file' do
     subject do
-      Drop.new :item_type   => 'unknown',
-               :content_url => 'http://cl.ly/hhgttg/chapter1.ps'
+      Drop.new :content_url => 'http://cl.ly/hhgttg/chapter1.ps'
     end
 
     %w( bookmark code image markdown plain_text text ).each do |type|

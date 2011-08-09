@@ -34,7 +34,17 @@ class Drop < OpenStruct
   end
 
   def image?
-    item_type == 'image'
+    %w( bmp
+        gif
+        ico
+        jp2
+        jpe
+        jpeg
+        jpf
+        jpg
+        jpg2
+        jpgm
+        png ).include? extension
   end
 
   def text?
@@ -46,7 +56,9 @@ class Drop < OpenStruct
   end
 
   def markdown?
-    %w( .md .mdown .markdown ).include? extension
+    %w( md
+        mdown
+        markdown ).include? extension
   end
 
   def code?
@@ -73,7 +85,7 @@ class Drop < OpenStruct
 private
 
   def extension
-    File.extname content_url if content_url
+    File.extname(content_url)[1..-1] if content_url
   end
 
   def lexer_name
