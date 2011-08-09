@@ -53,6 +53,16 @@ describe Drop do
     end
   end
 
+  describe 'an image with a capital file extension' do
+    subject do
+      Drop.new :content_url => 'http://cl.ly/hhgttg/cover.PNG'
+    end
+
+    it 'is an image' do
+      assert { subject.image? }
+    end
+  end
+
   describe 'a text file' do
     subject do
       Drop.new :content_url => 'http://cl.ly/hhgttg/chapter1.txt'
@@ -105,6 +115,16 @@ describe Drop do
       end
     end
 
+  end
+
+  describe 'a markdown file with a capital file extension' do
+    subject do
+      Drop.new :content_url => "http://cl.ly/hhgttg/chapter1.MD"
+    end
+
+    it 'is markdown' do
+      assert { subject.markdown? }
+    end
   end
 
   describe 'a markdown file' do

@@ -85,7 +85,7 @@ class Drop < OpenStruct
 private
 
   def extension
-    File.extname(content_url)[1..-1] if content_url
+    File.extname(content_url)[1..-1].downcase if content_url
   end
 
   def lexer_name
