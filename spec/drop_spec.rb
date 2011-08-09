@@ -199,6 +199,23 @@ describe Drop do
     end
   end
 
+  describe 'a file without an extension' do
+    subject do
+      Drop.new :content_url => 'http://cl.ly/hhgttg/cover'
+    end
+
+    %w( image bookmark code markdown plain_text text ).each do |type|
+      it "is not a #{ type }" do
+        deny { subject.send("#{ type }?") }
+      end
+    end
+
+    it "doesn't have content" do
+      assert { subject.content.nil? }
+    end
+  end
+
+
   describe 'subscribed' do
     subject { Drop.new :subscribed => true }
 
