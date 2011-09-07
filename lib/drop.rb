@@ -25,12 +25,26 @@ class Drop < OpenStruct
     Drop.new Yajl::Parser.parse(request.response)
   end
 
+  def subscribed?
+    subscribed
+  end
+
   def bookmark?
     item_type == 'bookmark'
   end
 
   def image?
-    item_type == 'image'
+    %w( bmp
+        gif
+        ico
+        jp2
+        jpe
+        jpeg
+        jpf
+        jpg
+        jpg2
+        jpgm
+        png ).include? extension
   end
 
   def audio?
@@ -42,23 +56,25 @@ class Drop < OpenStruct
   end
 
   def text?
-    extension == '.txt'
+    plain_text? || markdown? || code?
+  end
+
+  def plain_text?
+    lexer_name == 'text'
   end
 
   def markdown?
-    %w( .md .mdown .markdown ).include? extension
+    %w( md
+        mdown
+        markdown ).include? extension
   end
 
   def code?
-    !!lexer_name
-  end
-
-  def subscribed?
-    subscribed
+    lexer_name && !%w( text postscript minid ).include?(lexer_name)
   end
 
   def content
-    return unless text? || markdown? || code?
+    return unless plain_text? || markdown? || code?
 
     raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
@@ -77,13 +93,11 @@ class Drop < OpenStruct
 private
 
   def extension
-    File.extname content_url
+    File.extname(content_url)[1..-1].to_s.downcase if content_url
   end
 
   def lexer_name
-    return if text?
-
-    lexer_name_for :filename => content_url
+    @lexer_name ||= lexer_name_for :filename => content_url
   rescue RubyPython::PythonError
     false
   end

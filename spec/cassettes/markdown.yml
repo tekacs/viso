@@ -15,28 +15,28 @@
       server: 
       - nginx/0.7.67
       date: 
-      - Fri, 13 May 2011 18:53:46 GMT
+      - Thu, 04 Aug 2011 22:34:35 GMT
       content-type: 
       - application/json; charset=utf-8
       vary: 
       - Accept
+      etag: 
+      - "\"150145dfc89e85cbf91bf3b28618e5c4\""
       x-ua-compatible: 
       - IE=Edge,chrome=1
-      last-modified: 
-      - Fri, 13 May 2011 18:30:48 GMT
       x-runtime: 
-      - "0.009034"
+      - "0.039199"
       cache-control: 
       - public; max-age=900
       content-length: 
-      - "542"
+      - "497"
       x-varnish: 
-      - "105836681"
+      - "376588354"
       age: 
       - "0"
       via: 
       - 1.1 varnish
-    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.md\",\"href\":\"http://my.cl.ly/items/5141204\",\"name\":\"chapter1.md\",\"redirect_url\":null,\"created_at\":\"2011-05-13T18:30:48Z\",\"updated_at\":\"2011-05-13T18:30:48Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":0,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.md\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":5141204,\"item_type\":\"unknown\"}"
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/chapter1.md\",\"href\":\"http://my.cl.ly/items/7242217\",\"name\":\"chapter1.md\",\"redirect_url\":null,\"created_at\":\"2011-07-12T01:59:13Z\",\"updated_at\":\"2011-08-04T22:31:50Z\",\"private\":true,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":12,\"remote_url\":\"http://f.cl.ly/items/hhgttg/chapter1.md\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":7242217,\"subscribed\":true,\"source\":null,\"item_type\":\"unknown\"}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
@@ -46,99 +46,28 @@
     headers: 
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 302
-      message: Moved Temporarily
-    headers: 
-      server: 
-      - nginx/0.7.67
-      date: 
-      - Fri, 13 May 2011 18:53:46 GMT
-      content-type: 
-      - text/html;charset=utf-8
-      connection: 
-      - keep-alive
-      vary: 
-      - Accept
-      cache-control: 
-      - public, max-age=900
-      location: 
-      - http://api.cld.me/hhgttg/chapter1.md
-      content-length: 
-      - "0"
-      x-varnish: 
-      - "477221585"
-      age: 
-      - "0"
-      via: 
-      - 1.1 varnish
-    body: 
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://api.cld.me:80/hhgttg/chapter1.md
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 302
-      message: Moved Temporarily
-    headers: 
-      server: 
-      - nginx/0.7.67
-      date: 
-      - Fri, 13 May 2011 18:53:46 GMT
-      content-type: 
-      - text/html; charset=utf-8
-      connection: 
-      - keep-alive
-      x-ua-compatible: 
-      - IE=Edge,chrome=1
-      location: 
-      - http://f.cl.ly/items/hhgttg/chapter1.md
-      x-runtime: 
-      - "0.029091"
-      cache-control: 
-      - no-cache
-      content-length: 
-      - "143"
-      x-varnish: 
-      - "105836809"
-      age: 
-      - "0"
-      via: 
-      - 1.1 varnish
-    body: <html><body>You are being <a href="http://f.cl.ly/items/hhgttg/chapter1.md">redirected</a>.</body></html>
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://f.cl.ly:80/items/hhgttg/chapter1.md
-    body: 
-    headers: 
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
       code: 200
       message: OK
     headers: 
       x-amz-id-2: 
-      - ya8KVaOwlq+MhvgkSKrOSVQKDnlE4yeGPXsS+LMH/xW8cCHWJiV1l52kxhsZJ14+
+      - GBSwZX+JssXgE6AaP/i+qoNkgIhdiNNYc2DuAFFfB497ZIDZ+JxyIwZWN+g83gFQ
       x-amz-request-id: 
-      - 618C8DFB43CFA3D2
+      - DF8878EF92D01DD3
       date: 
-      - Fri, 13 May 2011 18:53:47 GMT
+      - Thu, 04 Aug 2011 22:34:37 GMT
       last-modified: 
-      - Fri, 13 May 2011 18:30:49 GMT
+      - Tue, 12 Jul 2011 01:59:13 GMT
       etag: 
-      - "\"f27d77c1b4c18353300c14461e7648b3\""
+      - "\"e707e6be0da35d331d7464309a897529\""
       accept-ranges: 
       - bytes
       content-type: 
       - binary/octet-stream
       content-length: 
-      - "2735"
+      - "389"
       server: 
       - AmazonS3
     body: "# Chapter 1\n\n\
       The house stood on a slight rise just on the edge of the village. It stood on its own and looked out over a broad spread of West Country farmland. Not a remarkable house by any means\xE2\x80\x94it was about thirty years old, squattish, squarish, made of brick, and had four windows set in the front of a size and proportion which more or less exactly **failed** to please the eye.\n"
+
     http_version: "1.1"

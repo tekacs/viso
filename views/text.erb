@@ -1,6 +1,6 @@
 <header id="header">
   <% unless @drop.subscribed? %>
-    <h1><a href="http://www.getcloudapp.com/">Simple sharing</a></h1>
+    <h1><a href="http://store.getcloudapp.com/">Simple sharing</a></h1>
   <% end %>
 
   <h2><%= escape_html @drop.name %></h2>
@@ -11,7 +11,7 @@
 <section class="monsoon" id="content">
   <%# It might not be the best solution to force UTF-8 encoding. We"ll keep our
       eyes open for encoding issues. %>
-  <% if @drop.text? %>
+  <% if @drop.plain_text? %>
     <pre><code><%= escape_html @drop.content.force_encoding('UTF-8') %></code></pre>
   <% else %>
     <%= @drop.content.force_encoding('UTF-8') %>

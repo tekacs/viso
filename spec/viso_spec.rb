@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'helper'
 require 'rack/test'
 require 'support/vcr'
 
@@ -139,7 +139,7 @@ describe Viso do
     end
   end
 
-  it 'shows a download button for an unknown file' do
+  it 'shows a view button for an unknown file' do
     EM.synchrony do
       VCR.use_cassette 'unknown' do
         get '/hhgttg'
@@ -157,10 +157,10 @@ describe Viso do
         title = %{<title>Chapter 1</title>}
         assert { last_response.body.include?(title) }
 
-        heading = %{<h1 class="description left unknown">Chapter 1</h1>}
+        heading = %{<h2>Chapter 1</h2>}
         assert { last_response.body.include?(heading) }
 
-        link = %{<a href="http://cl.ly/hhgttg/Chapter_1.blah">Download</a>}
+        link = %{<a href="http://cl.ly/hhgttg/Chapter_1.blah">View</a>}
         assert { last_response.body.include?(link) }
       end
     end
@@ -178,66 +178,67 @@ describe Viso do
         assert { headers['Cache-Control'] == 'public, max-age=900' }
         assert { headers['Vary']          == 'Accept' }
 
-        assert { last_response.body.include?('<body id="other">') }
+        assert { last_response.body.include?('<body id="text">') }
         deny   { last_response.body.include?("<img") }
 
         title = %{<title>chapter1.txt</title>}
         assert { last_response.body.include?(title) }
 
-        heading = %{<h1 class="description left text">chapter1.txt</h1>}
+        heading = %{<h2>chapter1.txt</h2>}
         assert { last_response.body.include?(heading) }
 
-        link = %{<a href="http://cl.ly/hhgttg/chapter1.txt">Download</a>}
+        link = %{<a class="embed" href="http://cl.ly/hhgttg/chapter1.txt">Direct link</a>}
         assert { last_response.body.include?(link) }
+
+        content = 'The house stood on a slight rise just on the edge of the village.'
+        assert { last_response.body.include? content }
       end
     end
   end
 
-  ## This test will fail until webmock can support the latest em-http-request
-  #it 'dumps the content of a markdown drop' do
-    #EM.synchrony do
-      #VCR.use_cassette 'markdown' do
-        #get '/hhgttg'
-        #EM.stop
+  it 'dumps the content of a markdown drop' do
+    EM.synchrony do
+      VCR.use_cassette 'markdown' do
+        get '/hhgttg'
+        EM.stop
 
-        #assert { last_response.ok? }
+        assert { last_response.ok? }
 
-        #headers = last_response.headers
-        #assert { headers['Cache-Control'] == 'public, max-age=900' }
-        #assert { headers['Vary']          == 'Accept' }
-        #assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=900' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
 
-        #section_tag = '<section class="monsoon" id="content">'
-        #assert { last_response.body.include? section_tag }
+        section_tag = '<section class="monsoon" id="content">'
+        assert { last_response.body.include? section_tag }
 
-        #content = 'The house stood on a slight rise just on the edge of the village.'
-        #assert { last_response.body.include? content }
-      #end
-    #end
-  #end
+        content = 'The house stood on a slight rise just on the edge of the village.'
+        assert { last_response.body.include? content }
+      end
+    end
+  end
 
-  ## This test will fail until webmock can support the latest em-http-request
-  #it 'dumps the content of a code drop' do
-    #EM.synchrony do
-      #VCR.use_cassette 'ruby-test', :record => :new_episodes do
-        #get '/1k0f342Q1R373x2h3q2I'
-        #EM.stop
+  it 'dumps the content of a code drop' do
+    EM.synchrony do
+      VCR.use_cassette 'ruby' do
+        get '/hhgttg'
+        EM.stop
 
-        #assert { last_response.ok? }
+        assert { last_response.ok? }
 
-        #headers = last_response.headers
-        #assert { headers['Cache-Control'] == 'public, max-age=900' }
-        #assert { headers['Vary']          == 'Accept' }
-        #assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
+        headers = last_response.headers
+        assert { headers['Cache-Control'] == 'public, max-age=900' }
+        assert { headers['Vary']          == 'Accept' }
+        assert { headers['Content-Type']  == 'text/html;charset=utf-8' }
 
-        #section_tag = '<section class="monsoon" id="content">'
-        #assert { last_response.body.include? section_tag }
+        section_tag = '<section class="monsoon" id="content">'
+        assert { last_response.body.include? section_tag }
 
-        #content = 'The house stood on a slight rise just on the edge of the village.'
-        #assert { last_response.body.include? content }
-      #end
-    #end
-  #end
+        content = 'Hello, world!'
+        assert { last_response.body.include? content }
+      end
+    end
+  end
 
   it 'forwards json response' do
     EM.synchrony do
