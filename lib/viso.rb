@@ -51,6 +51,19 @@ class Viso < Sinatra::Base
     end
   end
 
+  configure :staging, :development do
+    require_relative 'newrelic_instrumentation'
+  end
+
+  configure :development do
+    require 'new_relic/control'
+    NewRelic::Control.instance.init_plugin 'developer_mode' => true,
+      :env => 'development'
+
+    require 'new_relic/rack/developer_mode'
+    use NewRelic::Rack::DeveloperMode
+  end
+
   # Use a fiber pool to serve **Viso** when outside of the test environment.
   configure do
     unless test?
