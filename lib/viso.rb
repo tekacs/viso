@@ -1,9 +1,22 @@
 # Viso
 # ------
 #
-# **Viso** is a simple Sinatra app that displays CloudApp Drops. Images are
-# displayed front and center, bookmarks are redirected to their destination, and
-# a download button is provided for all other file types.
+# **Viso** is the magic that powers [CloudApp][] by displaying shared Drops. At
+# its core, **Viso** is a simple [Sinatra][] app that retrieves a **Drop's**
+# details using the [CloudApp API][]. Images are displayed front and center,
+# bookmarks are redirected to their destination, markdown is processed by
+# [RedCarpet][], code files are highlighted by [Pygments], and, when all else
+# fails, a download button is provided. **Viso** uses [eventmachine][] and
+# [rack-fiber_pool][] to serve requests while expensive network I/O is performed
+# asynchronously.
+#
+# [cloudapp]:        http://getcloudapp.com
+# [sinatra]:         https://github.com/sinatra/sinatra
+# [cloudapp api]:    http://developer.getcloudapp.com
+# [redcarpet]:       https://github.com/tanoku/redcarpet
+# [pygments]:        http://pygments.org
+# [eventmachine]:    https://github.com/eventmachine/eventmachine
+# [rack-fiber_pool]: https://github.com/mperham/rack-fiber_pool
 require 'eventmachine'
 require 'sinatra/base'
 require 'sinatra/respond_with'
@@ -18,11 +31,12 @@ class Viso < Sinatra::Base
   register Sinatra::RespondWith
 
   # Load New Relic RPM and Hoptoad in the production and staging environments.
+  # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` and
+  # Hoptoad will catalog your exceptions. Explicitly require some bits from
+  # `activesupport` that Hoptoad needs.
   configure(:production, :staging) do
     require 'newrelic_rpm'
 
-    # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` to
-    # use Hoptoad to catalog your exceptions.
     if ENV['HOPTOAD_API_KEY']
       require 'active_support'
       require 'active_support/core_ext/object/blank'
@@ -37,7 +51,7 @@ class Viso < Sinatra::Base
     end
   end
 
-  # Use a fiber pool to serve **Viso** outside of the test environment.
+  # Use a fiber pool to serve **Viso** when outside of the test environment.
   configure do
     unless test?
       require 'rack/fiber_pool'
