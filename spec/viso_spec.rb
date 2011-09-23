@@ -288,4 +288,15 @@ describe Viso do
     end
   end
 
+  it 'ignores trailing slash' do
+    EM.synchrony do
+      VCR.use_cassette 'text' do
+        get '/hhgttg/'
+        EM.stop
+
+        assert { last_response.ok? }
+      end
+    end
+  end
+
 end
