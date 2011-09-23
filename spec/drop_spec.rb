@@ -5,7 +5,9 @@ require 'drop'
 describe Drop do
 
   def self.subject(&block)
-    define_method :subject, &block
+    define_method :subject do
+      @subject ||= block.call
+    end
   end
 
 
@@ -89,6 +91,20 @@ describe Drop do
 
           EM.stop
         end
+      end
+    end
+
+    it 'memoizes the content' do
+      EM.synchrony do
+        VCR.use_cassette 'text' do
+          subject.content
+        end
+
+        # Relying on VCR raise an exception if it tries to make an external API
+        # call since it's called outside of a loaded cassette.
+        assert { rescuing { subject.content }.nil? }
+
+        EM.stop
       end
     end
   end

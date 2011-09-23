@@ -68,11 +68,10 @@ class Drop < OpenStruct
   def content
     return unless plain_text? || markdown? || code?
 
-    raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
-      Redcarpet.new(raw).to_html
+      parse_markdown
     elsif code?
-      highlight raw, :lexer => lexer_name
+      highlight_code
     else
       raw
     end
@@ -92,6 +91,18 @@ private
     @lexer_name ||= lexer_name_for :filename => content_url
   rescue RubyPython::PythonError
     false
+  end
+
+  def raw
+    @raw ||= EM::HttpRequest.new(content_url).get(:redirects => 3).response
+  end
+
+  def parse_markdown
+    Redcarpet.new(raw).to_html
+  end
+
+  def highlight_code
+    highlight raw, :lexer => lexer_name
   end
 
 end
