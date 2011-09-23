@@ -15,6 +15,8 @@ gem 'yajl-ruby'
 gem 'hoptoad_notifier'
 gem 'newrelic_rpm'
 
+gem 'rocco', :group => :development
+
 group :test do
   gem 'rack-test'
   gem 'vcr'
