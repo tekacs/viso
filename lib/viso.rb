@@ -36,6 +36,7 @@ class Viso < Sinatra::Base
   # `activesupport` that Hoptoad needs.
   configure(:production, :staging) do
     require 'newrelic_rpm'
+    require_relative 'newrelic_instrumentation'
 
     if ENV['HOPTOAD_API_KEY']
       require 'active_support'
@@ -51,10 +52,6 @@ class Viso < Sinatra::Base
     end
   end
 
-  configure :staging, :development do
-    require_relative 'newrelic_instrumentation'
-  end
-
   configure :development do
     require 'new_relic/control'
     NewRelic::Control.instance.init_plugin 'developer_mode' => true,
@@ -62,6 +59,8 @@ class Viso < Sinatra::Base
 
     require 'new_relic/rack/developer_mode'
     use NewRelic::Rack::DeveloperMode
+
+    require_relative 'newrelic_instrumentation'
   end
 
   # Use a fiber pool to serve **Viso** when outside of the test environment.
