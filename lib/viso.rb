@@ -22,6 +22,7 @@ require 'sinatra/base'
 require 'sinatra/respond_with'
 require 'yajl'
 
+require_relative 'jammit_helper'
 require_relative 'drop'
 require_relative 'domain'
 
@@ -29,6 +30,7 @@ class Viso < Sinatra::Base
 
   # Make use of `respond_to` to handle content negotiation.
   register Sinatra::RespondWith
+  register JammitHelper
 
   # Load New Relic RPM and Hoptoad in the production and staging environments.
   # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` and

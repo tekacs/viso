@@ -12,14 +12,13 @@
 
     <link href="/favicon.ico" rel="shortcut icon">
 
-    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
+    <%= include_stylesheets :viso %>
 
     <!--[if IE]>
     <link href="/stylesheets/ie.css" rel="stylesheet" type="text/css">
     <![endif]-->
 
-    <script src="/javascripts/vendor/jquery-1.6.1.min.js"></script>
-    <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
+    <%= include_javascripts :viso %>
 
     <!--[if lt IE 9]>
     <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>

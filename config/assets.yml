@@ -1,0 +1,18 @@
+javascript_compressor:  closure
+gzip_assets:            off
+
+javascripts:
+  viso:
+    - public/javascripts/vendor/jquery-1.6.1.min.js
+    - public/javascripts/vendor/modernizr-1.7.min.js
+    - public/javascripts/image.js
+    - public/javascripts/other.js
+
+stylesheets:
+  viso:
+    - public/stylesheets/reset.css
+    - public/stylesheets/monsoon.css
+    - public/stylesheets/image.css
+    - public/stylesheets/other.css
+    - public/stylesheets/text.css
+    - public/stylesheets/syntax.css

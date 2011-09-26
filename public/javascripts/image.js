@@ -1,5 +1,7 @@
 (function($) {
   $(function() {
+    if (!$("body#image").length) { return; }
+
     var hasPushState = (typeof history.pushState !== 'undefined'),
         viewport     = $(window),
         body         = $("body"),

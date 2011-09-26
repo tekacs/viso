@@ -1,4 +1,5 @@
 source :gemcutter
+gem 'padrino'
 
 gem 'backports'
 gem 'em-http-request', '~> 1.0'
@@ -15,6 +16,7 @@ gem 'yajl-ruby'
 gem 'hoptoad_notifier'
 gem 'newrelic_rpm'
 
+gem 'jammit'
 gem 'rocco', :group => :development
 
 group :test do

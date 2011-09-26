@@ -1,5 +1,7 @@
 (function($) {
   $(function() {
+    if (!$("body#other").length) { return; }
+
     var viewport = $(window),
         content  = $("#content"),
         wrapper  = content.closest(".wrapper"),
