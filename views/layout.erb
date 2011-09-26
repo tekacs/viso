@@ -15,13 +15,13 @@
     <%= include_stylesheets :viso %>
 
     <!--[if IE]>
-    <link href="/stylesheets/ie.css" rel="stylesheet" type="text/css">
+    <%= include_stylesheets :ie %>
     <![endif]-->
 
     <%= include_javascripts :viso %>
 
     <!--[if lt IE 9]>
-    <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
+    <%= include_javascripts :ie %>
     <![endif]-->
 
     <script type="text/javascript">

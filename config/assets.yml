@@ -1,4 +1,4 @@
-javascript_compressor: closure
+javascript_compressor: uglifier
 gzip_assets:           off
 
 s3_bucket:             <%= ENV['S3_ASSET_BUCKET'] %>
@@ -11,6 +11,8 @@ javascripts:
     - public/javascripts/vendor/modernizr-1.7.min.js
     - public/javascripts/image.js
     - public/javascripts/other.js
+  ie:
+    - public/javascripts/vendor/selectivizr-1.0.2.min.js
 
 stylesheets:
   viso:
@@ -20,3 +22,5 @@ stylesheets:
     - public/stylesheets/other.css
     - public/stylesheets/text.css
     - public/stylesheets/syntax.css
+  ie:
+    - public/stylesheets/ie.css
