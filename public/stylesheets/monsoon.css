@@ -7,10 +7,6 @@
   font: normal 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.wf-active .monsoon {
-  font: normal 14px "ff-meta-web-pro-1", "ff-meta-web-pro-2";
-}
-
 /* =headings
 ---------------------------------------------- */
 .monsoon h1 {
@@ -151,7 +147,8 @@
 .monsoon blockquote {
   border-left: 3px solid #e5e5e5;
   color: #666;
-  font-family: "ff-meta-serif-web-pro-1", "ff-meta-serif-web-pro-2", Georgia, serif;
+  /* font-family: "ff-meta-serif-web-pro-1", "ff-meta-serif-web-pro-2", Georgia, serif;*/
+  font-family: Georgia, serif;
   margin: 0 0 24px 0;
   padding: 0 0 0 24px;
 }
@@ -216,10 +213,6 @@
   font: 12px Monaco, monospace;
 }
 
-.wf-active .monsoon code {
-  font: 15px "inconsolata-1", "inconsolata-2";
-}
-
 .monsoon del {
   color: #666;
   font-style: line-through;
@@ -247,26 +240,14 @@
   font: 12px Monaco, monospace;
 }
 
-.wf-active .monsoon kbd {
-  font: 15px "inconsolata-1", "inconsolata-2" , Monaco, monospace;
-}
-
 .monsoon mark {
   background: #ffff99;
   color: #533b18;
   padding: 2px 3px;
 }
 
-.wf-active .monsoon mark {
-  padding: 0 4px;
-}
-
 .monsoon samp {
   font: 12px Monaco, monospace;
-}
-
-.wf-active .monsoon samp {
-  font: 15px "inconsolata-1", "inconsolata-2" , Monaco, monospace;
 }
 
 .monsoon small {
@@ -289,10 +270,6 @@
 
 .monsoon var {
   font: 12px Monaco, monospace;
-}
-
-.wf-active .monsoon var {
-  font: 15px "inconsolata-1", "inconsolata-2" , Monaco, monospace;
 }
 /* ------------------------------------------- */
 
@@ -327,9 +304,5 @@
   padding: 12px;
   white-space: pre;
   word-wrap: normal;
-}
-
-.wf-active .monsoon .highlight pre {
-  font: 14px "inconsolata-1", "inconsolata-2";
 }
 /* ------------------------------------------- */
