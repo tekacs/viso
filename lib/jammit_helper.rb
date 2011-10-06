@@ -18,11 +18,6 @@ module JammitHelper
     app.helpers Jammit::Helper
 
     # Reload assets and prevent packaging on every request in development mode.
-    if app.development?
-      app.before do
-        Jammit.reload!
-        Jammit.set_package_assets false
-      end
-    end
+    app.before { Jammit.reload! } if app.development?
   end
 end
