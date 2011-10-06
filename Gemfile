@@ -16,7 +16,7 @@ gem 'yajl-ruby'
 gem 'hoptoad_notifier'
 gem 'newrelic_rpm'
 
-gem 'jammit-s3'
+gem 'jammit'
 gem 'rocco', :group => :development
 
 group :test do
