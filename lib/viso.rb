@@ -36,7 +36,7 @@ class Viso < Sinatra::Base
   # Add your Hoptoad API key to the environment variable `HOPTOAD_API_KEY` and
   # Hoptoad will catalog your exceptions. Explicitly require some bits from
   # `activesupport` that Hoptoad needs.
-  configure(:production, :staging) do
+  configure :production do
     require 'newrelic_rpm'
     require_relative 'newrelic_instrumentation'
 
