@@ -3,7 +3,7 @@
 */
 
 #other {
-  background: url("/images/other/body-bg.png") repeat #191919;
+  background: url("/embed/other/body-bg.png") repeat #191919;
   color: #424b51;
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
   min-width: 320px;
@@ -30,7 +30,7 @@
 }
 
 #other #content figure {
-  background: url("/images/other/thumbs.png") no-repeat #f7f8f8;
+  background: url("/embed/other/thumbs.png") no-repeat #f7f8f8;
   border: 1px solid #ced5d9;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -64,7 +64,7 @@
 }
 
 #other #content p a {
-  background: url("/images/other/view-button.png");
+  background: url("/embed/other/view-button.png");
   display: block;
   height: 27px;
   margin: 0 auto 4px auto;
@@ -94,7 +94,7 @@
 }
 
 #footer a {
-  background: url("/images/other/badge.png");
+  background: url("/embed/other/badge.png");
   display: block;
   height: 24px;
   margin: 0 auto;
@@ -111,22 +111,22 @@
 
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
   #other {
-    background-image: url("/images/other/body-bg-2x.png");
+    background-image: url("/embed/other/body-bg-2x.png");
     background-size: 145px 145px;
   }
 
   #other #content figure {
-    background-image: url("/images/other/thumbs-2x.png");
+    background-image: url("/embed/other/thumbs-2x.png");
     background-size: 72px 288px;
   }
 
   #other #content p a {
-    background-image: url("/images/other/view-button-2x.png");
+    background-image: url("/embed/other/view-button-2x.png");
     background-size: 96px 54px;
   }
 
   #other #footer a {
-    background-image: url("/images/other/badge-2x.png");
+    background-image: url("/embed/other/badge-2x.png");
     background-size: 119px 24px;
   }
 }
