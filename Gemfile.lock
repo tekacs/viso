@@ -10,6 +10,16 @@ GIT
       tilt (~> 1.3)
 
 GIT
+  remote: https://github.com/kmamykin/jammit-s3.git
+  revision: 2a7245027fa55946f01876a9c638a73fdff0aa29
+  specs:
+    jammit-s3 (0.6.0.2)
+      jammit (~> 0.6.0)
+      mimemagic (>= 0.1.7)
+      ruby-hmac
+      s3 (>= 0.3.7)
+
+GIT
   remote: https://github.com/lmarburger/guard-minitest.git
   revision: b7909634b972e7aaf9c186d5eb517d38c94f6f53
   branch: add_load_path_option
@@ -76,10 +86,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mimemagic (0.1.8)
     multi_json (1.0.3)
     mustache (0.99.4)
     newrelic_rpm (3.1.2)
-    open4 (1.1.0)
+    open4 (1.2.0)
     padrino (0.10.2)
       padrino-admin (= 0.10.2)
       padrino-cache (= 0.10.2)
@@ -110,6 +121,7 @@ GEM
       padrino-core (= 0.10.2)
     polyglot (0.3.2)
     predicated (0.2.6)
+    proxies (0.2.1)
     pygments.rb (0.2.2)
       rubypython (>= 0.5.1)
     rack (1.3.3)
@@ -121,6 +133,7 @@ GEM
     rocco (0.8.2)
       mustache
       redcarpet
+    ruby-hmac (0.4.0)
     ruby2ruby (1.3.1)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
@@ -129,6 +142,8 @@ GEM
     rubypython (0.5.1)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
+    s3 (0.3.8)
+      proxies (~> 0.2.0)
     sexp_processor (3.0.7)
     sinatra (1.2.6)
       rack (~> 1.1)
@@ -179,7 +194,7 @@ DEPENDENCIES
   guard-bundler
   guard-minitest!
   hoptoad_notifier
-  jammit
+  jammit-s3!
   newrelic_rpm
   padrino
   pygments.rb
