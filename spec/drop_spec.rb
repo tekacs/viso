@@ -4,13 +4,6 @@ require 'drop'
 
 describe Drop do
 
-  def self.subject(&block)
-    define_method :subject do
-      @subject ||= block.call
-    end
-  end
-
-
   it 'returns a hash of itself' do
     data = { :name => 'The Guide' }
     drop = Drop.new data
