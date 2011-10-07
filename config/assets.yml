@@ -1,6 +1,10 @@
 javascript_compressor: yui
 embed_assets:          datauri
-gzip_assets:           on
+
+# Jammit-S3 only uploads the gzipped assets to the bucket and CloudFront doesn't
+# decompress them for clients that don't ask for gzip encoding. Disable for now
+# until I know what I'm doing.
+gzip_assets: off
 
 use_cloudfront:       version
 cloudfront_domain:    <%= ENV['CLOUDFRONT_DOMAIN'] %>
