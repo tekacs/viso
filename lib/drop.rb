@@ -9,6 +9,10 @@ class Drop < OpenStruct
 
   include Pygments
 
+  # Heroku's cedar stack raises an "invalid ELF header" exception using the
+  # latest version of python (2.7) on the system. python2.6 seems to work fine.
+  RubyPython.configure :python_exe => 'python2.6'
+
   class NotFound < StandardError; end
 
   def self.base_uri
