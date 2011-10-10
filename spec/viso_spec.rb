@@ -253,7 +253,7 @@ describe Viso do
         headers = last_response.headers
         assert { headers['Cache-Control'] == 'public, max-age=900' }
         assert { headers['Vary']          == 'Accept' }
-        assert { headers['Content-Type']  == 'application/json' }
+        assert { headers['Content-Type']  == 'application/json;charset=utf-8' }
 
         assert { last_response.body == Yajl::Encoder.encode(drop.data) }
       end
