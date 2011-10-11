@@ -3,7 +3,9 @@ require 'new_relic/agent/method_tracer'
 Drop.instance_eval do
   class << self
     include NewRelic::Agent::MethodTracer
-    add_method_tracer :find, 'Custom/Drop/find'
+
+    add_method_tracer :find,               'Custom/Drop/find'
+    add_method_tracer :fetch_drop_content, 'Custom/Drop/fetch_drop_content'
   end
 end
 
@@ -20,6 +22,8 @@ end
 Domain.instance_eval do
   class << self
     include NewRelic::Agent::MethodTracer
-    add_method_tracer :find, 'Custom/Domain/find'
+
+    add_method_tracer :find,                 'Custom/Domain/find'
+    add_method_tracer :fetch_domain_content, 'Custom/Domain/fetch_domain_content'
   end
 end

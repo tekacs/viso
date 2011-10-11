@@ -21,12 +21,7 @@ class Drop < OpenStruct
   @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(slug)
-    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
-                              get(:head => { 'Accept'=> 'application/json' })
-
-    raise NotFound unless request.response_header.status == 200
-
-    Drop.new Yajl::Parser.parse(request.response)
+    Drop.new Yajl::Parser.parse(fetch_drop_content(slug))
   end
 
   def subscribed?
@@ -86,6 +81,15 @@ class Drop < OpenStruct
   end
 
 private
+
+  def self.fetch_drop_content(slug)
+    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
+                              get(:head => { 'Accept'=> 'application/json' })
+
+    raise NotFound unless request.response_header.status == 200
+
+    request.response
+  end
 
   def extension
     File.extname(content_url)[1..-1].to_s.downcase if content_url
