@@ -110,6 +110,10 @@ private
   end
 
   def highlight_code
+    if raw.size >= 50_000
+      return %{<div class="highlight"><pre>#{ raw }</pre></div>}
+    end
+
     highlight raw, :lexer => lexer_name
   end
 

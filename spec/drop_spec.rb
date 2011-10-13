@@ -181,6 +181,17 @@ describe Drop do
         end
       end
     end
+
+    it "doesn't highlight large files" do
+      EM.synchrony do
+        VCR.use_cassette 'large_ruby', :erb => true do
+          highlighted = %{<div class="highlight"><pre>puts 'Hello, world!'}
+          assert { subject.content.start_with? highlighted }
+
+          EM.stop
+        end
+      end
+    end
   end
 
 
