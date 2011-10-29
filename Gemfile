@@ -14,6 +14,10 @@ gem 'yajl-ruby'
 gem 'hoptoad_notifier'
 gem 'newrelic_rpm'
 
+group :development do
+  gem 'shotgun'
+end
+
 group :test do
   gem 'rack-test'
   gem 'vcr'
