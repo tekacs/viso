@@ -4,11 +4,6 @@ require 'drop'
 
 describe Drop do
 
-  def self.subject(&block)
-    define_method :subject, &block
-  end
-
-
   it 'returns a hash of itself' do
     data = { :name => 'The Guide' }
     drop = Drop.new data
@@ -91,6 +86,20 @@ describe Drop do
         end
       end
     end
+
+    it 'memoizes the content' do
+      EM.synchrony do
+        VCR.use_cassette 'text' do
+          subject.content
+        end
+
+        # Relying on VCR raise an exception if it tries to make an external API
+        # call since it's called outside of a loaded cassette.
+        assert { rescuing { subject.content }.nil? }
+
+        EM.stop
+      end
+    end
   end
 
   %w( md mdown markdown ).each do |markdown_extension|
@@ -166,6 +175,17 @@ describe Drop do
       EM.synchrony do
         VCR.use_cassette 'ruby' do
           highlighted = '<div class="highlight"><pre><span class="nb">puts</span>'
+          assert { subject.content.start_with? highlighted }
+
+          EM.stop
+        end
+      end
+    end
+
+    it "doesn't highlight large files" do
+      EM.synchrony do
+        VCR.use_cassette 'large_ruby', :erb => true do
+          highlighted = %{<div class="highlight"><pre>puts 'Hello, world!'}
           assert { subject.content.start_with? highlighted }
 
           EM.stop

@@ -10,40 +10,36 @@
 
     <meta content="CloudApp" name="author">
 
-    <link href="/favicon.ico" rel="shortcut icon">
+    <link href="<%= asset_path :img, '/images/favicon.ico' %>" rel="shortcut icon">
 
-    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css">
+    <%= include_stylesheets :viso %>
 
     <!--[if IE]>
-    <link href="/stylesheets/ie.css" rel="stylesheet" type="text/css">
+    <%= include_stylesheets :ie, :embed_assets => false %>
     <![endif]-->
 
-    <script src="/javascripts/vendor/jquery-1.6.1.min.js"></script>
-    <script src="/javascripts/vendor/modernizr-1.7.min.js"></script>
+    <%= include_javascripts :viso %>
 
     <!--[if lt IE 9]>
-    <script src="/javascripts/vendor/selectivizr-1.0.2.min.js"></script>
+    <%= include_javascripts :ie %>
     <![endif]-->
-
-    <script type="text/javascript" src="http://use.typekit.com/obk5uec.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-13203564-5']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
   </head>
 
   <body id="<%= body_id %>">
     <%= yield %>
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4ea557ec613f5d39e7000002');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
   </body>
 </html>

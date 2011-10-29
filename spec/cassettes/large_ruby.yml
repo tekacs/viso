@@ -1,0 +1,72 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://api.cld.me:80/hhgttg
+    body: 
+    headers: 
+      accept: 
+      - application/json
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - nginx/0.7.67
+      date: 
+      - Thu, 04 Aug 2011 22:38:42 GMT
+      content-type: 
+      - application/json; charset=utf-8
+      vary: 
+      - Accept
+      etag: 
+      - "\"d7cd93ca8eb03c62ffaccbac452bcfec\""
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-runtime: 
+      - "0.012705"
+      cache-control: 
+      - public; max-age=900
+      content-length: 
+      - "450"
+      x-varnish: 
+      - "1252477365"
+      age: 
+      - "0"
+      via: 
+      - 1.1 varnish
+    body: "{\"content_url\":\"http://cl.ly/hhgttg/hello.rb\",\"href\":\"http://my.cl.ly/items/5593634\",\"name\":\"hello.rb\",\"redirect_url\":null,\"created_at\":\"2011-05-31T12:18:00Z\",\"updated_at\":\"2011-08-04T22:37:33Z\",\"private\":false,\"deleted_at\":null,\"url\":\"http://cl.ly/hhgttg\",\"view_counter\":58,\"remote_url\":\"http://f.cl.ly/items/hhgttg/hello.rb\",\"icon\":\"http://my.cl.ly/images/new/item-types/unknown.png\",\"id\":5593634,\"subscribed\":true,\"source\":null,\"item_type\":\"ruby\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://cl.ly:80/hhgttg/hello.rb
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-amz-id-2: 
+      - K+4u3wz3NDDpG0XnY2+99KxLJGyhpiLCY8Q6IFnwiAwKO5AnOUAEPTybYy2r/6aw
+      x-amz-request-id: 
+      - CC0C87AA00EB6B47
+      date: 
+      - Thu, 04 Aug 2011 22:38:44 GMT
+      last-modified: 
+      - Tue, 31 May 2011 12:18:04 GMT
+      etag: 
+      - "\"3cd171f5191f20cf69d7496a59e59e8f\""
+      accept-ranges: 
+      - bytes
+      content-type: 
+      - application/ruby
+      content-length: 
+      - "50000"
+      server: 
+      - AmazonS3
+    body: <%= ("puts 'Hello, world!'" * 2_500).inspect %>
+
+    http_version: "1.1"

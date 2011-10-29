@@ -13,12 +13,18 @@ class Domain < OpenStruct
   @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(domain)
+    Domain.new Yajl::Parser.parse(fetch_domain_content(domain))
+  end
+
+private
+
+  def self.fetch_domain_content(domain)
     request = EM::HttpRequest.new("http://#{ base_uri }/domains/#{ domain }").
                               get(:head => { 'Accept'=> 'application/json' })
 
     raise NotFound unless request.response_header.status == 200
 
-    Domain.new Yajl::Parser.parse(request.response)
+    request.response
   end
 
 end

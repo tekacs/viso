@@ -3,7 +3,7 @@
 */
 
 #image {
-  background: url("/images/image/body-bg.png") repeat #191919;
+  background: url("../images/embed/image/body-bg.png") repeat #191919;
   color: #fff;
   font: 12px "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
   min-width: 320px;
@@ -12,7 +12,7 @@
 /* =header
 ---------------------------------------------- */
 #image #header {
-  background: url("/images/image/header-bg.png") repeat-x;
+  background: url("../images/embed/image/header-bg.png") repeat-x;
   height: 43px;
   overflow: hidden;
   position: relative;
@@ -40,7 +40,7 @@
 }
 
 #image #header h1 a {
-  background: url("/images/image/badge.png") no-repeat;
+  background: url("../images/embed/image/badge.png") no-repeat;
   display: block;
   height: 24px;
   text-indent: -99999px;
@@ -83,7 +83,7 @@
   -webkit-animation-duration: .2s;
   -webkit-animation-name: embedSlideIn;
   -webkit-animation-timing-function: easeIn;
-  background: url("/images/image/embed.png") no-repeat;
+  background: url("../images/embed/image/embed.png") no-repeat;
   display: block;
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
@@ -160,17 +160,17 @@
 
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { 
   #image {
-    background-image: url("/images/image/body-bg-2x.png");
+    background-image: url("../images/embed/image/body-bg-2x.png");
     background-size: 145px 145px;
   }
 
   #image #header h1 a {
-    background-image: url("/images/image/badge-2x.png");
+    background-image: url("../images/embed/image/badge-2x.png");
     background-size: 119px 24px;
   }
 
   #image #header .embed {
-    background-image: url("/images/image/embed-2x.png");
+    background-image: url("../images/embed/image/embed-2x.png");
     background-size: 16px 48px;
   }
 }

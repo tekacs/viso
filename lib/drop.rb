@@ -9,6 +9,10 @@ class Drop < OpenStruct
 
   include Pygments
 
+  # Heroku's cedar stack raises an "invalid ELF header" exception using the
+  # latest version of python (2.7) on the system. python2.6 seems to work fine.
+  RubyPython.configure :python_exe => 'python2.6'
+
   class NotFound < StandardError; end
 
   def self.base_uri
@@ -17,12 +21,7 @@ class Drop < OpenStruct
   @@base_uri = ENV.fetch 'CLOUDAPP_DOMAIN', 'api.cld.me'
 
   def self.find(slug)
-    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
-                              get(:head => { 'Accept'=> 'application/json' })
-
-    raise NotFound unless request.response_header.status == 200
-
-    Drop.new Yajl::Parser.parse(request.response)
+    Drop.new Yajl::Parser.parse(fetch_drop_content(slug))
   end
 
   def subscribed?
@@ -76,11 +75,10 @@ class Drop < OpenStruct
   def content
     return unless plain_text? || markdown? || code?
 
-    raw = EM::HttpRequest.new(content_url).get(:redirects => 3).response
     if markdown?
-      Redcarpet.new(raw).to_html
+      parse_markdown
     elsif code?
-      highlight raw, :lexer => lexer_name
+      highlight_code
     else
       raw
     end
@@ -92,6 +90,15 @@ class Drop < OpenStruct
 
 private
 
+  def self.fetch_drop_content(slug)
+    request = EM::HttpRequest.new("http://#{ base_uri }/#{ slug }").
+                              get(:head => { 'Accept'=> 'application/json' })
+
+    raise NotFound unless request.response_header.status == 200
+
+    request.response
+  end
+
   def extension
     File.extname(content_url)[1..-1].to_s.downcase if content_url
   end
@@ -100,6 +107,22 @@ private
     @lexer_name ||= lexer_name_for :filename => content_url
   rescue RubyPython::PythonError
     false
+  end
+
+  def raw
+    @raw ||= EM::HttpRequest.new(content_url).get(:redirects => 3).response
+  end
+
+  def parse_markdown
+    Redcarpet.new(raw).to_html
+  end
+
+  def highlight_code
+    if raw.size >= 50_000
+      return %{<div class="highlight"><pre>#{ raw }</pre></div>}
+    end
+
+    highlight raw, :lexer => lexer_name
   end
 
 end

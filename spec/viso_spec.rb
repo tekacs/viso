@@ -253,7 +253,7 @@ describe Viso do
         headers = last_response.headers
         assert { headers['Cache-Control'] == 'public, max-age=900' }
         assert { headers['Vary']          == 'Accept' }
-        assert { headers['Content-Type']  == 'application/json' }
+        assert { headers['Content-Type']  == 'application/json;charset=utf-8' }
 
         assert { last_response.body == Yajl::Encoder.encode(drop.data) }
       end
@@ -284,6 +284,17 @@ describe Viso do
         assert do
           last_response.headers['Content-Type'] == 'text/html;charset=utf-8'
         end
+      end
+    end
+  end
+
+  it 'ignores trailing slash' do
+    EM.synchrony do
+      VCR.use_cassette 'text' do
+        get '/hhgttg/'
+        EM.stop
+
+        assert { last_response.ok? }
       end
     end
   end
